@@ -93,6 +93,16 @@ namespace KoryProjectC_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap editIcon {
+            get {
+                object obj = ResourceManager.GetObject("editIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pawIcon {
             get {
                 object obj = ResourceManager.GetObject("pawIcon", resourceCulture);
@@ -123,9 +133,9 @@ namespace KoryProjectC_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sparkeIcon {
+        internal static System.Drawing.Bitmap sparkleIcon {
             get {
-                object obj = ResourceManager.GetObject("sparkeIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("sparkleIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
