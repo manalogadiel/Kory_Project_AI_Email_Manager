@@ -55,5 +55,10 @@ namespace KoryProjectC_
         {
 
         }
+
+        private void EmailContent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

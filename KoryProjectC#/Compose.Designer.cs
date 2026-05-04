@@ -129,7 +129,7 @@
             guna2Button2.DisabledState.Image = Properties.Resources.clockIcon;
             guna2Button2.Enabled = false;
             guna2Button2.FillColor = Color.FromArgb(19, 20, 42);
-            guna2Button2.Font = new Font("Open Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button2.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button2.Image = Properties.Resources.clockIcon;
             guna2Button2.Location = new Point(644, 41);
@@ -142,12 +142,12 @@
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Open Sans", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = SystemColors.ButtonFace;
             guna2HtmlLabel1.Location = new Point(35, 95);
             guna2HtmlLabel1.MaximumSize = new Size(705, 40);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(432, 34);
+            guna2HtmlLabel1.Size = new Size(459, 31);
             guna2HtmlLabel1.TabIndex = 3;
             guna2HtmlLabel1.Text = "ATTENTION! Grade Inquiry for CS1101";
             guna2HtmlLabel1.Click += guna2HtmlLabel1_Click;
@@ -155,11 +155,11 @@
             // EmailForm
             // 
             EmailForm.BackColor = Color.Transparent;
-            EmailForm.Font = new Font("Open Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailForm.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EmailForm.ForeColor = Color.FromArgb(142, 144, 166);
             EmailForm.Location = new Point(109, 54);
             EmailForm.Name = "EmailForm";
-            EmailForm.Size = new Size(270, 25);
+            EmailForm.Size = new Size(256, 22);
             EmailForm.TabIndex = 2;
             EmailForm.Text = "juandelacruz@g.batstate-u.edu.ph";
             EmailForm.Click += EmailForm_Click;
@@ -167,11 +167,11 @@
             // NameForm
             // 
             NameForm.BackColor = Color.Transparent;
-            NameForm.Font = new Font("Open Sans", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NameForm.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NameForm.ForeColor = SystemColors.ButtonFace;
             NameForm.Location = new Point(109, 29);
             NameForm.Name = "NameForm";
-            NameForm.Size = new Size(183, 29);
+            NameForm.Size = new Size(193, 27);
             NameForm.TabIndex = 1;
             NameForm.Text = "Juan A. De La Cruz";
             NameForm.Click += NameForm_Click;
@@ -210,7 +210,7 @@
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button1.FillColor = Color.FromArgb(19, 20, 42);
-            guna2Button1.Font = new Font("Open Sans Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button1.HoverState.ForeColor = Color.White;
             guna2Button1.HoverState.Image = Properties.Resources.backIcon;
@@ -299,7 +299,7 @@
             guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2GradientButton1.FillColor = Color.FromArgb(15, 16, 32);
             guna2GradientButton1.FillColor2 = Color.FromArgb(15, 16, 32);
-            guna2GradientButton1.Font = new Font("Open Sans", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2GradientButton1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2GradientButton1.ForeColor = Color.FromArgb(107, 92, 231);
             guna2GradientButton1.Image = Properties.Resources.editIcon;
             guna2GradientButton1.Location = new Point(543, 749);
@@ -442,7 +442,7 @@
             SaveDraftBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SaveDraftBtn.FillColor = Color.FromArgb(15, 16, 32);
             SaveDraftBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            SaveDraftBtn.Font = new Font("Open Sans Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveDraftBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SaveDraftBtn.ForeColor = Color.DarkGray;
             SaveDraftBtn.Image = Properties.Resources.saveIcon;
             SaveDraftBtn.Location = new Point(276, 846);
@@ -466,7 +466,7 @@
             ImproveBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             ImproveBtn.FillColor = Color.FromArgb(15, 16, 32);
             ImproveBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            ImproveBtn.Font = new Font("Open Sans Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ImproveBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ImproveBtn.ForeColor = Color.FromArgb(107, 92, 231);
             ImproveBtn.Image = Properties.Resources.sparkleIcon;
             ImproveBtn.Location = new Point(156, 845);
@@ -490,7 +490,7 @@
             KoryReplyBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             KoryReplyBtn.FillColor = Color.FromArgb(15, 16, 32);
             KoryReplyBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            KoryReplyBtn.Font = new Font("Open Sans Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            KoryReplyBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             KoryReplyBtn.ForeColor = Color.FromArgb(0, 192, 192);
             KoryReplyBtn.Image = Properties.Resources.pawIcon;
             KoryReplyBtn.Location = new Point(36, 845);
@@ -512,7 +512,7 @@
             SendBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SendBtn.FillColor = Color.FromArgb(98, 117, 217);
             SendBtn.FillColor2 = Color.FromArgb(29, 40, 97);
-            SendBtn.Font = new Font("Open Sans Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SendBtn.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SendBtn.ForeColor = Color.White;
             SendBtn.Image = Properties.Resources.sentIcon;
             SendBtn.Location = new Point(618, 826);
@@ -598,6 +598,7 @@
             EmailContent.Size = new Size(709, 608);
             EmailContent.TabIndex = 0;
             EmailContent.ZoomFactor = 1D;
+            EmailContent.Click += EmailContent_Click;
             // 
             // Compose
             // 

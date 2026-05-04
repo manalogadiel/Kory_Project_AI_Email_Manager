@@ -1,0 +1,1143 @@
+﻿namespace KoryProjectC_
+{
+    partial class Inbox
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges61 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges62 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges57 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges58 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges59 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges60 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox4 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox3 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2HtmlLabel13 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel14 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox5 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel15 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button12 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2HtmlLabel16 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel17 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox6 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel18 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
+            category1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            animationTimer = new System.Windows.Forms.Timer(components);
+            guna2Panel1.SuspendLayout();
+            guna2Panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox4).BeginInit();
+            guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox3).BeginInit();
+            guna2Panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox5).BeginInit();
+            guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
+            guna2Panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox6).BeginInit();
+            category1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // guna2Panel1
+            // 
+            guna2Panel1.BackColor = Color.Transparent;
+            guna2Panel1.Controls.Add(guna2Panel7);
+            guna2Panel1.Controls.Add(guna2Panel2);
+            guna2Panel1.Controls.Add(guna2Panel8);
+            guna2Panel1.Controls.Add(guna2Panel6);
+            guna2Panel1.Controls.Add(guna2Panel9);
+            guna2Panel1.Controls.Add(guna2Panel3);
+            guna2Panel1.Controls.Add(guna2Panel10);
+            guna2Panel1.Controls.Add(guna2Panel4);
+            guna2Panel1.Controls.Add(guna2Panel11);
+            guna2Panel1.Controls.Add(guna2Panel12);
+            guna2Panel1.Controls.Add(category1);
+            guna2Panel1.Controls.Add(guna2Panel5);
+            guna2Panel1.CustomizableEdges = customizableEdges61;
+            guna2Panel1.Dock = DockStyle.Fill;
+            guna2Panel1.Location = new Point(0, 0);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges62;
+            guna2Panel1.Size = new Size(1192, 658);
+            guna2Panel1.TabIndex = 0;
+            guna2Panel1.Paint += guna2Panel1_Paint;
+            // 
+            // guna2Panel7
+            // 
+            guna2Panel7.BackColor = Color.Transparent;
+            guna2Panel7.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel7.BorderRadius = 20;
+            guna2Panel7.BorderThickness = 5;
+            guna2Panel7.Controls.Add(guna2Button7);
+            guna2Panel7.Controls.Add(guna2Button8);
+            guna2Panel7.Controls.Add(guna2ImageButton4);
+            guna2Panel7.Controls.Add(guna2HtmlLabel10);
+            guna2Panel7.Controls.Add(guna2HtmlLabel11);
+            guna2Panel7.Controls.Add(guna2CirclePictureBox4);
+            guna2Panel7.Controls.Add(guna2HtmlLabel12);
+            guna2Panel7.CustomBorderColor = Color.IndianRed;
+            guna2Panel7.CustomizableEdges = customizableEdges7;
+            guna2Panel7.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Panel7.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel7.Location = new Point(816, 257);
+            guna2Panel7.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel7.Name = "guna2Panel7";
+            guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel7.Size = new Size(372, 224);
+            guna2Panel7.TabIndex = 21;
+            guna2Panel7.UseTransparentBackground = true;
+            guna2Panel7.MouseEnter += category_MouseEnter;
+            guna2Panel7.MouseLeave += category_MouseLeave;
+            // 
+            // guna2Button7
+            // 
+            guna2Button7.BorderRadius = 15;
+            guna2Button7.BorderThickness = 1;
+            guna2Button7.CustomizableEdges = customizableEdges1;
+            guna2Button7.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button7.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button7.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button7.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button7.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button7.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button7.ForeColor = Color.White;
+            guna2Button7.Location = new Point(182, 123);
+            guna2Button7.Name = "guna2Button7";
+            guna2Button7.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button7.Size = new Size(79, 31);
+            guna2Button7.TabIndex = 11;
+            guna2Button7.Text = "3 new";
+            // 
+            // guna2Button8
+            // 
+            guna2Button8.CustomizableEdges = customizableEdges3;
+            guna2Button8.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button8.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button8.DisabledState.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button8.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2Button8.Enabled = false;
+            guna2Button8.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button8.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2Button8.Location = new Point(237, 126);
+            guna2Button8.Name = "guna2Button8";
+            guna2Button8.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Button8.Size = new Size(107, 25);
+            guna2Button8.TabIndex = 10;
+            guna2Button8.Text = "12:12 AM";
+            guna2Button8.TextAlign = HorizontalAlignment.Right;
+            // 
+            // guna2ImageButton4
+            // 
+            guna2ImageButton4.CheckedState.ImageSize = new Size(64, 64);
+            guna2ImageButton4.Enabled = false;
+            guna2ImageButton4.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton4.Image = Properties.Resources.stackIcon;
+            guna2ImageButton4.ImageOffset = new Point(0, 0);
+            guna2ImageButton4.ImageRotate = 0F;
+            guna2ImageButton4.ImageSize = new Size(25, 25);
+            guna2ImageButton4.Location = new Point(29, 123);
+            guna2ImageButton4.Name = "guna2ImageButton4";
+            guna2ImageButton4.PressedState.ImageSize = new Size(64, 64);
+            guna2ImageButton4.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            guna2ImageButton4.Size = new Size(26, 28);
+            guna2ImageButton4.TabIndex = 4;
+            // 
+            // guna2HtmlLabel10
+            // 
+            guna2HtmlLabel10.BackColor = Color.Transparent;
+            guna2HtmlLabel10.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel10.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2HtmlLabel10.Location = new Point(61, 123);
+            guna2HtmlLabel10.Name = "guna2HtmlLabel10";
+            guna2HtmlLabel10.Size = new Size(61, 28);
+            guna2HtmlLabel10.TabIndex = 3;
+            guna2HtmlLabel10.Text = "3 emails";
+            // 
+            // guna2HtmlLabel11
+            // 
+            guna2HtmlLabel11.BackColor = Color.Transparent;
+            guna2HtmlLabel11.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel11.ForeColor = Color.White;
+            guna2HtmlLabel11.Location = new Point(29, 51);
+            guna2HtmlLabel11.MaximumSize = new Size(315, 0);
+            guna2HtmlLabel11.Name = "guna2HtmlLabel11";
+            guna2HtmlLabel11.Size = new Size(315, 66);
+            guna2HtmlLabel11.TabIndex = 2;
+            guna2HtmlLabel11.Text = "This is the Most Recent Subject Test 123 123";
+            // 
+            // guna2CirclePictureBox4
+            // 
+            guna2CirclePictureBox4.FillColor = Color.FromArgb(96, 165, 250);
+            guna2CirclePictureBox4.ImageRotate = 0F;
+            guna2CirclePictureBox4.Location = new Point(29, 27);
+            guna2CirclePictureBox4.Name = "guna2CirclePictureBox4";
+            guna2CirclePictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2CirclePictureBox4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox4.Size = new Size(13, 13);
+            guna2CirclePictureBox4.TabIndex = 1;
+            guna2CirclePictureBox4.TabStop = false;
+            // 
+            // guna2HtmlLabel12
+            // 
+            guna2HtmlLabel12.BackColor = Color.Transparent;
+            guna2HtmlLabel12.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel12.ForeColor = Color.FromArgb(96, 165, 250);
+            guna2HtmlLabel12.Location = new Point(49, 21);
+            guna2HtmlLabel12.Name = "guna2HtmlLabel12";
+            guna2HtmlLabel12.Size = new Size(132, 24);
+            guna2HtmlLabel12.TabIndex = 0;
+            guna2HtmlLabel12.Text = "GRADE CONCERNS";
+            // 
+            // guna2Panel2
+            // 
+            guna2Panel2.BackColor = Color.Transparent;
+            guna2Panel2.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel2.BorderRadius = 20;
+            guna2Panel2.BorderThickness = 5;
+            guna2Panel2.Controls.Add(guna2Button5);
+            guna2Panel2.Controls.Add(guna2Button6);
+            guna2Panel2.Controls.Add(guna2ImageButton3);
+            guna2Panel2.Controls.Add(guna2HtmlLabel7);
+            guna2Panel2.Controls.Add(guna2HtmlLabel8);
+            guna2Panel2.Controls.Add(guna2CirclePictureBox3);
+            guna2Panel2.Controls.Add(guna2HtmlLabel9);
+            guna2Panel2.CustomBorderColor = Color.IndianRed;
+            guna2Panel2.CustomizableEdges = customizableEdges15;
+            guna2Panel2.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Panel2.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel2.Location = new Point(816, 13);
+            guna2Panel2.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel2.Name = "guna2Panel2";
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Panel2.Size = new Size(372, 224);
+            guna2Panel2.TabIndex = 15;
+            guna2Panel2.UseTransparentBackground = true;
+            guna2Panel2.MouseEnter += category_MouseEnter;
+            guna2Panel2.MouseLeave += category_MouseLeave;
+            // 
+            // guna2Button5
+            // 
+            guna2Button5.BorderRadius = 15;
+            guna2Button5.BorderThickness = 1;
+            guna2Button5.CustomizableEdges = customizableEdges9;
+            guna2Button5.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button5.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button5.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button5.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button5.ForeColor = Color.White;
+            guna2Button5.Location = new Point(182, 123);
+            guna2Button5.Name = "guna2Button5";
+            guna2Button5.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2Button5.Size = new Size(79, 31);
+            guna2Button5.TabIndex = 11;
+            guna2Button5.Text = "3 new";
+            // 
+            // guna2Button6
+            // 
+            guna2Button6.CustomizableEdges = customizableEdges11;
+            guna2Button6.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button6.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button6.DisabledState.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button6.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2Button6.Enabled = false;
+            guna2Button6.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button6.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2Button6.Location = new Point(237, 126);
+            guna2Button6.Name = "guna2Button6";
+            guna2Button6.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Button6.Size = new Size(107, 25);
+            guna2Button6.TabIndex = 10;
+            guna2Button6.Text = "12:12 AM";
+            guna2Button6.TextAlign = HorizontalAlignment.Right;
+            // 
+            // guna2ImageButton3
+            // 
+            guna2ImageButton3.CheckedState.ImageSize = new Size(64, 64);
+            guna2ImageButton3.Enabled = false;
+            guna2ImageButton3.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton3.Image = Properties.Resources.stackIcon;
+            guna2ImageButton3.ImageOffset = new Point(0, 0);
+            guna2ImageButton3.ImageRotate = 0F;
+            guna2ImageButton3.ImageSize = new Size(25, 25);
+            guna2ImageButton3.Location = new Point(29, 123);
+            guna2ImageButton3.Name = "guna2ImageButton3";
+            guna2ImageButton3.PressedState.ImageSize = new Size(64, 64);
+            guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            guna2ImageButton3.Size = new Size(26, 28);
+            guna2ImageButton3.TabIndex = 4;
+            // 
+            // guna2HtmlLabel7
+            // 
+            guna2HtmlLabel7.BackColor = Color.Transparent;
+            guna2HtmlLabel7.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel7.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2HtmlLabel7.Location = new Point(61, 123);
+            guna2HtmlLabel7.Name = "guna2HtmlLabel7";
+            guna2HtmlLabel7.Size = new Size(61, 28);
+            guna2HtmlLabel7.TabIndex = 3;
+            guna2HtmlLabel7.Text = "3 emails";
+            // 
+            // guna2HtmlLabel8
+            // 
+            guna2HtmlLabel8.BackColor = Color.Transparent;
+            guna2HtmlLabel8.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel8.ForeColor = Color.White;
+            guna2HtmlLabel8.Location = new Point(29, 51);
+            guna2HtmlLabel8.MaximumSize = new Size(315, 0);
+            guna2HtmlLabel8.Name = "guna2HtmlLabel8";
+            guna2HtmlLabel8.Size = new Size(315, 66);
+            guna2HtmlLabel8.TabIndex = 2;
+            guna2HtmlLabel8.Text = "This is the Most Recent Subject Test 123 123";
+            // 
+            // guna2CirclePictureBox3
+            // 
+            guna2CirclePictureBox3.FillColor = Color.FromArgb(96, 165, 250);
+            guna2CirclePictureBox3.ImageRotate = 0F;
+            guna2CirclePictureBox3.Location = new Point(29, 27);
+            guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
+            guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2CirclePictureBox3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox3.Size = new Size(13, 13);
+            guna2CirclePictureBox3.TabIndex = 1;
+            guna2CirclePictureBox3.TabStop = false;
+            // 
+            // guna2HtmlLabel9
+            // 
+            guna2HtmlLabel9.BackColor = Color.Transparent;
+            guna2HtmlLabel9.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel9.ForeColor = Color.FromArgb(96, 165, 250);
+            guna2HtmlLabel9.Location = new Point(49, 21);
+            guna2HtmlLabel9.Name = "guna2HtmlLabel9";
+            guna2HtmlLabel9.Size = new Size(132, 24);
+            guna2HtmlLabel9.TabIndex = 0;
+            guna2HtmlLabel9.Text = "GRADE CONCERNS";
+            // 
+            // guna2Panel8
+            // 
+            guna2Panel8.BackColor = Color.Transparent;
+            guna2Panel8.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel8.BorderRadius = 20;
+            guna2Panel8.CustomBorderColor = Color.IndianRed;
+            guna2Panel8.CustomizableEdges = customizableEdges17;
+            guna2Panel8.FillColor = Color.FromArgb(96, 165, 250);
+            guna2Panel8.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel8.Location = new Point(811, 258);
+            guna2Panel8.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel8.Name = "guna2Panel8";
+            guna2Panel8.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2Panel8.Size = new Size(371, 222);
+            guna2Panel8.TabIndex = 20;
+            // 
+            // guna2Panel6
+            // 
+            guna2Panel6.BackColor = Color.Transparent;
+            guna2Panel6.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel6.BorderRadius = 20;
+            guna2Panel6.CustomBorderColor = Color.IndianRed;
+            guna2Panel6.CustomizableEdges = customizableEdges19;
+            guna2Panel6.FillColor = Color.FromArgb(96, 165, 250);
+            guna2Panel6.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel6.Location = new Point(811, 14);
+            guna2Panel6.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel6.Name = "guna2Panel6";
+            guna2Panel6.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            guna2Panel6.Size = new Size(371, 222);
+            guna2Panel6.TabIndex = 14;
+            // 
+            // guna2Panel9
+            // 
+            guna2Panel9.BackColor = Color.Transparent;
+            guna2Panel9.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel9.BorderRadius = 20;
+            guna2Panel9.BorderThickness = 5;
+            guna2Panel9.Controls.Add(guna2Button9);
+            guna2Panel9.Controls.Add(guna2Button10);
+            guna2Panel9.Controls.Add(guna2ImageButton5);
+            guna2Panel9.Controls.Add(guna2HtmlLabel13);
+            guna2Panel9.Controls.Add(guna2HtmlLabel14);
+            guna2Panel9.Controls.Add(guna2CirclePictureBox5);
+            guna2Panel9.Controls.Add(guna2HtmlLabel15);
+            guna2Panel9.CustomBorderColor = Color.IndianRed;
+            guna2Panel9.CustomizableEdges = customizableEdges27;
+            guna2Panel9.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Panel9.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel9.Location = new Point(413, 256);
+            guna2Panel9.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel9.Name = "guna2Panel9";
+            guna2Panel9.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel9.Size = new Size(372, 224);
+            guna2Panel9.TabIndex = 19;
+            guna2Panel9.UseTransparentBackground = true;
+            guna2Panel9.MouseEnter += category_MouseEnter;
+            guna2Panel9.MouseLeave += category_MouseLeave;
+            // 
+            // guna2Button9
+            // 
+            guna2Button9.BorderRadius = 15;
+            guna2Button9.BorderThickness = 1;
+            guna2Button9.CustomizableEdges = customizableEdges21;
+            guna2Button9.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button9.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button9.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button9.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button9.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button9.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button9.ForeColor = Color.White;
+            guna2Button9.Location = new Point(182, 123);
+            guna2Button9.Name = "guna2Button9";
+            guna2Button9.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2Button9.Size = new Size(79, 31);
+            guna2Button9.TabIndex = 11;
+            guna2Button9.Text = "3 new";
+            // 
+            // guna2Button10
+            // 
+            guna2Button10.CustomizableEdges = customizableEdges23;
+            guna2Button10.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button10.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button10.DisabledState.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button10.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2Button10.Enabled = false;
+            guna2Button10.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button10.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2Button10.Location = new Point(237, 126);
+            guna2Button10.Name = "guna2Button10";
+            guna2Button10.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2Button10.Size = new Size(107, 25);
+            guna2Button10.TabIndex = 10;
+            guna2Button10.Text = "12:12 AM";
+            guna2Button10.TextAlign = HorizontalAlignment.Right;
+            // 
+            // guna2ImageButton5
+            // 
+            guna2ImageButton5.CheckedState.ImageSize = new Size(64, 64);
+            guna2ImageButton5.Enabled = false;
+            guna2ImageButton5.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton5.Image = Properties.Resources.stackIcon;
+            guna2ImageButton5.ImageOffset = new Point(0, 0);
+            guna2ImageButton5.ImageRotate = 0F;
+            guna2ImageButton5.ImageSize = new Size(25, 25);
+            guna2ImageButton5.Location = new Point(29, 123);
+            guna2ImageButton5.Name = "guna2ImageButton5";
+            guna2ImageButton5.PressedState.ImageSize = new Size(64, 64);
+            guna2ImageButton5.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            guna2ImageButton5.Size = new Size(26, 28);
+            guna2ImageButton5.TabIndex = 4;
+            // 
+            // guna2HtmlLabel13
+            // 
+            guna2HtmlLabel13.BackColor = Color.Transparent;
+            guna2HtmlLabel13.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel13.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2HtmlLabel13.Location = new Point(61, 123);
+            guna2HtmlLabel13.Name = "guna2HtmlLabel13";
+            guna2HtmlLabel13.Size = new Size(61, 28);
+            guna2HtmlLabel13.TabIndex = 3;
+            guna2HtmlLabel13.Text = "3 emails";
+            // 
+            // guna2HtmlLabel14
+            // 
+            guna2HtmlLabel14.BackColor = Color.Transparent;
+            guna2HtmlLabel14.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel14.ForeColor = Color.White;
+            guna2HtmlLabel14.Location = new Point(29, 51);
+            guna2HtmlLabel14.MaximumSize = new Size(315, 0);
+            guna2HtmlLabel14.Name = "guna2HtmlLabel14";
+            guna2HtmlLabel14.Size = new Size(315, 66);
+            guna2HtmlLabel14.TabIndex = 2;
+            guna2HtmlLabel14.Text = "This is the Most Recent Subject Test 123 123";
+            // 
+            // guna2CirclePictureBox5
+            // 
+            guna2CirclePictureBox5.FillColor = Color.FromArgb(107, 92, 231);
+            guna2CirclePictureBox5.ImageRotate = 0F;
+            guna2CirclePictureBox5.Location = new Point(29, 27);
+            guna2CirclePictureBox5.Name = "guna2CirclePictureBox5";
+            guna2CirclePictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            guna2CirclePictureBox5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox5.Size = new Size(13, 13);
+            guna2CirclePictureBox5.TabIndex = 1;
+            guna2CirclePictureBox5.TabStop = false;
+            // 
+            // guna2HtmlLabel15
+            // 
+            guna2HtmlLabel15.BackColor = Color.Transparent;
+            guna2HtmlLabel15.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel15.ForeColor = Color.FromArgb(107, 92, 231);
+            guna2HtmlLabel15.Location = new Point(49, 21);
+            guna2HtmlLabel15.Name = "guna2HtmlLabel15";
+            guna2HtmlLabel15.Size = new Size(132, 24);
+            guna2HtmlLabel15.TabIndex = 0;
+            guna2HtmlLabel15.Text = "GRADE CONCERNS";
+            // 
+            // guna2Panel3
+            // 
+            guna2Panel3.BackColor = Color.Transparent;
+            guna2Panel3.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel3.BorderRadius = 20;
+            guna2Panel3.BorderThickness = 5;
+            guna2Panel3.Controls.Add(guna2Button3);
+            guna2Panel3.Controls.Add(guna2Button4);
+            guna2Panel3.Controls.Add(guna2ImageButton2);
+            guna2Panel3.Controls.Add(guna2HtmlLabel4);
+            guna2Panel3.Controls.Add(guna2HtmlLabel5);
+            guna2Panel3.Controls.Add(guna2CirclePictureBox2);
+            guna2Panel3.Controls.Add(guna2HtmlLabel6);
+            guna2Panel3.CustomBorderColor = Color.IndianRed;
+            guna2Panel3.CustomizableEdges = customizableEdges35;
+            guna2Panel3.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Panel3.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel3.Location = new Point(413, 12);
+            guna2Panel3.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel3.Name = "guna2Panel3";
+            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            guna2Panel3.Size = new Size(372, 224);
+            guna2Panel3.TabIndex = 13;
+            guna2Panel3.UseTransparentBackground = true;
+            guna2Panel3.MouseEnter += category_MouseEnter;
+            guna2Panel3.MouseLeave += category_MouseLeave;
+            // 
+            // guna2Button3
+            // 
+            guna2Button3.BorderRadius = 15;
+            guna2Button3.BorderThickness = 1;
+            guna2Button3.CustomizableEdges = customizableEdges29;
+            guna2Button3.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button3.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button3.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button3.ForeColor = Color.White;
+            guna2Button3.Location = new Point(182, 123);
+            guna2Button3.Name = "guna2Button3";
+            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            guna2Button3.Size = new Size(79, 31);
+            guna2Button3.TabIndex = 11;
+            guna2Button3.Text = "3 new";
+            // 
+            // guna2Button4
+            // 
+            guna2Button4.CustomizableEdges = customizableEdges31;
+            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button4.DisabledState.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button4.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2Button4.Enabled = false;
+            guna2Button4.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button4.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2Button4.Location = new Point(237, 126);
+            guna2Button4.Name = "guna2Button4";
+            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2Button4.Size = new Size(107, 25);
+            guna2Button4.TabIndex = 10;
+            guna2Button4.Text = "12:12 AM";
+            guna2Button4.TextAlign = HorizontalAlignment.Right;
+            // 
+            // guna2ImageButton2
+            // 
+            guna2ImageButton2.CheckedState.ImageSize = new Size(64, 64);
+            guna2ImageButton2.Enabled = false;
+            guna2ImageButton2.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton2.Image = Properties.Resources.stackIcon;
+            guna2ImageButton2.ImageOffset = new Point(0, 0);
+            guna2ImageButton2.ImageRotate = 0F;
+            guna2ImageButton2.ImageSize = new Size(25, 25);
+            guna2ImageButton2.Location = new Point(29, 123);
+            guna2ImageButton2.Name = "guna2ImageButton2";
+            guna2ImageButton2.PressedState.ImageSize = new Size(64, 64);
+            guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges33;
+            guna2ImageButton2.Size = new Size(26, 28);
+            guna2ImageButton2.TabIndex = 4;
+            // 
+            // guna2HtmlLabel4
+            // 
+            guna2HtmlLabel4.BackColor = Color.Transparent;
+            guna2HtmlLabel4.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel4.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2HtmlLabel4.Location = new Point(61, 123);
+            guna2HtmlLabel4.Name = "guna2HtmlLabel4";
+            guna2HtmlLabel4.Size = new Size(61, 28);
+            guna2HtmlLabel4.TabIndex = 3;
+            guna2HtmlLabel4.Text = "3 emails";
+            // 
+            // guna2HtmlLabel5
+            // 
+            guna2HtmlLabel5.BackColor = Color.Transparent;
+            guna2HtmlLabel5.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel5.ForeColor = Color.White;
+            guna2HtmlLabel5.Location = new Point(29, 51);
+            guna2HtmlLabel5.MaximumSize = new Size(315, 0);
+            guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            guna2HtmlLabel5.Size = new Size(315, 66);
+            guna2HtmlLabel5.TabIndex = 2;
+            guna2HtmlLabel5.Text = "This is the Most Recent Subject Test 123 123";
+            // 
+            // guna2CirclePictureBox2
+            // 
+            guna2CirclePictureBox2.FillColor = Color.FromArgb(107, 92, 231);
+            guna2CirclePictureBox2.ImageRotate = 0F;
+            guna2CirclePictureBox2.Location = new Point(29, 27);
+            guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
+            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox2.Size = new Size(13, 13);
+            guna2CirclePictureBox2.TabIndex = 1;
+            guna2CirclePictureBox2.TabStop = false;
+            // 
+            // guna2HtmlLabel6
+            // 
+            guna2HtmlLabel6.BackColor = Color.Transparent;
+            guna2HtmlLabel6.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.ForeColor = Color.FromArgb(107, 92, 231);
+            guna2HtmlLabel6.Location = new Point(49, 21);
+            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
+            guna2HtmlLabel6.Size = new Size(132, 24);
+            guna2HtmlLabel6.TabIndex = 0;
+            guna2HtmlLabel6.Text = "GRADE CONCERNS";
+            // 
+            // guna2Panel10
+            // 
+            guna2Panel10.BackColor = Color.Transparent;
+            guna2Panel10.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel10.BorderRadius = 20;
+            guna2Panel10.CustomBorderColor = Color.IndianRed;
+            guna2Panel10.CustomizableEdges = customizableEdges37;
+            guna2Panel10.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Panel10.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel10.Location = new Point(408, 257);
+            guna2Panel10.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel10.Name = "guna2Panel10";
+            guna2Panel10.ShadowDecoration.CustomizableEdges = customizableEdges38;
+            guna2Panel10.Size = new Size(371, 222);
+            guna2Panel10.TabIndex = 18;
+            // 
+            // guna2Panel4
+            // 
+            guna2Panel4.BackColor = Color.Transparent;
+            guna2Panel4.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel4.BorderRadius = 20;
+            guna2Panel4.CustomBorderColor = Color.IndianRed;
+            guna2Panel4.CustomizableEdges = customizableEdges39;
+            guna2Panel4.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Panel4.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel4.Location = new Point(408, 13);
+            guna2Panel4.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel4.Name = "guna2Panel4";
+            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            guna2Panel4.Size = new Size(371, 222);
+            guna2Panel4.TabIndex = 12;
+            // 
+            // guna2Panel11
+            // 
+            guna2Panel11.BackColor = Color.Transparent;
+            guna2Panel11.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel11.BorderRadius = 20;
+            guna2Panel11.BorderThickness = 5;
+            guna2Panel11.Controls.Add(guna2Button11);
+            guna2Panel11.Controls.Add(guna2Button12);
+            guna2Panel11.Controls.Add(guna2ImageButton6);
+            guna2Panel11.Controls.Add(guna2HtmlLabel16);
+            guna2Panel11.Controls.Add(guna2HtmlLabel17);
+            guna2Panel11.Controls.Add(guna2CirclePictureBox6);
+            guna2Panel11.Controls.Add(guna2HtmlLabel18);
+            guna2Panel11.CustomBorderColor = Color.IndianRed;
+            guna2Panel11.CustomizableEdges = customizableEdges47;
+            guna2Panel11.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Panel11.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel11.Location = new Point(9, 256);
+            guna2Panel11.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel11.Name = "guna2Panel11";
+            guna2Panel11.ShadowDecoration.CustomizableEdges = customizableEdges48;
+            guna2Panel11.Size = new Size(372, 224);
+            guna2Panel11.TabIndex = 17;
+            guna2Panel11.UseTransparentBackground = true;
+            guna2Panel11.MouseEnter += category_MouseEnter;
+            guna2Panel11.MouseLeave += category_MouseLeave;
+            // 
+            // guna2Button11
+            // 
+            guna2Button11.BorderRadius = 15;
+            guna2Button11.BorderThickness = 1;
+            guna2Button11.CustomizableEdges = customizableEdges41;
+            guna2Button11.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button11.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button11.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button11.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button11.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button11.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button11.ForeColor = Color.White;
+            guna2Button11.Location = new Point(182, 123);
+            guna2Button11.Name = "guna2Button11";
+            guna2Button11.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            guna2Button11.Size = new Size(79, 31);
+            guna2Button11.TabIndex = 11;
+            guna2Button11.Text = "3 new";
+            // 
+            // guna2Button12
+            // 
+            guna2Button12.CustomizableEdges = customizableEdges43;
+            guna2Button12.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button12.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button12.DisabledState.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button12.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2Button12.Enabled = false;
+            guna2Button12.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button12.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button12.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2Button12.Location = new Point(238, 126);
+            guna2Button12.Name = "guna2Button12";
+            guna2Button12.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            guna2Button12.Size = new Size(106, 25);
+            guna2Button12.TabIndex = 10;
+            guna2Button12.Text = "12:12 AM";
+            guna2Button12.TextAlign = HorizontalAlignment.Right;
+            // 
+            // guna2ImageButton6
+            // 
+            guna2ImageButton6.CheckedState.ImageSize = new Size(64, 64);
+            guna2ImageButton6.Enabled = false;
+            guna2ImageButton6.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton6.Image = Properties.Resources.stackIcon;
+            guna2ImageButton6.ImageOffset = new Point(0, 0);
+            guna2ImageButton6.ImageRotate = 0F;
+            guna2ImageButton6.ImageSize = new Size(25, 25);
+            guna2ImageButton6.Location = new Point(29, 123);
+            guna2ImageButton6.Name = "guna2ImageButton6";
+            guna2ImageButton6.PressedState.ImageSize = new Size(64, 64);
+            guna2ImageButton6.ShadowDecoration.CustomizableEdges = customizableEdges45;
+            guna2ImageButton6.Size = new Size(26, 28);
+            guna2ImageButton6.TabIndex = 4;
+            // 
+            // guna2HtmlLabel16
+            // 
+            guna2HtmlLabel16.BackColor = Color.Transparent;
+            guna2HtmlLabel16.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel16.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2HtmlLabel16.Location = new Point(61, 123);
+            guna2HtmlLabel16.Name = "guna2HtmlLabel16";
+            guna2HtmlLabel16.Size = new Size(61, 28);
+            guna2HtmlLabel16.TabIndex = 3;
+            guna2HtmlLabel16.Text = "3 emails";
+            // 
+            // guna2HtmlLabel17
+            // 
+            guna2HtmlLabel17.BackColor = Color.Transparent;
+            guna2HtmlLabel17.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel17.ForeColor = Color.White;
+            guna2HtmlLabel17.Location = new Point(29, 51);
+            guna2HtmlLabel17.MaximumSize = new Size(315, 0);
+            guna2HtmlLabel17.Name = "guna2HtmlLabel17";
+            guna2HtmlLabel17.Size = new Size(315, 66);
+            guna2HtmlLabel17.TabIndex = 2;
+            guna2HtmlLabel17.Text = "This is the Most Recent Subject Test 123 123";
+            // 
+            // guna2CirclePictureBox6
+            // 
+            guna2CirclePictureBox6.FillColor = Color.FromArgb(231, 76, 92);
+            guna2CirclePictureBox6.ImageRotate = 0F;
+            guna2CirclePictureBox6.Location = new Point(29, 27);
+            guna2CirclePictureBox6.Name = "guna2CirclePictureBox6";
+            guna2CirclePictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges46;
+            guna2CirclePictureBox6.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox6.Size = new Size(13, 13);
+            guna2CirclePictureBox6.TabIndex = 1;
+            guna2CirclePictureBox6.TabStop = false;
+            // 
+            // guna2HtmlLabel18
+            // 
+            guna2HtmlLabel18.BackColor = Color.Transparent;
+            guna2HtmlLabel18.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel18.ForeColor = Color.FromArgb(231, 76, 92);
+            guna2HtmlLabel18.Location = new Point(49, 21);
+            guna2HtmlLabel18.Name = "guna2HtmlLabel18";
+            guna2HtmlLabel18.Size = new Size(132, 24);
+            guna2HtmlLabel18.TabIndex = 0;
+            guna2HtmlLabel18.Text = "GRADE CONCERNS";
+            // 
+            // guna2Panel12
+            // 
+            guna2Panel12.BackColor = Color.Transparent;
+            guna2Panel12.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel12.BorderRadius = 20;
+            guna2Panel12.CustomBorderColor = Color.IndianRed;
+            guna2Panel12.CustomizableEdges = customizableEdges49;
+            guna2Panel12.FillColor = Color.FromArgb(231, 76, 92);
+            guna2Panel12.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel12.Location = new Point(4, 257);
+            guna2Panel12.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel12.Name = "guna2Panel12";
+            guna2Panel12.ShadowDecoration.CustomizableEdges = customizableEdges50;
+            guna2Panel12.Size = new Size(371, 222);
+            guna2Panel12.TabIndex = 16;
+            // 
+            // category1
+            // 
+            category1.BackColor = Color.Transparent;
+            category1.BorderColor = Color.FromArgb(26, 28, 46);
+            category1.BorderRadius = 20;
+            category1.BorderThickness = 5;
+            category1.Controls.Add(guna2Button1);
+            category1.Controls.Add(guna2Button2);
+            category1.Controls.Add(guna2ImageButton1);
+            category1.Controls.Add(guna2HtmlLabel3);
+            category1.Controls.Add(guna2HtmlLabel2);
+            category1.Controls.Add(guna2CirclePictureBox1);
+            category1.Controls.Add(guna2HtmlLabel1);
+            category1.CustomBorderColor = Color.IndianRed;
+            category1.CustomizableEdges = customizableEdges57;
+            category1.FillColor = Color.FromArgb(26, 28, 46);
+            category1.ForeColor = SystemColors.ActiveBorder;
+            category1.Location = new Point(9, 12);
+            category1.Margin = new Padding(21, 10, 5, 10);
+            category1.Name = "category1";
+            category1.ShadowDecoration.CustomizableEdges = customizableEdges58;
+            category1.Size = new Size(372, 224);
+            category1.TabIndex = 9;
+            category1.UseTransparentBackground = true;
+            category1.Paint += category1_Paint;
+            category1.MouseEnter += category_MouseEnter;
+            category1.MouseLeave += category_MouseLeave;
+            // 
+            // guna2Button1
+            // 
+            guna2Button1.BorderRadius = 15;
+            guna2Button1.BorderThickness = 1;
+            guna2Button1.CustomizableEdges = customizableEdges51;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button1.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(182, 123);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges52;
+            guna2Button1.Size = new Size(79, 31);
+            guna2Button1.TabIndex = 11;
+            guna2Button1.Text = "3 new";
+            guna2Button1.Click += guna2Button1_Click;
+            // 
+            // guna2Button2
+            // 
+            guna2Button2.CustomizableEdges = customizableEdges53;
+            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button2.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2Button2.Enabled = false;
+            guna2Button2.FillColor = Color.FromArgb(26, 28, 46);
+            guna2Button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button2.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2Button2.Location = new Point(238, 126);
+            guna2Button2.Name = "guna2Button2";
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges54;
+            guna2Button2.Size = new Size(106, 25);
+            guna2Button2.TabIndex = 10;
+            guna2Button2.Text = "12:12 AM";
+            guna2Button2.TextAlign = HorizontalAlignment.Right;
+            guna2Button2.Click += guna2Button2_Click;
+            // 
+            // guna2ImageButton1
+            // 
+            guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
+            guna2ImageButton1.Enabled = false;
+            guna2ImageButton1.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton1.Image = Properties.Resources.stackIcon;
+            guna2ImageButton1.ImageOffset = new Point(0, 0);
+            guna2ImageButton1.ImageRotate = 0F;
+            guna2ImageButton1.ImageSize = new Size(25, 25);
+            guna2ImageButton1.Location = new Point(29, 123);
+            guna2ImageButton1.Name = "guna2ImageButton1";
+            guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
+            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges55;
+            guna2ImageButton1.Size = new Size(26, 28);
+            guna2ImageButton1.TabIndex = 4;
+            // 
+            // guna2HtmlLabel3
+            // 
+            guna2HtmlLabel3.BackColor = Color.Transparent;
+            guna2HtmlLabel3.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel3.ForeColor = Color.FromArgb(141, 143, 165);
+            guna2HtmlLabel3.Location = new Point(61, 123);
+            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            guna2HtmlLabel3.Size = new Size(61, 28);
+            guna2HtmlLabel3.TabIndex = 3;
+            guna2HtmlLabel3.Text = "3 emails";
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.ForeColor = Color.White;
+            guna2HtmlLabel2.Location = new Point(29, 51);
+            guna2HtmlLabel2.MaximumSize = new Size(315, 0);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(315, 66);
+            guna2HtmlLabel2.TabIndex = 2;
+            guna2HtmlLabel2.Text = "This is the Most Recent Subject Test 123 123";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            guna2CirclePictureBox1.FillColor = Color.FromArgb(231, 76, 92);
+            guna2CirclePictureBox1.ImageRotate = 0F;
+            guna2CirclePictureBox1.Location = new Point(29, 27);
+            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges56;
+            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox1.Size = new Size(13, 13);
+            guna2CirclePictureBox1.TabIndex = 1;
+            guna2CirclePictureBox1.TabStop = false;
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.ForeColor = Color.FromArgb(231, 76, 92);
+            guna2HtmlLabel1.Location = new Point(49, 21);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(132, 24);
+            guna2HtmlLabel1.TabIndex = 0;
+            guna2HtmlLabel1.Text = "GRADE CONCERNS";
+            // 
+            // guna2Panel5
+            // 
+            guna2Panel5.BackColor = Color.Transparent;
+            guna2Panel5.BorderColor = Color.FromArgb(26, 28, 46);
+            guna2Panel5.BorderRadius = 20;
+            guna2Panel5.CustomBorderColor = Color.IndianRed;
+            guna2Panel5.CustomizableEdges = customizableEdges59;
+            guna2Panel5.FillColor = Color.FromArgb(231, 76, 92);
+            guna2Panel5.ForeColor = SystemColors.ActiveBorder;
+            guna2Panel5.Location = new Point(4, 13);
+            guna2Panel5.Margin = new Padding(21, 10, 5, 10);
+            guna2Panel5.Name = "guna2Panel5";
+            guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges60;
+            guna2Panel5.Size = new Size(371, 222);
+            guna2Panel5.TabIndex = 8;
+            // 
+            // animationTimer
+            // 
+            animationTimer.Interval = 10;
+            animationTimer.Tick += animationTimer_Tick;
+            // 
+            // Inbox
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(14, 15, 20);
+            Controls.Add(guna2Panel1);
+            Name = "Inbox";
+            Size = new Size(1192, 658);
+            guna2Panel1.ResumeLayout(false);
+            guna2Panel7.ResumeLayout(false);
+            guna2Panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox4).EndInit();
+            guna2Panel2.ResumeLayout(false);
+            guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox3).EndInit();
+            guna2Panel9.ResumeLayout(false);
+            guna2Panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox5).EndInit();
+            guna2Panel3.ResumeLayout(false);
+            guna2Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
+            guna2Panel11.ResumeLayout(false);
+            guna2Panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox6).EndInit();
+            category1.ResumeLayout(false);
+            category1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
+        private Guna.UI2.WinForms.Guna2Panel category1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox3;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
+        private System.Windows.Forms.Timer animationTimer;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel7;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
+        private Guna.UI2.WinForms.Guna2Button guna2Button8;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox4;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel12;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel8;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel9;
+        private Guna.UI2.WinForms.Guna2Button guna2Button9;
+        private Guna.UI2.WinForms.Guna2Button guna2Button10;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel13;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel14;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox5;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel15;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel10;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel11;
+        private Guna.UI2.WinForms.Guna2Button guna2Button11;
+        private Guna.UI2.WinForms.Guna2Button guna2Button12;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel16;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel17;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel18;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel12;
+    }
+}
