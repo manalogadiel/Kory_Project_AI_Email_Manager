@@ -104,6 +104,8 @@ namespace KoryProjectC_
                 Control parentContainer = this.Parent;
                 parentContainer.Controls.Clear();
                 parentContainer.Controls.Add(emailView);
+
+                emailView.AddCards(10);
             }
         }
 

@@ -344,12 +344,10 @@
             // guna2Button5
             // 
             guna2Button5.BorderRadius = 15;
-            guna2Button5.BorderThickness = 1;
             guna2Button5.CustomizableEdges = customizableEdges9;
-            guna2Button5.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button5.DisabledState.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button5.DisabledState.ForeColor = Color.White;
+            guna2Button5.Enabled = false;
             guna2Button5.FillColor = Color.FromArgb(107, 92, 231);
             guna2Button5.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button5.ForeColor = Color.White;
@@ -631,12 +629,10 @@
             // guna2Button3
             // 
             guna2Button3.BorderRadius = 15;
-            guna2Button3.BorderThickness = 1;
             guna2Button3.CustomizableEdges = customizableEdges29;
-            guna2Button3.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button3.DisabledState.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button3.DisabledState.ForeColor = Color.White;
+            guna2Button3.Enabled = false;
             guna2Button3.FillColor = Color.FromArgb(107, 92, 231);
             guna2Button3.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.White;
@@ -935,12 +931,12 @@
             // guna2Button1
             // 
             guna2Button1.BorderRadius = 15;
-            guna2Button1.BorderThickness = 1;
             guna2Button1.CustomizableEdges = customizableEdges51;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.DisabledState.BorderColor = Color.Transparent;
+            guna2Button1.DisabledState.CustomBorderColor = Color.Transparent;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button1.DisabledState.ForeColor = Color.White;
+            guna2Button1.Enabled = false;
             guna2Button1.FillColor = Color.FromArgb(107, 92, 231);
             guna2Button1.Font = new Font("League Spartan SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.White;
