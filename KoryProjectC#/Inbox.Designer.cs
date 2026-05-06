@@ -337,6 +337,7 @@
             guna2Panel2.Size = new Size(372, 224);
             guna2Panel2.TabIndex = 15;
             guna2Panel2.UseTransparentBackground = true;
+            guna2Panel2.MouseClick += category_Click;
             guna2Panel2.MouseEnter += category_MouseEnter;
             guna2Panel2.MouseLeave += category_MouseLeave;
             // 
@@ -623,6 +624,7 @@
             guna2Panel3.Size = new Size(372, 224);
             guna2Panel3.TabIndex = 13;
             guna2Panel3.UseTransparentBackground = true;
+            guna2Panel3.MouseClick += category_Click;
             guna2Panel3.MouseEnter += category_MouseEnter;
             guna2Panel3.MouseLeave += category_MouseLeave;
             // 
@@ -926,6 +928,7 @@
             category1.TabIndex = 9;
             category1.UseTransparentBackground = true;
             category1.Paint += category1_Paint;
+            category1.MouseClick += category_Click;
             category1.MouseEnter += category_MouseEnter;
             category1.MouseLeave += category_MouseLeave;
             // 

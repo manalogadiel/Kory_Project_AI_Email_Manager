@@ -92,6 +92,20 @@ namespace KoryProjectC_
                 animationTimer.Stop();
             }
         }
+        private void category_Click(object sender, EventArgs e)
+        {
+            if (this.Parent != null)
+            {
+                // 1. Create the EmailContent screen
+                EmailContent emailView = new EmailContent();
+                emailView.Dock = DockStyle.Fill;
+
+                // 2. Clear this Inbox from the parent and add the EmailContent
+                Control parentContainer = this.Parent;
+                parentContainer.Controls.Clear();
+                parentContainer.Controls.Add(emailView);
+            }
+        }
 
         // Keep these empty to satisfy the Designer references
         private void guna2Panel1_Paint(object sender, PaintEventArgs e) { }
@@ -100,5 +114,7 @@ namespace KoryProjectC_
         private void guna2Button2_Click(object sender, EventArgs e) { }
         private void guna2ImageButton1_Click(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
+
+  
     }
 }

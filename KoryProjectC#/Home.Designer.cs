@@ -85,7 +85,9 @@
             // 
             // guna2CustomGradientPanel1
             // 
+            guna2CustomGradientPanel1.BorderColor = Color.FromArgb(39, 40, 64);
             guna2CustomGradientPanel1.BorderRadius = 15;
+            guna2CustomGradientPanel1.BorderThickness = 1;
             guna2CustomGradientPanel1.CustomizableEdges = customizableEdges3;
             guna2CustomGradientPanel1.FillColor = Color.FromArgb(27, 29, 49);
             guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(30, 32, 67);
