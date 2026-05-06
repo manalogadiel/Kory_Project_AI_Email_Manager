@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             BackBtn = new Guna.UI2.WinForms.Guna2Button();
             rowPanel = new Guna.UI2.WinForms.Guna2Panel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -44,7 +44,7 @@
             // BackBtn
             // 
             BackBtn.BorderRadius = 15;
-            BackBtn.CustomizableEdges = customizableEdges5;
+            BackBtn.CustomizableEdges = customizableEdges1;
             BackBtn.DisabledState.BorderColor = Color.DarkGray;
             BackBtn.DisabledState.CustomBorderColor = Color.DarkGray;
             BackBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -57,7 +57,7 @@
             BackBtn.Image = Properties.Resources.darkbackIcon;
             BackBtn.Location = new Point(0, 0);
             BackBtn.Name = "BackBtn";
-            BackBtn.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            BackBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
             BackBtn.Size = new Size(172, 40);
             BackBtn.TabIndex = 1;
             BackBtn.Text = "Back to folders";
@@ -71,11 +71,11 @@
             rowPanel.BorderThickness = 1;
             rowPanel.Controls.Add(guna2HtmlLabel2);
             rowPanel.Controls.Add(guna2HtmlLabel1);
-            rowPanel.CustomizableEdges = customizableEdges7;
+            rowPanel.CustomizableEdges = customizableEdges3;
             rowPanel.FillColor = Color.FromArgb(26, 28, 46);
             rowPanel.Location = new Point(0, 46);
             rowPanel.Name = "rowPanel";
-            rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges4;
             rowPanel.Size = new Size(1192, 104);
             rowPanel.TabIndex = 2;
             rowPanel.UseTransparentBackground = true;
@@ -118,6 +118,7 @@
             // guna2vScrollBar1
             // 
             guna2vScrollBar1.BindingContainer = ECPanel;
+            guna2vScrollBar1.BorderRadius = 5;
             guna2vScrollBar1.InUpdate = false;
             guna2vScrollBar1.LargeChange = 10;
             guna2vScrollBar1.Location = new Point(1197, 156);

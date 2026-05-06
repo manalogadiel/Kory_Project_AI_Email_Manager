@@ -60,5 +60,10 @@ namespace KoryProjectC_
         {
 
         }
+
+        private void ComposingWriteForm_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
