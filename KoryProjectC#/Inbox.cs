@@ -96,16 +96,24 @@ namespace KoryProjectC_
         {
             if (this.Parent != null)
             {
-                // 1. Create the EmailContent screen
+                Control parentContainer = this.Parent;
+
+                // Reuse existing EmailContent if already added
+                foreach (Control ctrl in parentContainer.Controls)
+                {
+                    if (ctrl is EmailContent existing)
+                    {
+                        existing.BringToFront();
+                        return;
+                    }
+                }
+
+                // First time: add it alongside the tabs (don't clear!)
                 EmailContent emailView = new EmailContent();
                 emailView.Dock = DockStyle.Fill;
-
-                // 2. Clear this Inbox from the parent and add the EmailContent
-                Control parentContainer = this.Parent;
-                parentContainer.Controls.Clear();
                 parentContainer.Controls.Add(emailView);
-
                 emailView.AddCards(10);
+                emailView.BringToFront();
             }
         }
 

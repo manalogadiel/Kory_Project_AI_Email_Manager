@@ -5,8 +5,19 @@ namespace KoryProjectC_
         public Compose()
         {
             InitializeComponent();
+            this.TopLevel = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Dock = DockStyle.Fill;
+
+            // Back button click handler
+            guna2Button1.Click += (s, e) =>
+            {
+                Home? home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+                home?.HideFullscreenCompose();
+            };
         }
 
+     
         private void SubjectForm_TextChanged(object sender, EventArgs e)
         {
 
