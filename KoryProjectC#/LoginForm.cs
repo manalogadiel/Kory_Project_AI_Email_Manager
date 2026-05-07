@@ -12,6 +12,7 @@ namespace KoryProjectC_
 {
     public partial class LoginForm : Form
     {
+        bool _isLoggedIn = false;
         public LoginForm()
         {
             InitializeComponent();
@@ -19,7 +20,8 @@ namespace KoryProjectC_
 
         private void Guna2Button1_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

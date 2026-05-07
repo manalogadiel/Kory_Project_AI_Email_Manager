@@ -18,6 +18,31 @@ namespace KoryProjectC_
             // Ensure the timer is ready
             animationTimer.Interval = 10;
             animationTimer.Enabled = false;
+
+            foreach (Control card in guna2Panel1.Controls)
+            {
+                // Check if it's one of your cards (Guna2Panel)
+                if (card is Guna.UI2.WinForms.Guna2Panel)
+                {
+                    // 1. Ensure the card itself is hooked up to your events
+                    card.Click += category_Click;
+                    card.MouseEnter += category_MouseEnter;
+                    card.MouseLeave += category_MouseLeave;
+
+                    // 2. Loop through every Label or PictureBox INSIDE the card
+                    foreach (Control child in card.Controls)
+                    {
+                        // When a child is clicked, it calls category_Click 
+                        // but passes the 'card' as the sender.
+                        child.Click += (s, e) => category_Click(card, e);
+
+                        // This ensures the "Hover Animation" doesn't glitch 
+                        // when your mouse moves over the text.
+                        child.MouseEnter += (s, e) => category_MouseEnter(card, e);
+                        child.MouseLeave += (s, e) => category_MouseLeave(card, e);
+                    }
+                }
+            }
         }
 
         private void ResetAllOtherPanels(Control currentPanel)
@@ -94,6 +119,10 @@ namespace KoryProjectC_
         }
         private void category_Click(object sender, EventArgs e)
         {
+            Guna.UI2.WinForms.Guna2Panel? clickedCard = sender as Guna.UI2.WinForms.Guna2Panel;
+
+            if (clickedCard == null) return;
+
             if (this.Parent != null)
             {
                 Control parentContainer = this.Parent;
@@ -125,6 +154,11 @@ namespace KoryProjectC_
         private void guna2ImageButton1_Click(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
 
-  
+        private void guna2HtmlLabel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
