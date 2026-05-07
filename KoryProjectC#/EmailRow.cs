@@ -1,28 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace KoryProjectC_
 {
     public partial class EmailRow : UserControl
     {
-        private readonly Color normalColor = Color.FromArgb(26, 28, 46);
-        private readonly Color hoverColor = Color.FromArgb(17, 18, 30);
-        private readonly Color normalBorder = Color.FromArgb(39, 40, 64); // or whatever original border color
+        public EmailModel? Email { get; private set; }
+
+        private readonly Color normalFill = Color.FromArgb(26, 28, 46);
+        private readonly Color hoverFill = Color.FromArgb(17, 18, 30);
+        private readonly Color normalBorder = Color.FromArgb(39, 40, 64);
         private readonly Color hoverBorder = Color.FromArgb(43, 40, 89);
+
         public EmailRow()
         {
             InitializeComponent();
+        
             AttachEvents(this);
+
+
         }
 
-        // Attach events recursively so child labels/pictureboxes also trigger hover/click
+        /// <summary>Populate the card with real email data.</summary>
+        public void SetEmail(EmailModel email)
+        {
+            Email = email;
+            guna2HtmlLabel1.Text = email.FromName;
+            guna2HtmlLabel2.Text = email.Snippet;
+            guna2HtmlLabel3.Text = email.Date;
+
+            // Bold sender name for unread emails
+            if (!email.IsRead)
+                guna2HtmlLabel1.Font = new Font(
+                    guna2HtmlLabel1.Font, FontStyle.Bold);
+        }
+
         private void AttachEvents(Control control)
         {
             control.MouseEnter += OnHoverEnter;
@@ -34,42 +46,34 @@ namespace KoryProjectC_
 
         private void OnHoverEnter(object? sender, EventArgs e)
         {
-            rowPanel.FillColor = hoverColor;
+            rowPanel.FillColor = hoverFill;
             rowPanel.BorderColor = hoverBorder;
             this.Cursor = Cursors.Hand;
         }
 
         private void OnHoverLeave(object? sender, EventArgs e)
         {
-            // Only reset if the mouse actually left the whole UserControl
             if (!this.ClientRectangle.Contains(this.PointToClient(Cursor.Position)))
             {
-                rowPanel.FillColor = normalColor;
+                rowPanel.FillColor = normalFill;
                 rowPanel.BorderColor = normalBorder;
                 this.Cursor = Cursors.Default;
             }
         }
 
-        private Home GetHomeForm()
-        {
-            Control? current = this.Parent;
-            while (current != null)
-            {
-                if (current is Home home)
-                    return home;
-                current = current.Parent;
-            }
-            return null;
-        }
+        public Action<EmailModel>? OnEmailClicked;
 
         private void OnRowClick(object? sender, MouseEventArgs e)
         {
-            Home home = this.FindForm() as Home;
-            if (home != null)
-            {
-                Compose compose = new Compose();
-                home.ShowFullscreenCompose(compose);
-            }
+            if (Email == null) return;
+
+            // Application.OpenForms finds top-level forms reliably
+            var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+            if (home == null) return;
+
+            var compose = new Compose();
+            compose.LoadEmail(Email);
+            home.ShowFullscreenCompose(compose);
         }
     }
 }

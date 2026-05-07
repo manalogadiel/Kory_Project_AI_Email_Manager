@@ -81,21 +81,24 @@
             guna2HtmlLabel2.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(142, 144, 166);
             guna2HtmlLabel2.Location = new Point(87, 37);
+            guna2HtmlLabel2.MaximumSize = new Size(900, 30);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(467, 28);
+            guna2HtmlLabel2.Size = new Size(900, 30);
             guna2HtmlLabel2.TabIndex = 2;
-            guna2HtmlLabel2.Text = "Sebastian Miguel Bueno and Kurt Andrei Villena in the house yow!";
+            guna2HtmlLabel2.Text = "Sebastian Miguel Bueno and Kurt Andrei Villena in the house yow! Sebastian Miguel Bueno and Kurt Andrei Villena in the house yow!Sebastian Miguel Bueno and Kurt Andrei Villena in the house yow!";
             // 
             // guna2HtmlLabel3
             // 
+            guna2HtmlLabel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("League Spartan Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(142, 144, 166);
-            guna2HtmlLabel3.Location = new Point(1078, 29);
+            guna2HtmlLabel3.Location = new Point(1051, 29);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(60, 24);
+            guna2HtmlLabel3.Size = new Size(92, 24);
             guna2HtmlLabel3.TabIndex = 4;
-            guna2HtmlLabel3.Text = "10:50 AM";
+            guna2HtmlLabel3.Text = "Mon, 10:50 AM";
+            guna2HtmlLabel3.TextAlignment = ContentAlignment.TopRight;
             // 
             // guna2CirclePictureBox2
             // 

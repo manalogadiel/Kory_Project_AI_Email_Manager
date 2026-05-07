@@ -725,7 +725,7 @@
             guna2HtmlLabel6.Size = new Size(140, 24);
             guna2HtmlLabel6.TabIndex = 0;
             guna2HtmlLabel6.Text = "ABSENTS / EXCUSES";
-            guna2HtmlLabel6.Click += guna2HtmlLabel6_Click;
+            guna2HtmlLabel6.Click += category_Click;
             // 
             // guna2Panel10
             // 

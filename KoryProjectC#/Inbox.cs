@@ -1,64 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace KoryProjectC_
 {
     public partial class Inbox : UserControl
     {
-        // This dictionary remembers the original Y for every panel automatically
-        private Dictionary<string, int> originalPositions = new Dictionary<string, int>();
+        private Dictionary<string, int> originalPositions = new();
         private Control? activeControl;
         private int currentTargetY;
+
+        // Maps each category to its UI controls
+        private record CategoryMap(
+            string Name,
+            Guna.UI2.WinForms.Guna2HtmlLabel CategoryLabel,
+            Guna.UI2.WinForms.Guna2HtmlLabel SubjectLabel,
+            Guna.UI2.WinForms.Guna2HtmlLabel CountLabel,
+            Guna.UI2.WinForms.Guna2Button Badge,
+            Guna.UI2.WinForms.Guna2Panel Panel);
+
+        private List<CategoryMap> _maps = new();
 
         public Inbox()
         {
             InitializeComponent();
-            // Ensure the timer is ready
             animationTimer.Interval = 10;
             animationTimer.Enabled = false;
 
-            foreach (Control card in guna2Panel1.Controls)
+            BuildCategoryMaps();
+            LoadCategoryData();
+        }
+
+        private void BuildCategoryMaps()
+        {
+            _maps = new List<CategoryMap>
             {
-                // Check if it's one of your cards (Guna2Panel)
-                if (card is Guna.UI2.WinForms.Guna2Panel)
-                {
-                    // 1. Ensure the card itself is hooked up to your events
-                    card.Click += category_Click;
-                    card.MouseEnter += category_MouseEnter;
-                    card.MouseLeave += category_MouseLeave;
+                new("GRADE CONCERNS",    guna2HtmlLabel1,  guna2HtmlLabel2,  guna2HtmlLabel3,  guna2Button1,  catGrade),
+                new("ABSENTS / EXCUSES", guna2HtmlLabel6,  guna2HtmlLabel5,  guna2HtmlLabel4,  guna2Button3,  catAbsent),
+                new("REQUESTS",          guna2HtmlLabel9,  guna2HtmlLabel8,  guna2HtmlLabel7,  guna2Button5,  catRequest),
+                new("ACADEMIC CONCERNS", guna2HtmlLabel18, guna2HtmlLabel17, guna2HtmlLabel16, guna2Button11, catConcern),
+                new("REQUIREMENTS",      guna2HtmlLabel15, guna2HtmlLabel14, guna2HtmlLabel13, guna2Button9,  catRequirement),
+                new("NON-ACADEMIC",      guna2HtmlLabel12, guna2HtmlLabel11, guna2HtmlLabel10, guna2Button7,  catNon),
+            };
+        }
 
-                    // 2. Loop through every Label or PictureBox INSIDE the card
-                    foreach (Control child in card.Controls)
-                    {
-                        // When a child is clicked, it calls category_Click 
-                        // but passes the 'card' as the sender.
-                        child.Click += (s, e) => category_Click(card, e);
+        private void LoadCategoryData()
+        {
+            // Remove old click handlers first
+            catGrade.MouseClick -= category_Click;
+            catAbsent.MouseClick -= category_Click;
+            catRequest.MouseClick -= category_Click;
 
-                        // This ensures the "Hover Animation" doesn't glitch 
-                        // when your mouse moves over the text.
-                        child.MouseEnter += (s, e) => category_MouseEnter(card, e);
-                        child.MouseLeave += (s, e) => category_MouseLeave(card, e);
-                    }
-                }
+            foreach (var map in _maps)
+            {
+                var emails = AppState.Emails
+                    .Where(e => e.Category == map.Name)
+                    .ToList();
+
+                int total = emails.Count;
+                int unread = emails.Count(e => !e.IsRead);
+
+                // Set labels
+                map.CategoryLabel.Text = map.Name;
+                map.SubjectLabel.Text = emails.FirstOrDefault()?.Subject ?? "No emails yet";
+                map.CountLabel.Text = $"{total} email{(total != 1 ? "s" : "")}";
+
+                // Set badge
+                map.Badge.Enabled = unread > 0;
+                map.Badge.Text = $"{unread} new";
+
+                // Wire click with correct category (capture variable)
+                var cat = map.Name;
+                map.Panel.MouseClick += (_, _) => OpenCategory(cat);
             }
         }
 
-        private void ResetAllOtherPanels(Control currentPanel)
+        private void OpenCategory(string category)
         {
-            // This looks through your main container (guna2Panel1) 
-            // and finds any panel that isn't the one you just touched.
+            if (this.Parent == null) return;
+
+            var emails = AppState.Emails
+                .Where(e => e.Category == category)
+                .ToList();
+
+            Control parent = this.Parent;
+
+            // Reuse if already exists
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (ctrl is EmailContent existing)
+                {
+                    existing.LoadEmails(emails, category);
+                    existing.BringToFront();
+                    return;
+                }
+            }
+
+            // Create new one
+            var view = new EmailContent();
+            view.Dock = DockStyle.Fill;
+            parent.Controls.Add(view);
+            view.LoadEmails(emails, category);
+            view.BringToFront();
+        }
+
+        // ── Animation ─────────────────────────────────────────────
+        private void ResetAllOtherPanels(Control current)
+        {
             foreach (Control ctrl in guna2Panel1.Controls)
             {
-                if (ctrl is Guna.UI2.WinForms.Guna2Panel && ctrl != currentPanel)
-                {
-                    if (originalPositions.ContainsKey(ctrl.Name))
-                    {
-                        // Snap it back to its original Y immediately
-                        ctrl.Location = new Point(ctrl.Location.X, originalPositions[ctrl.Name]);
-                    }
-                }
+                if (ctrl is Guna.UI2.WinForms.Guna2Panel && ctrl != current)
+                    if (originalPositions.TryGetValue(ctrl.Name, out int y))
+                        ctrl.Location = new Point(ctrl.Location.X, y);
             }
         }
 
@@ -67,31 +120,23 @@ namespace KoryProjectC_
             activeControl = sender as Control;
             if (activeControl == null) return;
 
-            // Save the original position the very first time we touch this panel
             if (!originalPositions.ContainsKey(activeControl.Name))
-            {
                 originalPositions[activeControl.Name] = activeControl.Location.Y;
-            }
 
-            // FIX: Snap others down so they don't stay "stuck"
             ResetAllOtherPanels(activeControl);
-
             currentTargetY = originalPositions[activeControl.Name] - 10;
             animationTimer.Start();
         }
 
         private void category_MouseLeave(object sender, EventArgs e)
         {
-            Control? hoveredControl = sender as Control;
-            if (hoveredControl == null) return;
-
-            // Check if mouse is actually outside the panel bounds
-            if (!hoveredControl.ClientRectangle.Contains(hoveredControl.PointToClient(Cursor.Position)))
+            if (sender is not Control ctrl) return;
+            if (!ctrl.ClientRectangle.Contains(ctrl.PointToClient(Cursor.Position)))
             {
-                activeControl = hoveredControl;
-                if (originalPositions.ContainsKey(activeControl.Name))
+                activeControl = ctrl;
+                if (originalPositions.TryGetValue(activeControl.Name, out int orig))
                 {
-                    currentTargetY = originalPositions[activeControl.Name];
+                    currentTargetY = orig;
                     animationTimer.Start();
                 }
             }
@@ -100,65 +145,26 @@ namespace KoryProjectC_
         private void animationTimer_Tick(object sender, EventArgs e)
         {
             if (activeControl == null) return;
+            int y = activeControl.Location.Y;
+            const int speed = 2;
 
-            int currentY = activeControl.Location.Y;
-            int speed = 2; // Slightly faster for responsiveness
-
-            if (currentY > currentTargetY) // Move Up
-            {
-                activeControl.Location = new Point(activeControl.Location.X, Math.Max(currentTargetY, currentY - speed));
-            }
-            else if (currentY < currentTargetY) // Move Down
-            {
-                activeControl.Location = new Point(activeControl.Location.X, Math.Min(currentTargetY, currentY + speed));
-            }
+            if (y > currentTargetY)
+                activeControl.Location = new Point(activeControl.Location.X,
+                    Math.Max(currentTargetY, y - speed));
+            else if (y < currentTargetY)
+                activeControl.Location = new Point(activeControl.Location.X,
+                    Math.Min(currentTargetY, y + speed));
             else
-            {
                 animationTimer.Stop();
-            }
-        }
-        private void category_Click(object sender, EventArgs e)
-        {
-            Guna.UI2.WinForms.Guna2Panel? clickedCard = sender as Guna.UI2.WinForms.Guna2Panel;
-
-            if (clickedCard == null) return;
-
-            if (this.Parent != null)
-            {
-                Control parentContainer = this.Parent;
-
-                // Reuse existing EmailContent if already added
-                foreach (Control ctrl in parentContainer.Controls)
-                {
-                    if (ctrl is EmailContent existing)
-                    {
-                        existing.BringToFront();
-                        return;
-                    }
-                }
-
-                // First time: add it alongside the tabs (don't clear!)
-                EmailContent emailView = new EmailContent();
-                emailView.Dock = DockStyle.Fill;
-                parentContainer.Controls.Add(emailView);
-                emailView.AddCards(10);
-                emailView.BringToFront();
-            }
         }
 
-        // Keep these empty to satisfy the Designer references
+        // Keep these stubs to satisfy Designer references
+        private void category_Click(object sender, EventArgs e) { }
         private void guna2Panel1_Paint(object sender, PaintEventArgs e) { }
         private void category1_Paint(object sender, PaintEventArgs e) { }
         private void guna2Button1_Click(object sender, EventArgs e) { }
         private void guna2Button2_Click(object sender, EventArgs e) { }
         private void guna2ImageButton1_Click(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
-
-        private void guna2HtmlLabel6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }

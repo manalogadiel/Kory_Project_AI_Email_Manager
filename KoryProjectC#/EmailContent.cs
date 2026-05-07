@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace KoryProjectC_
 {
@@ -15,57 +7,58 @@ namespace KoryProjectC_
         public EmailContent()
         {
             InitializeComponent();
+
             ECPanel.AutoScroll = false;
             ECPanel.HorizontalScroll.Maximum = 0;
             ECPanel.HorizontalScroll.Enabled = false;
             ECPanel.HorizontalScroll.Visible = false;
             ECPanel.AutoScroll = true;
-
         }
-        private void BackBtn_Click(object sender, EventArgs e)
+
+        /// <summary>Load real emails for the selected category.</summary>
+        public void LoadEmails(List<EmailModel> emails, string category)
         {
-            if (this.Parent != null)
+            guna2HtmlLabel1.Text = category;
+            guna2HtmlLabel2.Text =
+                $"{emails.Count} email{(emails.Count != 1 ? "s" : "")} in this category";
+
+            ECPanel.Controls.Clear();
+
+            foreach (var email in emails)
             {
-                Control parentContainer = this.Parent;
-
-                foreach (Control ctrl in parentContainer.Controls)
-                {
-                    if (ctrl is Inbox inbox)
-                    {
-                        inbox.BringToFront();
-                        return;
-                    }
-                }
-            }
-        }
-        public void AddCards(int count = 3)
-        {
-            // Clear existing cards if necessary
-            // flowLayoutPanel1.Controls.Clear();
-
-            for (int i = 0; i < count; i++)
-            {
-                // 1. Create an instance of your card
-                EmailRow card = new EmailRow();
-
-                // 2. Set the width to match the container (minus scrollbar width)
+                var card = new EmailRow();
                 card.Width = ECPanel.Width - 25;
-
-                // 3. Optional: Pass data to the card
-                // card.Title = "Card Number " + i;
-
-                // 4. Add it to the FlowLayoutPanel
+                card.SetEmail(email);
                 ECPanel.Controls.Add(card);
             }
         }
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
 
+        /// <summary>Legacy method kept for compatibility.</summary>
+        public void AddCards(int count = 3)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                var card = new EmailRow();
+                card.Width = ECPanel.Width - 25;
+                ECPanel.Controls.Add(card);
+            }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void BackBtn_Click(object sender, EventArgs e)
         {
+            if (this.Parent == null) return;
 
+            foreach (Control ctrl in this.Parent.Controls)
+            {
+                if (ctrl is Inbox inbox)
+                {
+                    inbox.BringToFront();
+                    return;
+                }
+            }
         }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
     }
 }

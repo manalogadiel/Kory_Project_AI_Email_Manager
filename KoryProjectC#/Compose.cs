@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -13,13 +14,26 @@ namespace KoryProjectC_
     public partial class Compose : Form
     {
         private readonly HttpClient _httpClient = new HttpClient();
-        private const string GeminiApiKey = "AIzaSyBt1YIzZjdlxFzZUw9Wy1PfGI6ugtZsDvs";   // ⚠️ REPLACE WITH YOUR KEy
-        private const string GeminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GeminiApiKey;
+        private static readonly string GeminiApiKey =
+    File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";  
+        
 
         public Compose()
         {
             InitializeComponent();
             btnAnalyze.Click += async (s, e) => await AnalyzeText();
+            
+            this.TopLevel = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            
+
+            guna2Button1.Click += (_, _) =>
+            {
+                Application.OpenForms
+                    .OfType<Home>()
+                    .FirstOrDefault()
+                    ?.HideFullscreenCompose();
+            };
         }
 
         private async Task AnalyzeText()
@@ -235,5 +249,115 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
         {
 
         }
+
+        public async void LoadEmail(EmailModel email)
+        {
+            NameForm.Text = email.FromName ?? "";
+            EmailForm.Text = email.FromEmail ?? "";
+            guna2HtmlLabel1.Text = email.Subject ?? "(no subject)";
+            guna2Button2.Text = email.Date ?? "";
+
+            string html = !string.IsNullOrEmpty(email.BodyHtml)
+                ? InjectDarkModeStyles(email.BodyHtml)
+                : BuildPlainHtml(email.BodyText ?? "");
+
+            try
+            {
+                await EmailContent.EnsureCoreWebView2Async(null);
+                EmailContent.NavigateToString(html);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"WebView2 failed: {ex.Message}");
+                EmailContent.NavigateToString(BuildPlainHtml(email.BodyText ?? ""));
+            }
+        }
+
+        /// <summary>
+        /// Injects CSS into an HTML email to force light text on a dark background.
+        /// </summary>
+        private static string InjectDarkModeStyles(string html)
+        {
+            const string style = @"
+<style>
+  html, body, div, p, span, td, th, li, a, h1, h2, h3, h4, h5, h6,
+  table, tr, section, article, header, footer, main, blockquote {
+      background-color: #0e0f14 !important;
+      color: #d4d4d4 !important;
+  }
+  a {
+      color: #7b9fff !important;
+  }
+  img {
+      opacity: 0.9;
+  }
+  /* Kill white/light backgrounds that Google emails love to add */
+  [style*='background:#fff'],
+  [style*='background: #fff'],
+  [style*='background:white'],
+  [style*='background-color:#fff'],
+  [style*='background-color: #fff'],
+  [style*='background-color:white'] {
+      background-color: #0e0f14 !important;
+  }
+  [style*='color:#000'],
+  [style*='color: #000'],
+  [style*='color:black'],
+  [style*='color:#333'],
+  [style*='color:#222'],
+  [style*='color:#111'] {
+      color: #d4d4d4 !important;
+  }
+</style>";
+
+            // Inject right before </head> if it exists, otherwise prepend
+            if (html.Contains("</head>", StringComparison.OrdinalIgnoreCase))
+                return html.Replace("</head>", style + "</head>",
+                    StringComparison.OrdinalIgnoreCase);
+
+            if (html.Contains("<body", StringComparison.OrdinalIgnoreCase))
+                return html.Replace("<body", style + "<body",
+                    StringComparison.OrdinalIgnoreCase);
+
+            // Bare HTML with no head/body tags
+            return style + html;
+        }
+
+        /// <summary>Plain text fallback wrapper.</summary>
+        private static string BuildPlainHtml(string text)
+        {
+            var encoded = System.Net.WebUtility.HtmlEncode(text)
+                              .Replace("&#xA;", "<br>")
+                              .Replace("\n", "<br>");
+
+            return $@"<html>
+<head><meta charset='utf-8'></head>
+<body style='
+    color: #d4d4d4;
+    background-color: #0e0f14;
+    font-family: Segoe UI, sans-serif;
+    font-size: 14px;
+    padding: 24px;
+    line-height: 1.7;
+    word-wrap: break-word;'>
+{encoded}
+</body></html>";
+        }
+
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+        
+        
+

@@ -138,12 +138,12 @@
             guna2Button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button2.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button2.Image = Properties.Resources.clockIcon;
-            guna2Button2.Location = new Point(644, 41);
+            guna2Button2.Location = new Point(591, 41);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button2.Size = new Size(107, 25);
+            guna2Button2.Size = new Size(160, 25);
             guna2Button2.TabIndex = 9;
-            guna2Button2.Text = "12:12 AM";
+            guna2Button2.Text = "Mon, 12:12 AM";
             // 
             // guna2HtmlLabel1
             // 
@@ -270,7 +270,6 @@
             btnAnalyze.FillColor2 = Color.FromArgb(15, 16, 32);
             btnAnalyze.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAnalyze.ForeColor = Color.DarkGray;
-            btnAnalyze.Image = Properties.Resources.magnifyingGlass;
             btnAnalyze.Location = new Point(396, 846);
             btnAnalyze.Margin = new Padding(3, 4, 3, 4);
             btnAnalyze.Name = "btnAnalyze";
@@ -451,6 +450,9 @@
             progressProf.Margin = new Padding(3, 4, 3, 4);
             progressProf.Minimum = 0;
             progressProf.Name = "progressProf";
+            progressProf.ProgressColor = Color.FromArgb(255, 128, 0);
+            progressProf.ProgressColor2 = Color.FromArgb(255, 128, 0);
+            progressProf.ProgressThickness = 5;
             progressProf.ShadowDecoration.CustomizableEdges = customizableEdges24;
             progressProf.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             progressProf.Size = new Size(63, 63);
@@ -467,10 +469,13 @@
             progressTone.Margin = new Padding(3, 4, 3, 4);
             progressTone.Minimum = 0;
             progressTone.Name = "progressTone";
+            progressTone.ProgressColor = Color.Fuchsia;
+            progressTone.ProgressColor2 = Color.Fuchsia;
+            progressTone.ProgressThickness = 5;
             progressTone.ShadowDecoration.CustomizableEdges = customizableEdges25;
             progressTone.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             progressTone.Size = new Size(63, 63);
-            progressTone.TabIndex = 9;
+            progressTone.TabIndex = 8;
             progressTone.Text = "Guna2CircleProgressBar2";
             // 
             // progressClarity

@@ -23,54 +23,39 @@ namespace KoryProjectC_
             SetupDashboard();
         }
 
-
         public void ShowFullscreenCompose(Compose compose)
         {
             fullscreenCompose = compose;
-            fullscreenCompose.TopLevel = false;
-            fullscreenCompose.FormBorderStyle = FormBorderStyle.None;
-            fullscreenCompose.Dock = DockStyle.Fill;
-            this.Controls.Add(fullscreenCompose);
 
-            // Hide all other controls (dock panels, etc.)
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl != fullscreenCompose)
-                    ctrl.Visible = false;
-            }
-
-            fullscreenCompose.BringToFront();
-            fullscreenCompose.Visible = true;
+            // Add to the FORM itself, not pnlMainContent
+            this.Controls.Add(compose);
+            compose.Size = this.ClientSize;   // cover the entire window
+            compose.Location = new Point(0, 0);
+            compose.BringToFront();
+            compose.Visible = true;
         }
 
         public void HideFullscreenCompose()
         {
-            // Remove ANY Compose control that might be on the form
-            var composeList = this.Controls.OfType<Compose>().ToList();
-            foreach (var compose in composeList)
+            // Remove from the FORM's controls, not pnlMainContent
+            foreach (var ctrl in this.Controls.OfType<Compose>().ToList())
             {
-                this.Controls.Remove(compose);
-                compose.Dispose();
+                this.Controls.Remove(ctrl);
+                ctrl.Dispose();
             }
             fullscreenCompose = null;
 
-            // Show all other controls (they were hidden when Compose appeared)
-            foreach (Control ctrl in this.Controls)
+            // Return to EmailContent if open, otherwise Inbox
+            var emailContent = pnlMainContent.Controls.OfType<EmailContent>().FirstOrDefault();
+            if (emailContent != null)
             {
-                ctrl.Visible = true;
+                emailContent.BringToFront();
+                return;
             }
 
-            // Force pnlMainContent to be visible and bring it to front
-            pnlMainContent.Visible = true;
-            pnlMainContent.BringToFront();
-
-            // Bring Inbox (the categories) to the front inside pnlMainContent
-            var inbox = pnlMainContent.Controls.OfType<Inbox>().FirstOrDefault();
-            if (inbox != null)
-            {
-                inbox.BringToFront();
-            }
+            ucInbox.BringToFront();
         }
+
         private void SetupDashboard()
         {
             ucInbox = new Inbox();
