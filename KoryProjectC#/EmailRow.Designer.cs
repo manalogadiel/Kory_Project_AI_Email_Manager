@@ -62,6 +62,7 @@
             rowPanel.Size = new Size(1189, 80);
             rowPanel.TabIndex = 0;
             rowPanel.UseTransparentBackground = true;
+            rowPanel.MouseClick += OnRowClick;
             // 
             // guna2HtmlLabel1
             // 

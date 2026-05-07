@@ -26,14 +26,16 @@ namespace KoryProjectC_
         {
             if (this.Parent != null)
             {
-                // 1. Create the Inbox screen
-                Inbox mainInbox = new Inbox();
-                mainInbox.Dock = DockStyle.Fill;
-
-                // 2. Clear this EmailContent from the parent and add the Inbox back
                 Control parentContainer = this.Parent;
-                parentContainer.Controls.Clear();
-                parentContainer.Controls.Add(mainInbox);
+
+                foreach (Control ctrl in parentContainer.Controls)
+                {
+                    if (ctrl is Inbox inbox)
+                    {
+                        inbox.BringToFront();
+                        return;
+                    }
+                }
             }
         }
         public void AddCards(int count = 3)
