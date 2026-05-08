@@ -172,6 +172,7 @@ namespace KoryProjectC_
             return dt.ToString("MMM d, yyyy");         // Apr 30, 2025
         }
 
+
         public static string CategorizeEmail(string subject, string body)
         {
             var text = (subject + " " + body).ToLower();
