@@ -30,17 +30,17 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             rowPanel = new Guna.UI2.WinForms.Guna2Panel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             rowPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
             SuspendLayout();
             // 
             // rowPanel
@@ -49,10 +49,10 @@
             rowPanel.BorderColor = Color.FromArgb(39, 40, 64);
             rowPanel.BorderRadius = 30;
             rowPanel.BorderThickness = 1;
+            rowPanel.Controls.Add(guna2CirclePictureBox2);
             rowPanel.Controls.Add(guna2HtmlLabel1);
             rowPanel.Controls.Add(guna2HtmlLabel2);
             rowPanel.Controls.Add(guna2HtmlLabel3);
-            rowPanel.Controls.Add(guna2CirclePictureBox2);
             rowPanel.Controls.Add(guna2CirclePictureBox1);
             rowPanel.CustomizableEdges = customizableEdges3;
             rowPanel.FillColor = Color.FromArgb(26, 28, 46);
@@ -71,9 +71,10 @@
             guna2HtmlLabel1.ForeColor = Color.White;
             guna2HtmlLabel1.Location = new Point(87, 12);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(228, 34);
+            guna2HtmlLabel1.Size = new Size(227, 34);
             guna2HtmlLabel1.TabIndex = 1;
-            guna2HtmlLabel1.Text = "Sebastian Miguel Bueno";
+            guna2HtmlLabel1.Text = "SEBASTIAN MIGUELITO";
+            guna2HtmlLabel1.Click += guna2HtmlLabel1_Click;
             // 
             // guna2HtmlLabel2
             // 
@@ -100,18 +101,6 @@
             guna2HtmlLabel3.Text = "Mon, 10:50 AM";
             guna2HtmlLabel3.TextAlignment = ContentAlignment.TopRight;
             // 
-            // guna2CirclePictureBox2
-            // 
-            guna2CirclePictureBox2.FillColor = Color.FromArgb(107, 92, 231);
-            guna2CirclePictureBox2.ImageRotate = 0F;
-            guna2CirclePictureBox2.Location = new Point(1153, 35);
-            guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox2.Size = new Size(12, 12);
-            guna2CirclePictureBox2.TabIndex = 3;
-            guna2CirclePictureBox2.TabStop = false;
-            // 
             // guna2CirclePictureBox1
             // 
             guna2CirclePictureBox1.ImageRotate = 0F;
@@ -123,6 +112,18 @@
             guna2CirclePictureBox1.TabIndex = 0;
             guna2CirclePictureBox1.TabStop = false;
             // 
+            // guna2CirclePictureBox2
+            // 
+            guna2CirclePictureBox2.FillColor = Color.FromArgb(107, 92, 231);
+            guna2CirclePictureBox2.ImageRotate = 0F;
+            guna2CirclePictureBox2.Location = new Point(1152, 34);
+            guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
+            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox2.Size = new Size(12, 12);
+            guna2CirclePictureBox2.TabIndex = 5;
+            guna2CirclePictureBox2.TabStop = false;
+            // 
             // EmailRow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -132,8 +133,8 @@
             Size = new Size(1189, 80);
             rowPanel.ResumeLayout(false);
             rowPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -143,7 +144,7 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
     }
 }

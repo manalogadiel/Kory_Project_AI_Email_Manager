@@ -67,7 +67,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges74 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnAnalyze = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2vScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
-            txtInput = new Guna.UI2.WinForms.Guna2TextBox();
+            bodyTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             subjectTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             EditBtn = new Guna.UI2.WinForms.Guna2GradientButton();
             Guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -115,7 +115,7 @@
             // 
             // guna2vScrollBar2
             // 
-            guna2vScrollBar2.BindingContainer = txtInput;
+            guna2vScrollBar2.BindingContainer = bodyTextBox;
             guna2vScrollBar2.BorderRadius = 5;
             guna2vScrollBar2.InUpdate = false;
             guna2vScrollBar2.LargeChange = 1;
@@ -126,7 +126,7 @@
             guna2vScrollBar2.Size = new Size(21, 451);
             guna2vScrollBar2.TabIndex = 31;
             // 
-            // txtInput
+            // bodyTextBox
             // 
             txtInput.BorderColor = Color.FromArgb(39, 40, 64);
             txtInput.BorderRadius = 15;
@@ -376,6 +376,7 @@
             ImproveBtn.Size = new Size(114, 30);
             ImproveBtn.TabIndex = 22;
             ImproveBtn.Text = "Improve";
+            ImproveBtn.Click += ImproveBtn_Click;
             // 
             // KoryReplyBtn
             // 
@@ -400,6 +401,7 @@
             KoryReplyBtn.Size = new Size(114, 30);
             KoryReplyBtn.TabIndex = 21;
             KoryReplyBtn.Text = "Kory Reply";
+            KoryReplyBtn.Click += KoryReplyBtn_Click;
             // 
             // SendBtn
             // 
@@ -617,7 +619,7 @@
             Controls.Add(ImproveBtn);
             Controls.Add(KoryReplyBtn);
             Controls.Add(SendBtn);
-            Controls.Add(txtInput);
+            Controls.Add(bodyTextBox);
             Controls.Add(Guna2TextBox2);
             Controls.Add(Guna2TextBox1);
             FormBorderStyle = FormBorderStyle.None;
@@ -632,7 +634,7 @@
 
         internal Guna.UI2.WinForms.Guna2GradientButton btnAnalyze;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar2;
-        internal Guna.UI2.WinForms.Guna2TextBox txtInput;
+        internal Guna.UI2.WinForms.Guna2TextBox bodyTextBox;
         internal Guna.UI2.WinForms.Guna2TextBox subjectTextBox;
         internal Guna.UI2.WinForms.Guna2GradientButton EditBtn;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox6;

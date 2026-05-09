@@ -28,31 +28,101 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2vScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            rowPanel = new Guna.UI2.WinForms.Guna2Panel();
+            rowPanel.SuspendLayout();
             SuspendLayout();
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2HtmlLabel2.Location = new Point(28, 50);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(268, 28);
+            guna2HtmlLabel2.TabIndex = 2;
+            guna2HtmlLabel2.Text = "Draft emails will appear in this thread";
+            guna2HtmlLabel2.Click += guna2HtmlLabel2_Click;
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("League Spartan SemiBold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.ForeColor = Color.White;
+            guna2HtmlLabel1.Location = new Point(28, 16);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(183, 37);
+            guna2HtmlLabel1.TabIndex = 1;
+            guna2HtmlLabel1.Text = "In Progress Emails";
+            // 
+            // guna2vScrollBar1
+            // 
+            guna2vScrollBar1.BindingContainer = flowLayoutPanel1;
+            guna2vScrollBar1.BorderRadius = 5;
+            guna2vScrollBar1.InUpdate = false;
+            guna2vScrollBar1.LargeChange = 10;
+            guna2vScrollBar1.Location = new Point(1197, 111);
+            guna2vScrollBar1.Name = "guna2vScrollBar1";
+            guna2vScrollBar1.RightToLeft = RightToLeft.No;
+            guna2vScrollBar1.ScrollbarSize = 21;
+            guna2vScrollBar1.Size = new Size(21, 486);
+            guna2vScrollBar1.TabIndex = 8;
+            guna2vScrollBar1.Scroll += guna2vScrollBar1_Scroll;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.BackColor = Color.Transparent;
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.BackColor = Color.FromArgb(14, 15, 20);
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.Location = new Point(0, 111);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1164, 658);
-            flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.Size = new Size(1218, 486);
+            flowLayoutPanel1.TabIndex = 11;
+            flowLayoutPanel1.WrapContents = false;
+            // 
+            // rowPanel
+            // 
+            rowPanel.BackColor = Color.Transparent;
+            rowPanel.BorderColor = Color.FromArgb(39, 40, 64);
+            rowPanel.BorderRadius = 20;
+            rowPanel.BorderThickness = 1;
+            rowPanel.Controls.Add(guna2HtmlLabel2);
+            rowPanel.Controls.Add(guna2HtmlLabel1);
+            rowPanel.CustomizableEdges = customizableEdges3;
+            rowPanel.FillColor = Color.FromArgb(26, 28, 46);
+            rowPanel.Location = new Point(0, 1);
+            rowPanel.Name = "rowPanel";
+            rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            rowPanel.Size = new Size(1192, 104);
+            rowPanel.TabIndex = 10;
+            rowPanel.UseTransparentBackground = true;
             // 
             // InProgress
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(guna2vScrollBar1);
             Controls.Add(flowLayoutPanel1);
+            Controls.Add(rowPanel);
             Name = "InProgress";
-            Size = new Size(1164, 658);
+            Size = new Size(1221, 600);
+            rowPanel.ResumeLayout(false);
+            rowPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Panel rowPanel;
     }
 }

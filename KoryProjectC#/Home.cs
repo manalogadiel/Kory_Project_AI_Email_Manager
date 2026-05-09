@@ -162,7 +162,7 @@ namespace KoryProjectC_
 
         private void composeBtn_Click(object sender, EventArgs e)
         {
-            SingleCompose compose = new SingleCompose();
+            SingleCompose compose = new SingleCompose(_gmailService);
             compose.ShowDialog(this);
         }
 
