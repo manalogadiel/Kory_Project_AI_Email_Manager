@@ -230,9 +230,10 @@ namespace KoryProjectC_
 
                     if (from != null)
                     {
+                        // "John Doe <john@gmail.com>" → returns "John Doe" (full name)
                         var match = Regex.Match(from.Value ?? "", @"^""?(.+?)""?\s*<");
                         if (match.Success)
-                            return match.Groups[1].Value.Trim().Split(' ')[0];
+                            return match.Groups[1].Value.Trim(); // removed .Split(' ')[0]
                     }
                 }
             }
@@ -240,9 +241,7 @@ namespace KoryProjectC_
 
             var profile = await service.Users.GetProfile("me").ExecuteAsync();
             return (profile.EmailAddress ?? "there").Split('@')[0];
-        }
-
-        // ─────────────────────────────────────────────────────────────────────────
+        }        // ─────────────────────────────────────────────────────────────────────────
         //  PRIVATE HELPERS
         // ─────────────────────────────────────────────────────────────────────────
 
@@ -414,8 +413,28 @@ namespace KoryProjectC_
             string inReplyToId,
             string threadId)
         {
+            string fromEmail = AppState.UserEmail;
+            string fromName = AppState.UserEmail; // fallback
+
+            // Read full name from saved profile
+            string profilePath = Path.Combine(Application.StartupPath, "profile.json");
+            if (File.Exists(profilePath))
+            {
+                try
+                {
+                    var json = File.ReadAllText(profilePath);
+                    using var doc = System.Text.Json.JsonDocument.Parse(json);
+                    var root = doc.RootElement;
+                    if (root.TryGetProperty("FullName", out var fn) &&
+                        !string.IsNullOrWhiteSpace(fn.GetString()))
+                        fromName = fn.GetString()!;
+                }
+                catch { }
+            }
+
             string mime =
                 $"To: {to}\r\n" +
+                $"From: {fromName} <{fromEmail}>\r\n" +
                 $"Subject: {subject}\r\n" +
                 $"In-Reply-To: {inReplyToId}\r\n" +
                 $"References: {inReplyToId}\r\n" +
@@ -428,7 +447,6 @@ namespace KoryProjectC_
                 .Replace('/', '_')
                 .TrimEnd('=');
         }
-
         private static bool Has(string text, params string[] kw)
             => kw.Any(k => text.Contains(k, StringComparison.OrdinalIgnoreCase));
     }

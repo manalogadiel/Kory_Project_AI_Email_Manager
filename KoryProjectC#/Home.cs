@@ -13,6 +13,7 @@ namespace KoryProjectC_
 {
     public partial class Home : Form
     {
+
         private Inbox ucInbox = null!;
         private InProgress ucInProgress = null!;
         private Answered ucAnswered = null!;
@@ -64,6 +65,8 @@ namespace KoryProjectC_
             int answered = await answeredTask;
             int avgResp = (int)Math.Round(await avgRespTask);
             string name = await nameTask; // ← new
+            AppState.UserName = name;                                    // ADD THIS
+            AppState.UserEmail = (await _gmailService.Users.GetProfile("me").ExecuteAsync()).EmailAddress ?? ""; // ADD THIS
             var pic = await picTask;
             if (pic != null)
             {
