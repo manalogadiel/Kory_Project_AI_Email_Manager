@@ -66,6 +66,7 @@
             title = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            composeBtn = new Guna.UI2.WinForms.Guna2GradientButton();
             AnsweredBtn = new Guna.UI2.WinForms.Guna2Button();
             InProgressBtn = new Guna.UI2.WinForms.Guna2Button();
             InboxBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -225,6 +226,7 @@
             // 
             // guna2Panel1
             // 
+            guna2Panel1.Controls.Add(composeBtn);
             guna2Panel1.Controls.Add(AnsweredBtn);
             guna2Panel1.Controls.Add(InProgressBtn);
             guna2Panel1.Controls.Add(InboxBtn);
@@ -236,6 +238,30 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges22;
             guna2Panel1.Size = new Size(263, 494);
             guna2Panel1.TabIndex = 4;
+            // 
+            // composeBtn
+            // 
+            composeBtn.BorderRadius = 20;
+            composeBtn.CustomizableEdges = customizableEdges7;
+            composeBtn.DisabledState.BorderColor = Color.DarkGray;
+            composeBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            composeBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            composeBtn.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            composeBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            composeBtn.FillColor = Color.FromArgb(98, 117, 217);
+            composeBtn.FillColor2 = Color.FromArgb(29, 40, 97);
+            composeBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            composeBtn.ForeColor = Color.White;
+            composeBtn.Image = Properties.Resources.composeIcon3;
+            composeBtn.ImageAlign = HorizontalAlignment.Left;
+            composeBtn.Location = new Point(30, 177);
+            composeBtn.Name = "composeBtn";
+            composeBtn.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            composeBtn.Size = new Size(242, 54);
+            composeBtn.TabIndex = 3;
+            composeBtn.Text = "Compose";
+            composeBtn.TextAlign = HorizontalAlignment.Left;
+            composeBtn.Click += composeBtn_Click;
             // 
             // AnsweredBtn
             // 

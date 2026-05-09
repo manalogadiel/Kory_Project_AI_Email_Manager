@@ -100,12 +100,10 @@ namespace KoryProjectC_
 
         private void guna2PictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            guna2PictureBox1.Image = hoverImage;
         }
 
         private void guna2PictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            guna2PictureBox1.Image = normalImage;
         }
 
         private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
