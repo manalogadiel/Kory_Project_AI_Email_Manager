@@ -220,10 +220,10 @@
             sentPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             sentPanel.Controls.Add(sentEmailContent);
             sentPanel.CustomizableEdges = customizableEdges12;
-            sentPanel.Location = new Point(19, 22);
+            sentPanel.Location = new Point(815, 268);
             sentPanel.Name = "sentPanel";
             sentPanel.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            sentPanel.Size = new Size(709, 608);
+            sentPanel.Size = new Size(673, 608);
             sentPanel.TabIndex = 13;
             // 
             // sentEmailContent
@@ -236,7 +236,7 @@
             sentEmailContent.ForeColor = Color.WhiteSmoke;
             sentEmailContent.Location = new Point(0, 0);
             sentEmailContent.Name = "sentEmailContent";
-            sentEmailContent.Size = new Size(709, 608);
+            sentEmailContent.Size = new Size(673, 608);
             sentEmailContent.TabIndex = 0;
             sentEmailContent.ZoomFactor = 1D;
             // 
@@ -256,10 +256,10 @@
             guna2Panel4.CustomizableEdges = customizableEdges17;
             guna2Panel4.FillColor = Color.FromArgb(22, 23, 50);
             guna2Panel4.ForeColor = Color.Transparent;
-            guna2Panel4.Location = new Point(7, 92);
+            guna2Panel4.Location = new Point(11, 92);
             guna2Panel4.Name = "guna2Panel4";
             guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Panel4.Size = new Size(753, 149);
+            guna2Panel4.Size = new Size(729, 138);
             guna2Panel4.TabIndex = 10;
             // 
             // guna2Button3
@@ -275,7 +275,7 @@
             guna2Button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button3.Image = Properties.Resources.clockIcon;
-            guna2Button3.Location = new Point(591, 41);
+            guna2Button3.Location = new Point(547, 53);
             guna2Button3.Name = "guna2Button3";
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges15;
             guna2Button3.Size = new Size(160, 25);
@@ -287,7 +287,7 @@
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("League Spartan", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = SystemColors.ButtonFace;
-            guna2HtmlLabel2.Location = new Point(36, 90);
+            guna2HtmlLabel2.Location = new Point(36, 84);
             guna2HtmlLabel2.MaximumSize = new Size(705, 40);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(385, 37);
@@ -300,7 +300,7 @@
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(142, 144, 166);
-            guna2HtmlLabel3.Location = new Point(109, 54);
+            guna2HtmlLabel3.Location = new Point(109, 48);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(256, 22);
             guna2HtmlLabel3.TabIndex = 2;
@@ -311,7 +311,7 @@
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel4.ForeColor = SystemColors.ButtonFace;
-            guna2HtmlLabel4.Location = new Point(109, 29);
+            guna2HtmlLabel4.Location = new Point(109, 23);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(193, 27);
             guna2HtmlLabel4.TabIndex = 1;
@@ -320,7 +320,7 @@
             // guna2CirclePictureBox2
             // 
             guna2CirclePictureBox2.ImageRotate = 0F;
-            guna2CirclePictureBox2.Location = new Point(34, 29);
+            guna2CirclePictureBox2.Location = new Point(34, 23);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
             guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -337,10 +337,10 @@
             bgPanel.Controls.Add(sentPanel);
             bgPanel.CustomizableEdges = customizableEdges19;
             bgPanel.FillColor = Color.FromArgb(15, 16, 32);
-            bgPanel.Location = new Point(7, 246);
+            bgPanel.Location = new Point(11, 246);
             bgPanel.Name = "bgPanel";
             bgPanel.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            bgPanel.Size = new Size(753, 655);
+            bgPanel.Size = new Size(729, 655);
             bgPanel.TabIndex = 1;
             // 
             // guna2CustomGradientPanel1
@@ -363,6 +363,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 15, 20);
+            ClientSize = new Size(1522, 913);
+            Controls.Add(sentPanel);
             Controls.Add(panelEmailBody);
             Controls.Add(Guna2Panel2);
             Controls.Add(Guna2Panel1);
