@@ -110,11 +110,12 @@
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.BorderStyle = BorderStyle.FixedSingle;
             guna2HtmlLabel1.Font = new Font("League Spartan", 19.7999973F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.White;
             guna2HtmlLabel1.Location = new Point(94, 33);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(348, 51);
+            guna2HtmlLabel1.Size = new Size(350, 53);
             guna2HtmlLabel1.TabIndex = 5;
             guna2HtmlLabel1.Text = "Are you sure to log out?";
             guna2HtmlLabel1.Click += guna2HtmlLabel1_Click;
