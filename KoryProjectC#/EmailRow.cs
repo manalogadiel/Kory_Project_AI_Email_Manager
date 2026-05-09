@@ -94,6 +94,7 @@ namespace KoryProjectC_
                 Email.IsRead = true;
                 guna2CirclePictureBox2.Visible = false;
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
+                guna2HtmlLabel3.Location = new Point(guna2HtmlLabel3.Location.X + 20, guna2HtmlLabel3.Location.Y);
                 _ = MarkAsReadAsync();
                 home.RefreshBadges();
             }
