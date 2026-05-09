@@ -97,5 +97,11 @@ namespace KoryProjectC_
         {
 
         }
+
+        private void composeBtn_Click(object sender, EventArgs e)
+        {
+            SingleCompose compose = new SingleCompose();
+            compose.ShowDialog(this); // 'this' sets Home as the owner
+        }
     }
 }
