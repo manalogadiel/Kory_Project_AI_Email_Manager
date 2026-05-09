@@ -163,8 +163,8 @@ namespace KoryProjectC_
 
         private void composeBtn_Click(object sender, EventArgs e)
         {
-            SingleCompose compose = new SingleCompose();
-            compose.ShowDialog(this); // 'this' sets Home as the owner
+            SingleCompose compose = new SingleCompose(_gmailService);
+            compose.ShowDialog(this);
         }
 
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
