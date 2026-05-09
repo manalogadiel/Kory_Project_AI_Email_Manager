@@ -50,7 +50,7 @@ namespace KoryProjectC_
             };
         }
 
-        private void LoadCategoryData()
+        public void LoadCategoryData()
         {
             // Remove old click handlers first
             catGrade.MouseClick -= category_Click;

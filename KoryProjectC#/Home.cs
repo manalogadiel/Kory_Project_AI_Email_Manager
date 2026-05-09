@@ -212,6 +212,10 @@ namespace KoryProjectC_
             login.Show();
             this.Close();
         }
+        public void RefreshBadges()
+        {
+            ucInbox.LoadCategoryData();
+        }
 
         public async Task RefreshAfterSendAsync() => await RefreshStatsAsync();
 
