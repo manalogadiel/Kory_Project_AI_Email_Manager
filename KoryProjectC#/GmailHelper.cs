@@ -118,31 +118,19 @@ namespace KoryProjectC_
         /// </summary>
         public static async Task<int> GetSentTodayCountAsync(GmailService service)
         {
-            string today = DateTime.Today.ToString("yyyy/MM/dd");
+            // Use unix timestamp instead of date string to avoid timezone issues
+            var startOfDay = new DateTimeOffset(DateTime.Today, TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
+            long unixTimestamp = startOfDay.ToUnixTimeSeconds();
 
             var req = service.Users.Messages.List("me");
             req.LabelIds = "SENT";
-            req.Q = $"after:{today}";
+            req.Q = $"after:{unixTimestamp}";
             req.MaxResults = 200;
 
             var resp = await req.ExecuteAsync();
             if (resp.Messages == null) return 0;
 
-            // Only count actual replies (messages that have an In-Reply-To header)
-            var tasks = resp.Messages.Select(async msg =>
-            {
-                var getReq = service.Users.Messages.Get("me", msg.Id);
-                getReq.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Metadata;
-                getReq.MetadataHeaders = new[] { "In-Reply-To" };
-                var message = await getReq.ExecuteAsync();
-
-                return message.Payload?.Headers?.Any(h =>
-                    h.Name?.Equals("In-Reply-To", StringComparison.OrdinalIgnoreCase) == true
-                    && !string.IsNullOrEmpty(h.Value)) ?? false;
-            });
-
-            var results = await Task.WhenAll(tasks);
-            return results.Count(isReply => isReply);
+            return resp.Messages.Count;
         }
 
         /// <summary>
@@ -210,36 +198,62 @@ namespace KoryProjectC_
 
         public static async Task<string> GetUserNameAsync(GmailService service)
         {
+            if (_credential == null)
+            {
+                var profile = await service.Users.GetProfile("me").ExecuteAsync();
+                return (profile.EmailAddress ?? "there").Split('@')[0];
+            }
+
             try
             {
-                var sentReq = service.Users.Messages.List("me");
-                sentReq.LabelIds = "SENT";
-                sentReq.MaxResults = 1;
-                var sentResp = await sentReq.ExecuteAsync();
+                await _credential.RefreshTokenAsync(CancellationToken.None);
+                string token = _credential.Token.AccessToken;
 
-                if (sentResp.Messages?.Any() == true)
-                {
-                    var getReq = service.Users.Messages.Get("me", sentResp.Messages[0].Id);
-                    getReq.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Metadata;
-                    getReq.MetadataHeaders = new[] { "From" };
-                    var msg = await getReq.ExecuteAsync();
+                using var http = new HttpClient();
+                http.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                    var from = msg.Payload?.Headers?
-                        .FirstOrDefault(h => h.Name?
-                        .Equals("From", StringComparison.OrdinalIgnoreCase) == true);
+                string json = await http.GetStringAsync(
+                    "https://www.googleapis.com/oauth2/v1/userinfo");
 
-                    if (from != null)
-                    {
-                        var match = Regex.Match(from.Value ?? "", @"^""?(.+?)""?\s*<");
-                        if (match.Success)
-                            return match.Groups[1].Value.Trim().Split(' ')[0];
-                    }
-                }
+                // Try first name specifically, then fall back to full name
+                var givenName = Regex.Match(json, @"""given_name""\s*:\s*""(.+?)""");
+                if (givenName.Success) return givenName.Groups[1].Value;
+
+                var fullName = Regex.Match(json, @"""name""\s*:\s*""(.+?)""");
+                if (fullName.Success) return fullName.Groups[1].Value.Split(' ')[0];
             }
             catch { }
 
-            var profile = await service.Users.GetProfile("me").ExecuteAsync();
-            return (profile.EmailAddress ?? "there").Split('@')[0];
+            // Last resort fallback
+            var prof = await service.Users.GetProfile("me").ExecuteAsync();
+            return (prof.EmailAddress ?? "there").Split('@')[0];
+        }
+
+        public static async Task<List<EmailModel>> FetchSentEmailsAsync(
+    GmailService service, int maxResults = 50)
+        {
+            var startOfDay = new DateTimeOffset(DateTime.Today, TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
+            long unixTimestamp = startOfDay.ToUnixTimeSeconds();
+
+            var listRequest = service.Users.Messages.List("me");
+            listRequest.MaxResults = maxResults;
+            listRequest.LabelIds = "SENT";
+            listRequest.Q = $"after:{unixTimestamp}";
+
+            var listResponse = await listRequest.ExecuteAsync();
+            if (listResponse.Messages == null) return new List<EmailModel>();
+
+            var tasks = listResponse.Messages.Select(async msg =>
+            {
+                var req = service.Users.Messages.Get("me", msg.Id);
+                req.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Full;
+                var message = await req.ExecuteAsync();
+                return ParseEmail(message);
+            });
+
+            var results = await Task.WhenAll(tasks);
+            return results.ToList();
         }
 
         // ─────────────────────────────────────────────────────────────────────────

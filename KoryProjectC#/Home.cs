@@ -17,7 +17,7 @@ namespace KoryProjectC_
         private InProgress ucInProgress = null!;
         private Answered ucAnswered = null!;
         private Compose? fullscreenCompose;
-        private GmailService? _gmailService;
+        public GmailService? _gmailService;
 
         public Home()
         {
@@ -27,7 +27,6 @@ namespace KoryProjectC_
 
         private async void Home_Load(object sender, EventArgs e)
         {
-            // Show zeroes while Gmail loads
             UpdateHeaderStats(pending: 0, answered: 0, avgRespMinutes: 0);
 
             try
@@ -43,10 +42,6 @@ namespace KoryProjectC_
             }
         }
 
-        // ════════════════════════════════════════════════════════════════════════
-        //  FETCH + UPDATE STATS
-        // ════════════════════════════════════════════════════════════════════════
-
         private async Task RefreshStatsAsync()
         {
             if (_gmailService == null) return;
@@ -54,7 +49,7 @@ namespace KoryProjectC_
             var emailsTask = GmailHelper.FetchEmailsAsync(_gmailService);
             var answeredTask = GmailHelper.GetSentTodayCountAsync(_gmailService);
             var avgRespTask = GmailHelper.GetAvgResponseMinutesAsync(_gmailService);
-            var nameTask = GmailHelper.GetUserNameAsync(_gmailService); // ← new
+            var nameTask = GmailHelper.GetUserNameAsync(_gmailService);
             var picTask = GmailHelper.GetProfilePictureAsync();
 
             await Task.WhenAll(emailsTask, answeredTask, avgRespTask, nameTask, picTask);
@@ -63,11 +58,10 @@ namespace KoryProjectC_
             int pending = emails.Count(e => !e.IsRead);
             int answered = await answeredTask;
             int avgResp = (int)Math.Round(await avgRespTask);
-            string name = await nameTask; // ← new
+            string name = await nameTask;
             var pic = await picTask;
             if (pic != null)
             {
-                // Resize to fit the circle picture box
                 var resized = new Bitmap(profilePicture.Width, profilePicture.Height);
                 using (var g = Graphics.FromImage(resized))
                 {
@@ -78,36 +72,23 @@ namespace KoryProjectC_
                 profilePicture.Image = resized;
             }
 
-            title.Text = $"Hi, {name}!"; // ← new
+            title.Text = $"Hi, {name}!";
             UpdateHeaderStats(pending, answered, avgResp);
-        }
 
-        // ════════════════════════════════════════════════════════════════════════
-        //  STAT CARD UPDATE  —  call this anytime to push new numbers in
-        // ════════════════════════════════════════════════════════════════════════
+            ucAnswered._gmailService = _gmailService;
+            await ucAnswered.LoadSentEmailsAsync();
+        }
 
         public void UpdateHeaderStats(int pending, int answered, int avgRespMinutes)
         {
-            // Subtitle
             placehold.Text =
                 $"You have {pending} unread email{(pending == 1 ? "" : "s")} " +
                 "waiting.  Let's tackle them!";
 
-            // TODO: replace label names below with the ones you set in the designer
-
-            // New Pending card
             npPlaceholder.Text = pending.ToString();
-
-            // Answered Today card
             atPlaceholder.Text = answered.ToString();
-
-            // Avg. Response card
             arPlaceholder.Text = avgRespMinutes > 0 ? $"{avgRespMinutes}m" : "—";
         }
-
-        // ════════════════════════════════════════════════════════════════════════
-        //  EXISTING METHODS (unchanged)
-        // ════════════════════════════════════════════════════════════════════════
 
         public void ShowFullscreenCompose(Compose compose)
         {
@@ -138,6 +119,23 @@ namespace KoryProjectC_
             ucInbox.BringToFront();
         }
 
+        public void ShowAnsweredContent(EmailModel sentEmail, GmailService service)
+        {
+            // Close any existing AnsweredContent windows first
+            foreach (var existing in Application.OpenForms.OfType<AnsweredContent>().ToList())
+                existing.Close();
+
+            var content = new AnsweredContent();
+            content.StartPosition = FormStartPosition.CenterParent;
+            content.Show(this);
+            _ = content.LoadAsync(sentEmail, service);
+        }
+
+        public void ShowAnswered()
+        {
+            ucAnswered.BringToFront();
+        }
+
         private void SetupDashboard()
         {
             ucInbox = new Inbox();
@@ -158,7 +156,7 @@ namespace KoryProjectC_
         private void composeBtn_Click(object sender, EventArgs e)
         {
             SingleCompose compose = new SingleCompose();
-            compose.ShowDialog(this); // 'this' sets Home as the owner
+            compose.ShowDialog(this);
         }
 
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
@@ -195,10 +193,6 @@ namespace KoryProjectC_
         private void guna2Panel8_Paint(object sender, PaintEventArgs e) { }
         private void guna2HtmlLabel1_Click_1(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click_2(object sender, EventArgs e) { }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void guna2Button1_Click(object sender, EventArgs e) { }
     }
 }
