@@ -193,6 +193,10 @@ namespace KoryProjectC_
             login.Show();
             this.Close();
         }
+        public async Task RefreshAfterSendAsync()
+        {
+            await RefreshStatsAsync();
+        }
 
         private void pnlMainContent_Paint(object sender, PaintEventArgs e) { }
         private void guna2TextBox1_TextChanged(object sender, EventArgs e) { }

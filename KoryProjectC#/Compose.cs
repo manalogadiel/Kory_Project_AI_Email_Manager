@@ -103,6 +103,10 @@ namespace KoryProjectC_
 
                     DraftHelper.DeleteDraft(_currentEmail.Id);
 
+                    var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+                    if (home != null)
+                        await home.RefreshAfterSendAsync();
+
                     Application.OpenForms
                         .OfType<Home>()
                         .FirstOrDefault()
