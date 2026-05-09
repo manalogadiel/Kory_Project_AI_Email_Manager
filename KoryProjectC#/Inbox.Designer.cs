@@ -653,8 +653,8 @@
             guna2Button11.CustomizableEdges = customizableEdges31;
             guna2Button11.DisabledState.BorderColor = Color.DarkGray;
             guna2Button11.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button11.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button11.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button11.DisabledState.FillColor = Color.FromArgb(107, 92, 231);
+            guna2Button11.DisabledState.ForeColor = Color.White;
             guna2Button11.FillColor = Color.FromArgb(107, 92, 231);
             guna2Button11.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button11.ForeColor = Color.White;

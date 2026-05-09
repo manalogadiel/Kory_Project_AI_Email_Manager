@@ -32,19 +32,22 @@ namespace KoryProjectC_
             this.Close();
         }
 
-        private void logOutConfirmation_Load(object sender, EventArgs e) 
+        private void logOutConfirmation_Load(object sender, EventArgs e)
         {
             // Reapply region in case size changed
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
 
 
-            // Style label
-            logOutTextConfirmation.ForeColor = Color.White;
-            logOutTextConfirmation.Font = new Font("Segoe UI", 13f, FontStyle.Bold);
+
 
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
         {
 
         }

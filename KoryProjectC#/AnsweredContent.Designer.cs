@@ -99,7 +99,7 @@
             Guna2Panel1.BorderThickness = 1;
             Guna2Panel1.Controls.Add(guna2Button1);
             Guna2Panel1.CustomizableEdges = customizableEdges3;
-            Guna2Panel1.Location = new Point(1, 1);
+            Guna2Panel1.Location = new Point(0, 0);
             Guna2Panel1.Name = "Guna2Panel1";
             Guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Guna2Panel1.Size = new Size(1540, 80);
@@ -142,7 +142,7 @@
             Guna2Panel2.Controls.Add(NameForm);
             Guna2Panel2.Controls.Add(Guna2CirclePictureBox1);
             Guna2Panel2.CustomizableEdges = customizableEdges10;
-            Guna2Panel2.Location = new Point(1, 81);
+            Guna2Panel2.Location = new Point(0, 80);
             Guna2Panel2.Name = "Guna2Panel2";
             Guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges11;
             Guna2Panel2.Size = new Size(770, 160);
