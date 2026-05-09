@@ -43,7 +43,7 @@
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(142, 144, 166);
-            guna2HtmlLabel2.Location = new Point(22, 47);
+            guna2HtmlLabel2.Location = new Point(28, 50);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(263, 28);
             guna2HtmlLabel2.TabIndex = 2;
@@ -55,7 +55,7 @@
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("League Spartan SemiBold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.White;
-            guna2HtmlLabel1.Location = new Point(22, 16);
+            guna2HtmlLabel1.Location = new Point(28, 16);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(170, 37);
             guna2HtmlLabel1.TabIndex = 1;
@@ -68,11 +68,11 @@
             guna2vScrollBar1.BorderRadius = 5;
             guna2vScrollBar1.InUpdate = false;
             guna2vScrollBar1.LargeChange = 10;
-            guna2vScrollBar1.Location = new Point(1197, 156);
+            guna2vScrollBar1.Location = new Point(1197, 111);
             guna2vScrollBar1.Name = "guna2vScrollBar1";
             guna2vScrollBar1.RightToLeft = RightToLeft.No;
             guna2vScrollBar1.ScrollbarSize = 21;
-            guna2vScrollBar1.Size = new Size(21, 444);
+            guna2vScrollBar1.Size = new Size(21, 486);
             guna2vScrollBar1.TabIndex = 4;
             // 
             // ECPanel
@@ -80,9 +80,9 @@
             ECPanel.AutoScroll = true;
             ECPanel.BackColor = Color.FromArgb(14, 15, 20);
             ECPanel.FlowDirection = FlowDirection.TopDown;
-            ECPanel.Location = new Point(0, 156);
+            ECPanel.Location = new Point(0, 111);
             ECPanel.Name = "ECPanel";
-            ECPanel.Size = new Size(1218, 444);
+            ECPanel.Size = new Size(1218, 486);
             ECPanel.TabIndex = 7;
             ECPanel.WrapContents = false;
             // 

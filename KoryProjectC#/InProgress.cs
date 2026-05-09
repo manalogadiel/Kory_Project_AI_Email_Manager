@@ -37,5 +37,20 @@ namespace KoryProjectC_
             compose.LoadDraft(draft);
             home.ShowFullscreenCompose(compose);
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

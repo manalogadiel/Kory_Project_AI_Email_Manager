@@ -19,7 +19,7 @@ namespace KoryProjectC_
         private GmailService? _gmailService;
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly string GeminiApiKey =
-        File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyACJA_l8JJ9gXJsva7nBTiNH6x1rEFAdhI";
+    File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";
 
 
         public Compose()
