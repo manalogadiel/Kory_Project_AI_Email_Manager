@@ -13,6 +13,8 @@ namespace KoryProjectC_
         public string Title => txtTitle.Text;
         public string Department => txtDepartment.Text;
         public string ComplementaryClose => cboClose.Text;
+        private static readonly string ProfilePath = Path.Combine(
+            Application.StartupPath, "profile.json");
 
         public ProfileForm()
         {
@@ -29,12 +31,54 @@ namespace KoryProjectC_
             txtPreview.Text = $"{close}\r\n\r\n{name}\r\n{title}\r\n{dept}";
         }
 
+        public void LoadSavedProfile()
+        {
+            if (!File.Exists(ProfilePath)) return;
+            try
+            {
+                var json = File.ReadAllText(ProfilePath);
+                var data = System.Text.Json.JsonSerializer.Deserialize<ProfileData>(json);
+                if (data == null) return;
+
+                txtFullName.Text = data.FullName ?? "";
+                txtTitle.Text = data.Title ?? "";
+                txtDepartment.Text = data.Department ?? "";
+
+                int idx = cboClose.Items.IndexOf(data.ComplementaryClose ?? "");
+                if (idx >= 0) cboClose.SelectedIndex = idx;
+
+                UpdatePreview();
+            }
+            catch { }
+        }
+
+        private void SaveProfile()
+        {
+            var data = new ProfileData
+            {
+                FullName = txtFullName.Text,
+                Title = txtTitle.Text,
+                Department = txtDepartment.Text,
+                ComplementaryClose = cboClose.Text
+            };
+            File.WriteAllText(ProfilePath,
+                System.Text.Json.JsonSerializer.Serialize(data));
+        }
+
+        internal class ProfileData
+        {
+            public string? FullName { get; set; }
+            public string? Title { get; set; }
+            public string? Department { get; set; }
+            public string? ComplementaryClose { get; set; }
+        }
+
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            SaveProfile();
             OnSaved?.Invoke(this, EventArgs.Empty);
             this.Close();
         }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Google.Apis.Gmail.v1;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace KoryProjectC_
@@ -6,7 +7,7 @@ namespace KoryProjectC_
     public partial class EmailRow : UserControl
     {
         public EmailModel? Email { get; private set; }
-
+        private GmailService? _gmailService;
         private readonly Color normalFill = Color.FromArgb(26, 28, 46);
         private readonly Color hoverFill = Color.FromArgb(17, 18, 30);
         private readonly Color normalBorder = Color.FromArgb(39, 40, 64);
@@ -22,9 +23,10 @@ namespace KoryProjectC_
         }
 
         /// <summary>Populate the card with real email data.</summary>
-        public void SetEmail(EmailModel email)
+        public void SetEmail(EmailModel email, GmailService service)
         {
             Email = email;
+            _gmailService = service;
             guna2HtmlLabel1.Text = email.FromName;
             guna2HtmlLabel2.Text = email.Snippet;
             guna2HtmlLabel3.Text = email.Date;
@@ -61,19 +63,20 @@ namespace KoryProjectC_
             }
         }
 
+
         public Action<EmailModel>? OnEmailClicked;
 
         private void OnRowClick(object? sender, MouseEventArgs e)
         {
-            if (Email == null) return;
+            if (Email == null || _gmailService == null) return;
 
-            // Application.OpenForms finds top-level forms reliably
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
 
             var compose = new Compose();
-            compose.LoadEmail(Email);
+            compose.LoadEmail(Email, _gmailService);
             home.ShowFullscreenCompose(compose);
         }
+
     }
 }

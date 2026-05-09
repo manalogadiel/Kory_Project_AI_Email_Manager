@@ -1,3 +1,5 @@
+using Google.Apis.Gmail.v1;
+using Guna.UI2.WinForms;
 using System;
 using System.Drawing;
 using System.Net;
@@ -6,13 +8,15 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 
 namespace KoryProjectC_
 
 {
     public partial class Compose : Form
     {
+
+        private EmailModel? _currentEmail;
+        private GmailService? _gmailService;
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly string GeminiApiKey = 
         File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyACJA_l8JJ9gXJsva7nBTiNH6x1rEFAdhI";  
@@ -38,6 +42,8 @@ namespace KoryProjectC_
             guna2GradientButton1.Click += (s, e) =>
             {
                 var profileForm = new ProfileForm();
+                profileForm.LoadSavedProfile();  // load saved data
+
                 var composeScreen = this.RectangleToScreen(this.ClientRectangle);
                 profileForm.Location = new Point(
                     composeScreen.Left + (composeScreen.Width - profileForm.Width) / 2,
@@ -46,12 +52,13 @@ namespace KoryProjectC_
 
                 profileForm.OnSaved += (sender, args) =>
                 {
-                    Guna2TextBox1.Text = profileForm.txtPreview.Text;
+                    Guna2TextBox1.Text = profileForm.txtPreview.Text
+                        .Replace("\r\n\r\n", " • ")
+                        .Replace("\r\n", " • ");
                 };
 
                 profileForm.ShowDialog(this.FindForm());
             };
-
 
             guna2Button1.Click += (_, _) =>
             {
@@ -59,6 +66,54 @@ namespace KoryProjectC_
                     .OfType<Home>()
                     .FirstOrDefault()
                     ?.HideFullscreenCompose();
+            };
+            SendBtn.Click += async (s, e) =>
+            {
+                if (_currentEmail == null || _gmailService == null) return;
+
+                if (string.IsNullOrWhiteSpace(txtInput.Text))
+                {
+                    MessageBox.Show("Please write a reply first.", "Empty",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                SendBtn.Enabled = false;
+                SendBtn.Text = "Sending...";
+
+                try
+                {
+                    string signature = Guna2TextBox1.Text
+                       .Replace(" • ", "\r\n")
+                       .Replace("•", "\r\n");
+
+                    await GmailHelper.SendReplyAsync(
+                        _gmailService,
+                        _currentEmail,
+                        txtSubject.Text,
+                        txtSalutation.Text,
+                        txtInput.Text,
+                        signature
+                    );
+
+                    MessageBox.Show("Reply sent successfully!", "Sent",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Application.OpenForms
+                        .OfType<Home>()
+                        .FirstOrDefault()
+                        ?.HideFullscreenCompose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to send: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    SendBtn.Enabled = true;
+                    SendBtn.Text = "Send";
+                }
             };
         }
 
@@ -276,8 +331,11 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
 
         }
 
-        public async void LoadEmail(EmailModel email)
+        public async void LoadEmail(EmailModel email, GmailService service)
         {
+            _currentEmail = email;
+            _gmailService = service;
+
             NameForm.Text = email.FromName ?? "";
             EmailForm.Text = email.FromEmail ?? "";
             guna2HtmlLabel1.Text = email.Subject ?? "(no subject)";
@@ -302,6 +360,30 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
             }
 
             await GenerateAiFieldsAsync(email);
+
+            // Auto-load saved profile into signature box
+            string profilePath = Path.Combine(Application.StartupPath, "profile.json");
+            if (File.Exists(profilePath))
+            {
+                try
+                {
+                    var json = File.ReadAllText(profilePath);
+                    var data = System.Text.Json.JsonSerializer.Deserialize<ProfileForm.ProfileData>(json);
+                    if (data != null)
+                    {
+                        string preview =
+                            $"{data.ComplementaryClose}\r\n\r\n" +
+                            $"{data.FullName}\r\n" +
+                            $"{data.Title}\r\n" +
+                            $"{data.Department}";
+
+                        Guna2TextBox1.Text = preview
+                            .Replace("\r\n\r\n", " • ")
+                            .Replace("\r\n", " • ");
+                    }
+                }
+                catch { }
+            }
         }
         private static string InjectDarkModeStyles(string html)
         {
