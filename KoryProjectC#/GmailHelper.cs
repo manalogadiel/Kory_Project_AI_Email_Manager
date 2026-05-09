@@ -340,6 +340,54 @@ namespace KoryProjectC_
             return "NON-ACADEMIC";
         }
 
+        public static async Task SendReplyAsync(
+            GmailService service,
+            EmailModel originalEmail,
+            string subject,
+            string salutation,
+            string body,
+            string signature)
+        {
+            string fullBody = $"{salutation}\r\n\r\n{body}\r\n\r\n{signature}";
+
+            string rawMessage = BuildRawReply(
+                originalEmail.FromEmail,
+                subject,
+                fullBody,
+                originalEmail.Id,
+                originalEmail.ThreadId
+            );
+
+            var message = new Google.Apis.Gmail.v1.Data.Message
+            {
+                Raw = rawMessage,
+                ThreadId = originalEmail.ThreadId
+            };
+
+            await service.Users.Messages.Send(message, "me").ExecuteAsync();
+        }
+        private static string BuildRawReply(
+            string to,
+            string subject,
+            string body,
+            string inReplyToId,
+            string threadId)
+        {
+            string mime =
+                $"To: {to}\r\n" +
+                $"Subject: {subject}\r\n" +
+                $"In-Reply-To: {inReplyToId}\r\n" +
+                $"References: {inReplyToId}\r\n" +
+                $"Content-Type: text/plain; charset=utf-8\r\n" +
+                $"\r\n" +
+                $"{body}";
+
+            return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(mime))
+                .Replace('+', '-')
+                .Replace('/', '_')
+                .TrimEnd('=');
+        }
+
         private static bool Has(string text, params string[] kw)
             => kw.Any(k => text.Contains(k, StringComparison.OrdinalIgnoreCase));
     }
