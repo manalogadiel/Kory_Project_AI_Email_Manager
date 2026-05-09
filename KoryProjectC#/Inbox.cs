@@ -90,7 +90,7 @@ namespace KoryProjectC_
             {
                 if (ctrl is EmailContent existing)
                 {
-                    existing.LoadEmails(emails, category);
+                    existing.LoadEmails(emails, category, AppState.GmailService!);
                     existing.BringToFront();
                     return;
                 }
@@ -100,7 +100,7 @@ namespace KoryProjectC_
             var view = new EmailContent();
             view.Dock = DockStyle.Fill;
             parent.Controls.Add(view);
-            view.LoadEmails(emails, category);
+            view.LoadEmails(emails, category, AppState.GmailService!);
             view.BringToFront();
         }
 

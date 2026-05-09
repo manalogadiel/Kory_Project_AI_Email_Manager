@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Google.Apis.Gmail.v1;
+using System.Windows.Forms;
 
 namespace KoryProjectC_
 {
@@ -16,7 +17,7 @@ namespace KoryProjectC_
         }
 
         /// <summary>Load real emails for the selected category.</summary>
-        public void LoadEmails(List<EmailModel> emails, string category)
+        public void LoadEmails(List<EmailModel> emails, string category, GmailService service)
         {
             guna2HtmlLabel1.Text = category;
             guna2HtmlLabel2.Text =
@@ -28,10 +29,10 @@ namespace KoryProjectC_
             {
                 var card = new EmailRow();
                 card.Width = ECPanel.Width - 25;
-                card.SetEmail(email);
+                card.SetEmail(email, service);  // pass service here
                 ECPanel.Controls.Add(card);
             }
-        }
+        }        
 
         /// <summary>Legacy method kept for compatibility.</summary>
         public void AddCards(int count = 3)
