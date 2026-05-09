@@ -62,7 +62,6 @@ namespace KoryProjectC_
             string name = await nameTask; // ← new
             AppState.UserName = name;                                    // ADD THIS
             AppState.UserEmail = (await _gmailService.Users.GetProfile("me").ExecuteAsync()).EmailAddress ?? ""; // ADD THIS
-            string name = await nameTask;
             var pic = await picTask;
             if (pic != null)
             {

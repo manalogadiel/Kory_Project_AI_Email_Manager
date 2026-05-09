@@ -23,7 +23,7 @@ namespace KoryProjectC_
         private static UserCredential? _credential;
 
         // Make sure this scope is included
-        
+
 
         public static async Task<GmailService> AuthenticateAsync()
         {
@@ -122,8 +122,8 @@ namespace KoryProjectC_
         /// </summary>
         public static async Task<int> GetSentTodayCountAsync(GmailService service)
         {
-            // Use unix timestamp instead of date string to avoid timezone issues
-            var startOfDay = new DateTimeOffset(DateTime.Today, TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
+            var startOfDay = new DateTimeOffset(DateTime.Today,
+                TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
             long unixTimestamp = startOfDay.ToUnixTimeSeconds();
 
             var req = service.Users.Messages.List("me");
@@ -231,53 +231,16 @@ namespace KoryProjectC_
                 sentReq.LabelIds = "SENT";
                 sentReq.MaxResults = 1;
                 var sentResp = await sentReq.ExecuteAsync();
-            if (_credential == null)
-            {
-                var profile = await service.Users.GetProfile("me").ExecuteAsync();
-                return (profile.EmailAddress ?? "there").Split('@')[0];
-            }
 
-            try
-            {
-                await _credential.RefreshTokenAsync(CancellationToken.None);
-                string token = _credential.Token.AccessToken;
-
-                using var http = new HttpClient();
-                http.DefaultRequestHeaders.Authorization =
-                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-                string json = await http.GetStringAsync(
-                    "https://www.googleapis.com/oauth2/v1/userinfo");
-
-                // Try first name specifically, then fall back to full name
-                var givenName = Regex.Match(json, @"""given_name""\s*:\s*""(.+?)""");
-                if (givenName.Success) return givenName.Groups[1].Value;
-
-                var fullName = Regex.Match(json, @"""name""\s*:\s*""(.+?)""");
-                if (fullName.Success) return fullName.Groups[1].Value.Split(' ')[0];
-            }
-            catch { }
-
-            // Last resort fallback
-            var prof = await service.Users.GetProfile("me").ExecuteAsync();
-            return (prof.EmailAddress ?? "there").Split('@')[0];
-        }
-
-        public static async Task<List<EmailModel>> FetchSentEmailsAsync(
-    GmailService service, int maxResults = 50)
-        {
-            var startOfDay = new DateTimeOffset(DateTime.Today, TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
-            long unixTimestamp = startOfDay.ToUnixTimeSeconds();
-
-            var listRequest = service.Users.Messages.List("me");
-            listRequest.MaxResults = maxResults;
-            listRequest.LabelIds = "SENT";
-            listRequest.Q = $"after:{unixTimestamp}";
+                if (sentResp.Messages?.Any() == true)
+                {
+                    var getReq = service.Users.Messages.Get("me", sentResp.Messages[0].Id);
+                    getReq.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Metadata;
+                    getReq.MetadataHeaders = new[] { "From" };
+                    var msg = await getReq.ExecuteAsync();
 
                     var from = msg.Payload?.Headers?
                         .FirstOrDefault(h => h.Name?.Equals("From", StringComparison.OrdinalIgnoreCase) == true);
-            var listResponse = await listRequest.ExecuteAsync();
-            if (listResponse.Messages == null) return new List<EmailModel>();
 
                     if (from?.Value != null)
                     {
@@ -289,6 +252,26 @@ namespace KoryProjectC_
                 }
             }
             catch { }
+
+            var profile = await service.Users.GetProfile("me").ExecuteAsync();
+            return (profile.EmailAddress ?? "there").Split('@')[0];
+        }
+
+        public static async Task<List<EmailModel>> FetchSentEmailsAsync(
+    GmailService service, int maxResults = 50)
+        {
+            var startOfDay = new DateTimeOffset(DateTime.Today,
+                TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
+            long unixTimestamp = startOfDay.ToUnixTimeSeconds();
+
+            var listRequest = service.Users.Messages.List("me");
+            listRequest.MaxResults = maxResults;
+            listRequest.LabelIds = "SENT";
+            listRequest.Q = $"after:{unixTimestamp}";
+
+            var listResponse = await listRequest.ExecuteAsync();
+            if (listResponse.Messages == null) return new List<EmailModel>();
+
             var tasks = listResponse.Messages.Select(async msg =>
             {
                 var req = service.Users.Messages.Get("me", msg.Id);
@@ -297,12 +280,11 @@ namespace KoryProjectC_
                 return ParseEmail(message);
             });
 
-            var profile = await service.Users.GetProfile("me").ExecuteAsync();
-            return (profile.EmailAddress ?? "there").Split('@')[0];
-        }        // ─────────────────────────────────────────────────────────────────────────
             var results = await Task.WhenAll(tasks);
             return results.ToList();
         }
+
+        // ─────────────────────────────────────────────────────────────────────────
 
         // ─────────────────────────────────────────────────────────────────────────
         //  PRIVATE HELPERS
