@@ -171,5 +171,10 @@ namespace KoryProjectC_
         {
 
         }
+
+        private void catNon_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

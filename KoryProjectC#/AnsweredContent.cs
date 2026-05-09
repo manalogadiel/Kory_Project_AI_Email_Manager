@@ -27,7 +27,6 @@ namespace KoryProjectC_
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
             home.ShowAnswered();
-            this.Close();
         }
 
         public async Task LoadAsync(EmailModel sentEmail, GmailService service)
@@ -98,9 +97,36 @@ namespace KoryProjectC_
 
         private static async Task InitWebViewAsync(WebView2 wv, string html, Color bgColor)
         {
-            await wv.EnsureCoreWebView2Async(null);
-            wv.DefaultBackgroundColor = bgColor;
-            wv.NavigateToString(html);
+            try
+            {
+                // Wait until the control has a valid window handle
+                int attempts = 0;
+                while (!wv.IsHandleCreated && attempts < 20)
+                {
+                    await Task.Delay(100);
+                    attempts++;
+                }
+
+                if (wv.IsDisposed) return;
+
+                await wv.EnsureCoreWebView2Async(null);
+
+                wv.DefaultBackgroundColor = bgColor;
+                wv.NavigateToString(html);
+            }
+            catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException
+                                     || ex is System.InvalidOperationException)
+            {
+                await Task.Delay(500);
+                try
+                {
+                    if (wv.IsDisposed) return;
+                    await wv.EnsureCoreWebView2Async(null);
+                    wv.DefaultBackgroundColor = bgColor;
+                    wv.NavigateToString(html);
+                }
+                catch { }
+            }
         }
 
         private static string InjectDarkModeStyles(string html, string bgHex)
