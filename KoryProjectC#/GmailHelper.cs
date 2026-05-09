@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
+using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.Text.RegularExpressions;
@@ -51,7 +52,6 @@ namespace KoryProjectC_
             var listResponse = await listRequest.ExecuteAsync();
             if (listResponse.Messages == null) return new List<EmailModel>();
 
-            // Fetch all in parallel
             var tasks = listResponse.Messages.Select(async msg =>
             {
                 var req = service.Users.Messages.Get("me", msg.Id);
@@ -64,6 +64,110 @@ namespace KoryProjectC_
             return results.ToList();
         }
 
+        // ── NEW: Count emails sent TODAY ──────────────────────────────────────────
+        /// <summary>
+        /// Returns the number of emails the user has sent today.
+        /// Feeds the "Answered Today" stat card.
+        /// </summary>
+        public static async Task<int> GetSentTodayCountAsync(GmailService service)
+        {
+            string today = DateTime.Today.ToString("yyyy/MM/dd");
+
+            var req = service.Users.Messages.List("me");
+            req.LabelIds = "SENT";
+            req.Q = $"after:{today}";
+            req.MaxResults = 200;
+
+            var resp = await req.ExecuteAsync();
+            if (resp.Messages == null) return 0;
+
+            // Fetch metadata only (fast) and check for In-Reply-To header
+            // — only actual replies to received emails will have this header
+            var tasks = resp.Messages.Select(async msg =>
+            {
+                var getReq = service.Users.Messages.Get("me", msg.Id);
+                getReq.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Metadata;
+                getReq.MetadataHeaders = new[] { "In-Reply-To" };
+                var message = await getReq.ExecuteAsync();
+
+                return message.Payload?.Headers?.Any(h =>
+                    h.Name?.Equals("In-Reply-To", StringComparison.OrdinalIgnoreCase) == true
+                    && !string.IsNullOrEmpty(h.Value)) ?? false;
+            });
+
+            var results = await Task.WhenAll(tasks);
+            return results.Count(isReply => isReply);
+        }
+
+        // ── NEW: Average response time across recent threads ──────────────────────
+        /// <summary>
+        /// Samples the last <paramref name="sampleSize"/> sent messages, finds each
+        /// thread's first received message, and returns the mean response time in
+        /// minutes.  Feeds the "Avg. Response" stat card.
+        /// Returns 0 if there is not enough data.
+        /// </summary>
+        public static async Task<double> GetAvgResponseMinutesAsync(
+            GmailService service, int sampleSize = 20)
+        {
+            var sentReq = service.Users.Messages.List("me");
+            sentReq.LabelIds = "SENT";
+            sentReq.MaxResults = sampleSize;
+            var sentResp = await sentReq.ExecuteAsync();
+
+            if (sentResp.Messages == null || !sentResp.Messages.Any())
+                return 0;
+
+            var threadTasks = sentResp.Messages
+                .Take(sampleSize)
+                .Select(async msg =>
+                {
+                    try
+                    {
+                        var getReq = service.Users.Messages.Get("me", msg.Id);
+                        getReq.Format = UsersResource.MessagesResource
+                                            .GetRequest.FormatEnum.Minimal;
+                        var sentMsg = await getReq.ExecuteAsync();
+
+                        if (sentMsg.ThreadId == null) return (double?)null;
+
+                        var threadReq = service.Users.Threads.Get("me", sentMsg.ThreadId);
+                        threadReq.Format = UsersResource.ThreadsResource
+                                               .GetRequest.FormatEnum.Minimal;
+                        var thread = await threadReq.ExecuteAsync();
+
+                        if (thread.Messages == null || thread.Messages.Count < 2)
+                            return (double?)null;
+
+                        var first = thread.Messages.First();
+                        var sent = thread.Messages.FirstOrDefault(m => m.Id == sentMsg.Id);
+
+                        if (first.InternalDate == null || sent?.InternalDate == null)
+                            return (double?)null;
+
+                        double minutes =
+                            (sent.InternalDate.Value - first.InternalDate.Value) / 60_000.0;
+
+                        // Ignore negative or unrealistically long times (> 1 week)
+                        if (minutes < 0 || minutes > 10_080) return (double?)null;
+
+                        return (double?)minutes;
+                    }
+                    catch
+                    {
+                        return (double?)null;
+                    }
+                });
+
+            var results = await Task.WhenAll(threadTasks);
+            var validTimes = results.OfType<double>().ToList();
+
+            return validTimes.Count > 0 ? validTimes.Average() : 0;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────
+        //  EXISTING PRIVATE HELPERS (unchanged)
+        // ─────────────────────────────────────────────────────────────────────────
+
         private static EmailModel ParseEmail(Google.Apis.Gmail.v1.Data.Message message)
         {
             var email = new EmailModel
@@ -74,7 +178,8 @@ namespace KoryProjectC_
                 IsRead = !(message.LabelIds?.Contains("UNREAD") ?? false)
             };
 
-            foreach (var h in message.Payload?.Headers ?? Enumerable.Empty<Google.Apis.Gmail.v1.Data.MessagePartHeader>())
+            foreach (var h in message.Payload?.Headers
+                              ?? Enumerable.Empty<Google.Apis.Gmail.v1.Data.MessagePartHeader>())
             {
                 switch (h.Name?.ToLower())
                 {
@@ -143,11 +248,10 @@ namespace KoryProjectC_
         {
             if (string.IsNullOrEmpty(raw)) return "";
 
-            // Gmail sends RFC 2822 dates like "Thu, 30 Apr 2026 01:03:17 +0000 (UTC)"
-            // Strip the timezone label in parentheses so TryParse can handle it
             var cleaned = Regex.Replace(raw, @"\s*\(.*?\)\s*$", "").Trim();
 
-            if (!DateTime.TryParse(cleaned, null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var dt))
+            if (!DateTime.TryParse(cleaned, null,
+                    System.Globalization.DateTimeStyles.AdjustToUniversal, out var dt))
                 return raw;
 
             dt = dt.ToLocalTime();
@@ -155,10 +259,10 @@ namespace KoryProjectC_
             var diff = now - dt;
 
             if (diff.TotalDays < 1 && dt.Date == now.Date)
-                return dt.ToString("h:mm tt");         // 2:42 PM
+                return dt.ToString("h:mm tt");
 
             if (diff.TotalDays < 7)
-                return dt.ToString("ddd, h:mm tt");    // Mon, 12:12 AM
+                return dt.ToString("ddd, h:mm tt");
 
             if (diff.TotalDays < 14)
                 return "A week ago";
@@ -167,11 +271,10 @@ namespace KoryProjectC_
                 return "A month ago";
 
             if (diff.TotalDays < 365)
-                return dt.ToString("MMM d");           // Apr 30
+                return dt.ToString("MMM d");
 
-            return dt.ToString("MMM d, yyyy");         // Apr 30, 2025
+            return dt.ToString("MMM d, yyyy");
         }
-
 
         public static string CategorizeEmail(string subject, string body)
         {
