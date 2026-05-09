@@ -194,7 +194,7 @@ namespace KoryProjectC_
                 return "ACADEMIC CONCERNS";
 
             if (Has(text, "requirement", "submit", "submission", "deadline",
-                          "clearance", "document", "form", "certificate"))
+                          "clearance", "document", "form", "certificate", "assignment", "project"))
                 return "REQUIREMENTS";
 
             return "NON-ACADEMIC";

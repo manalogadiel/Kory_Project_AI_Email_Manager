@@ -82,7 +82,7 @@
             btnAnalyze = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2vScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
             txtInput = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtSubject = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             Guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -94,7 +94,7 @@
             ImproveBtn = new Guna.UI2.WinForms.Guna2GradientButton();
             KoryReplyBtn = new Guna.UI2.WinForms.Guna2GradientButton();
             SendBtn = new Guna.UI2.WinForms.Guna2GradientButton();
-            Guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtSalutation = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             panelEmailBody = new Guna.UI2.WinForms.Guna2Panel();
             EmailContent = new Microsoft.Web.WebView2.WinForms.WebView2();
@@ -233,7 +233,7 @@
             Guna2GradientPanel1.BackColor = Color.FromArgb(15, 16, 32);
             Guna2GradientPanel1.Controls.Add(btnAnalyze);
             Guna2GradientPanel1.Controls.Add(guna2vScrollBar2);
-            Guna2GradientPanel1.Controls.Add(guna2TextBox3);
+            Guna2GradientPanel1.Controls.Add(txtSubject);
             Guna2GradientPanel1.Controls.Add(guna2GradientButton1);
             Guna2GradientPanel1.Controls.Add(Guna2TextBox6);
             Guna2GradientPanel1.Controls.Add(Guna2TextBox5);
@@ -246,7 +246,7 @@
             Guna2GradientPanel1.Controls.Add(KoryReplyBtn);
             Guna2GradientPanel1.Controls.Add(SendBtn);
             Guna2GradientPanel1.Controls.Add(txtInput);
-            Guna2GradientPanel1.Controls.Add(Guna2TextBox2);
+            Guna2GradientPanel1.Controls.Add(txtSalutation);
             Guna2GradientPanel1.Controls.Add(Guna2TextBox1);
             Guna2GradientPanel1.CustomizableEdges = customizableEdges39;
             Guna2GradientPanel1.Location = new Point(770, 0);
@@ -318,33 +318,32 @@
             txtInput.TabIndex = 2;
             txtInput.TextChanged += ComposingWriteForm_TextChanged;
             // 
-            // guna2TextBox3
+            // txtSubject
             // 
-            guna2TextBox3.BackColor = Color.FromArgb(15, 16, 32);
-            guna2TextBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            guna2TextBox3.BorderColor = Color.FromArgb(39, 40, 64);
-            guna2TextBox3.BorderRadius = 10;
-            guna2TextBox3.CustomizableEdges = customizableEdges14;
-            guna2TextBox3.DefaultText = "";
-            guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(39, 40, 64);
-            guna2TextBox3.DisabledState.FillColor = Color.FromArgb(20, 22, 39);
-            guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.Enabled = false;
-            guna2TextBox3.FillColor = Color.FromArgb(20, 22, 39);
-            guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Font = new Font("Segoe UI", 9F);
-            guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Location = new Point(35, 109);
-            guna2TextBox3.Margin = new Padding(3, 5, 3, 5);
-            guna2TextBox3.Name = "guna2TextBox3";
-            guna2TextBox3.PlaceholderForeColor = Color.Green;
-            guna2TextBox3.PlaceholderText = "";
-            guna2TextBox3.ReadOnly = true;
-            guna2TextBox3.SelectedText = "";
-            guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            guna2TextBox3.Size = new Size(316, 83);
-            guna2TextBox3.TabIndex = 16;
+            txtSubject.BackColor = Color.FromArgb(15, 16, 32);
+            txtSubject.BackgroundImageLayout = ImageLayout.Stretch;
+            txtSubject.BorderColor = Color.FromArgb(39, 40, 64);
+            txtSubject.BorderRadius = 10;
+            txtSubject.CustomizableEdges = customizableEdges14;
+            txtSubject.DefaultText = "";
+            txtSubject.DisabledState.BorderColor = Color.FromArgb(39, 40, 64);
+            txtSubject.DisabledState.FillColor = Color.FromArgb(20, 22, 39);
+            txtSubject.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSubject.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSubject.FillColor = Color.FromArgb(20, 22, 39);
+            txtSubject.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSubject.Font = new Font("Segoe UI", 9F);
+            txtSubject.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSubject.Location = new Point(35, 109);
+            txtSubject.Margin = new Padding(3, 5, 3, 5);
+            txtSubject.Multiline = true;
+            txtSubject.Name = "txtSubject";
+            txtSubject.PlaceholderForeColor = Color.Green;
+            txtSubject.PlaceholderText = "";
+            txtSubject.SelectedText = "";
+            txtSubject.ShadowDecoration.CustomizableEdges = customizableEdges15;
+            txtSubject.Size = new Size(316, 83);
+            txtSubject.TabIndex = 16;
             // 
             // guna2GradientButton1
             // 
@@ -362,13 +361,13 @@
             guna2GradientButton1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2GradientButton1.ForeColor = Color.FromArgb(107, 92, 231);
             guna2GradientButton1.Image = Properties.Resources.editIcon;
-            guna2GradientButton1.Location = new Point(543, 749);
+            guna2GradientButton1.Location = new Point(586, 749);
             guna2GradientButton1.Margin = new Padding(3, 4, 3, 4);
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            guna2GradientButton1.Size = new Size(193, 30);
+            guna2GradientButton1.Size = new Size(150, 30);
             guna2GradientButton1.TabIndex = 15;
-            guna2GradientButton1.Text = "Edit Profile and Signature";
+            guna2GradientButton1.Text = "Edit Profile ";
             guna2GradientButton1.Click += guna2GradientButton1_Click;
             // 
             // Guna2TextBox6
@@ -450,13 +449,15 @@
             progressProf.Margin = new Padding(3, 4, 3, 4);
             progressProf.Minimum = 0;
             progressProf.Name = "progressProf";
+            progressProf.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.Solid;
             progressProf.ProgressColor = Color.FromArgb(255, 128, 0);
             progressProf.ProgressColor2 = Color.FromArgb(255, 128, 0);
             progressProf.ProgressThickness = 5;
             progressProf.ShadowDecoration.CustomizableEdges = customizableEdges24;
             progressProf.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            progressProf.ShowText = true;
             progressProf.Size = new Size(63, 63);
-            progressProf.TabIndex = 10;
+            progressProf.TabIndex = 8;
             progressProf.Text = "Guna2CircleProgressBar3";
             // 
             // progressTone
@@ -469,11 +470,13 @@
             progressTone.Margin = new Padding(3, 4, 3, 4);
             progressTone.Minimum = 0;
             progressTone.Name = "progressTone";
+            progressTone.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.Solid;
             progressTone.ProgressColor = Color.Fuchsia;
             progressTone.ProgressColor2 = Color.Fuchsia;
             progressTone.ProgressThickness = 5;
             progressTone.ShadowDecoration.CustomizableEdges = customizableEdges25;
             progressTone.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            progressTone.ShowText = true;
             progressTone.Size = new Size(63, 63);
             progressTone.TabIndex = 8;
             progressTone.Text = "Guna2CircleProgressBar2";
@@ -484,13 +487,16 @@
             progressClarity.FillThickness = 5;
             progressClarity.Font = new Font("Segoe UI", 12F);
             progressClarity.ForeColor = Color.White;
+            progressClarity.InnerColor = Color.Transparent;
             progressClarity.Location = new Point(508, 129);
             progressClarity.Margin = new Padding(3, 4, 3, 4);
             progressClarity.Minimum = 0;
             progressClarity.Name = "progressClarity";
+            progressClarity.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.Solid;
             progressClarity.ProgressThickness = 5;
             progressClarity.ShadowDecoration.CustomizableEdges = customizableEdges26;
             progressClarity.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            progressClarity.ShowText = true;
             progressClarity.Size = new Size(63, 63);
             progressClarity.TabIndex = 8;
             progressClarity.Text = "Guna2CircleProgressBar1";
@@ -589,29 +595,29 @@
             SendBtn.TabIndex = 4;
             SendBtn.Text = "Send";
             // 
-            // Guna2TextBox2
+            // txtSalutation
             // 
-            Guna2TextBox2.BorderColor = Color.FromArgb(33, 36, 97);
-            Guna2TextBox2.BorderRadius = 10;
-            Guna2TextBox2.CustomizableEdges = customizableEdges35;
-            Guna2TextBox2.DefaultText = "";
-            Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            Guna2TextBox2.FillColor = Color.FromArgb(24, 23, 53);
-            Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Guna2TextBox2.Font = new Font("Segoe UI", 9F);
-            Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Guna2TextBox2.Location = new Point(36, 202);
-            Guna2TextBox2.Margin = new Padding(3, 5, 3, 5);
-            Guna2TextBox2.Name = "Guna2TextBox2";
-            Guna2TextBox2.PlaceholderText = "";
-            Guna2TextBox2.SelectedText = "";
-            Guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            Guna2TextBox2.Size = new Size(201, 41);
-            Guna2TextBox2.TabIndex = 1;
-            Guna2TextBox2.TextChanged += Guna2TextBox2_TextChanged;
+            txtSalutation.BorderColor = Color.FromArgb(33, 36, 97);
+            txtSalutation.BorderRadius = 10;
+            txtSalutation.CustomizableEdges = customizableEdges35;
+            txtSalutation.DefaultText = "";
+            txtSalutation.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSalutation.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSalutation.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSalutation.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSalutation.FillColor = Color.FromArgb(24, 23, 53);
+            txtSalutation.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSalutation.Font = new Font("Segoe UI", 9F);
+            txtSalutation.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSalutation.Location = new Point(36, 202);
+            txtSalutation.Margin = new Padding(3, 5, 3, 5);
+            txtSalutation.Name = "txtSalutation";
+            txtSalutation.PlaceholderText = "";
+            txtSalutation.SelectedText = "";
+            txtSalutation.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            txtSalutation.Size = new Size(201, 41);
+            txtSalutation.TabIndex = 1;
+            txtSalutation.TextChanged += Guna2TextBox2_TextChanged;
             // 
             // Guna2TextBox1
             // 
@@ -638,7 +644,7 @@
             Guna2TextBox1.ReadOnly = true;
             Guna2TextBox1.SelectedText = "";
             Guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            Guna2TextBox1.Size = new Size(491, 76);
+            Guna2TextBox1.Size = new Size(535, 76);
             Guna2TextBox1.TabIndex = 0;
             // 
             // panelEmailBody
@@ -673,8 +679,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 15, 20);
             ClientSize = new Size(1522, 913);
-            Controls.Add(panelEmailBody);
             Controls.Add(Guna2Panel1);
+            Controls.Add(panelEmailBody);
             Controls.Add(Guna2Panel2);
             Controls.Add(Guna2GradientPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -710,7 +716,7 @@
         internal Guna.UI2.WinForms.Guna2GradientButton ImproveBtn;
         internal Guna.UI2.WinForms.Guna2GradientButton KoryReplyBtn;
         internal Guna.UI2.WinForms.Guna2GradientButton SendBtn;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox2;
+        internal Guna.UI2.WinForms.Guna2TextBox txtSalutation;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         internal Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
@@ -719,7 +725,7 @@
         private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar2;
         private Microsoft.Web.WebView2.WinForms.WebView2 EmailContent;
         internal Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
-        internal Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        internal Guna.UI2.WinForms.Guna2TextBox txtSubject;
         internal Guna.UI2.WinForms.Guna2GradientButton btnAnalyze;
     }
 }

@@ -15,17 +15,43 @@ namespace KoryProjectC_
     {
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly string GeminiApiKey = 
-        File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyAWAYzJodqFJZUc1sVfNFmwDIdye3MlY2Y";  
+        File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyACJA_l8JJ9gXJsva7nBTiNH6x1rEFAdhI";  
         
 
         public Compose()
         {
             InitializeComponent();
             btnAnalyze.Click += async (s, e) => await AnalyzeText();
-            
+            Guna2TextBox1.Click += (s, e) =>
+            {
+                if (!string.IsNullOrWhiteSpace(Guna2TextBox1.Text))
+                {
+                    txtInput.Text = Guna2TextBox1.Text;
+                }
+            };
+
             this.TopLevel = false;
             this.FormBorderStyle = FormBorderStyle.None;
-            
+
+            // Hook the Edit Profile button
+            guna2GradientButton1.Click -= guna2GradientButton1_Click; // remove old empty handler
+            guna2GradientButton1.Click += (s, e) =>
+            {
+                var profileForm = new ProfileForm();
+                var composeScreen = this.RectangleToScreen(this.ClientRectangle);
+                profileForm.Location = new Point(
+                    composeScreen.Left + (composeScreen.Width - profileForm.Width) / 2,
+                    composeScreen.Top + (composeScreen.Height - profileForm.Height) / 2
+                );
+
+                profileForm.OnSaved += (sender, args) =>
+                {
+                    Guna2TextBox1.Text = profileForm.txtPreview.Text;
+                };
+
+                profileForm.ShowDialog(this.FindForm());
+            };
+
 
             guna2Button1.Click += (_, _) =>
             {
@@ -166,7 +192,7 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
             bar.Value = value;
 
             // Show percentage inside the circle (e.g., "85%")
-            bar.Text = $"{value}%";
+            bar.Text = $"{value}";
 
             // Change color based on value
             if (value > 80)
@@ -257,6 +283,9 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
             guna2HtmlLabel1.Text = email.Subject ?? "(no subject)";
             guna2Button2.Text = email.Date ?? "";
 
+            string firstName = (email.FromName ?? "").Split(' ')[0];
+            txtSalutation.Text = $"Dear {firstName},";
+
             string html = !string.IsNullOrEmpty(email.BodyHtml)
                 ? InjectDarkModeStyles(email.BodyHtml)
                 : BuildPlainHtml(email.BodyText ?? "");
@@ -271,11 +300,9 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
                 System.Diagnostics.Debug.WriteLine($"WebView2 failed: {ex.Message}");
                 EmailContent.NavigateToString(BuildPlainHtml(email.BodyText ?? ""));
             }
-        }
 
-        /// <summary>
-        /// Injects CSS into an HTML email to force light text on a dark background.
-        /// </summary>
+            await GenerateAiFieldsAsync(email);
+        }
         private static string InjectDarkModeStyles(string html)
         {
             const string style = @"
@@ -344,9 +371,87 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
 </body></html>";
         }
 
+        private async Task GenerateAiFieldsAsync(EmailModel email)
+        {
+            string[] models = { "gemini-2.5-flash", "gemini-2.0-flash" };
 
+            string emailContext = $@"
+Sender: {email.FromName} <{email.FromEmail}>
+Subject: {email.Subject}
+Body:
+{(string.IsNullOrEmpty(email.BodyText) ? "(HTML email — no plain text)" : email.BodyText)}
+".Trim();
 
+            txtSubject.PlaceholderText = "Generating subject...";
+
+            string prompt = $@"You are an academic email assistant named KORY. Given the email below, generate only a reply subject line.
+
+Return ONLY a JSON object with exactly this key:
+- ""subject"": a short reply subject line (e.g. ""Re: Grade Inquiry for CS1101"")
+
+Email:
+{emailContext}
+
+Output format: {{""subject"": ""...""}}";
+
+            foreach (string model in models)
+            {
+                try
+                {
+                    string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GeminiApiKey}";
+
+                    var requestBody = new
+                    {
+                        contents = new[]
+                        {
+                    new { parts = new[] { new { text = prompt } } }
+                },
+                        generationConfig = new { temperature = 0.4 }
+                    };
+
+                    string jsonBody = JsonSerializer.Serialize(requestBody);
+                    var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+                    HttpResponseMessage response = await _httpClient.PostAsync(modelUrl, content, cts.Token);
+
+                    if (!response.IsSuccessStatusCode) continue;
+
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    using JsonDocument doc = JsonDocument.Parse(responseBody);
+                    string generatedText = doc.RootElement
+                        .GetProperty("candidates")[0]
+                        .GetProperty("content")
+                        .GetProperty("parts")[0]
+                        .GetProperty("text")
+                        .GetString() ?? "";
+
+                    int start = generatedText.IndexOf('{');
+                    int end = generatedText.LastIndexOf('}');
+                    if (start < 0 || end < 0) continue;
+                    generatedText = generatedText.Substring(start, end - start + 1);
+
+                    using JsonDocument result = JsonDocument.Parse(generatedText);
+                    string subject = result.RootElement.TryGetProperty("subject", out var s) ? s.GetString() ?? "" : "";
+
+                    this.Invoke(() =>
+                    {
+                        txtSubject.Text = subject;
+                        txtSubject.PlaceholderText = "";
+                    });
+
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"AI generation failed with {model}: {ex.Message}");
+                }
+            }
+
+            this.Invoke(() => txtSubject.PlaceholderText = "Could not generate subject");
+        }
     }
+
 }
 
 
