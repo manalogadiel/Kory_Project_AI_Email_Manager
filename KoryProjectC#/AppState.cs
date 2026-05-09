@@ -4,6 +4,7 @@ namespace KoryProjectC_
 {
     public static class AppState
     {
+        public static string UserName { get; set; } = "";
         public static GmailService? GmailService { get; set; }
         public static List<EmailModel> Emails { get; set; } = new();
         public static string UserEmail { get; set; } = "";

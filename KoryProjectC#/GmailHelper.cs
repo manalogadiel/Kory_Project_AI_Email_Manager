@@ -16,10 +16,14 @@ namespace KoryProjectC_
             GmailService.Scope.GmailReadonly,
             GmailService.Scope.GmailSend,
             "https://www.googleapis.com/auth/userinfo.profile"
+
         };
 
         // ── Stored credential so GetProfilePictureAsync can use the token ────────
         private static UserCredential? _credential;
+
+        // Make sure this scope is included
+        
 
         public static async Task<GmailService> AuthenticateAsync()
         {
@@ -198,6 +202,35 @@ namespace KoryProjectC_
 
         public static async Task<string> GetUserNameAsync(GmailService service)
         {
+            // 1. Use stored credential to call userinfo endpoint (same as GetProfilePictureAsync)
+            if (_credential != null)
+            {
+                try
+                {
+                    await _credential.RefreshTokenAsync(CancellationToken.None);
+                    string token = _credential.Token.AccessToken;
+
+                    using var http = new HttpClient();
+                    http.DefaultRequestHeaders.Authorization =
+                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                    string json = await http.GetStringAsync(
+                        "https://www.googleapis.com/oauth2/v1/userinfo");
+
+                    var match = Regex.Match(json, @"""given_name""\s*:\s*""(.+?)""");
+                    if (match.Success)
+                        return match.Groups[1].Value; // → "Gadiel Gospel"
+                }
+                catch { }
+            }
+
+            // 2. Fallback: display name from a sent email's From header
+            try
+            {
+                var sentReq = service.Users.Messages.List("me");
+                sentReq.LabelIds = "SENT";
+                sentReq.MaxResults = 1;
+                var sentResp = await sentReq.ExecuteAsync();
             if (_credential == null)
             {
                 var profile = await service.Users.GetProfile("me").ExecuteAsync();
@@ -241,9 +274,21 @@ namespace KoryProjectC_
             listRequest.LabelIds = "SENT";
             listRequest.Q = $"after:{unixTimestamp}";
 
+                    var from = msg.Payload?.Headers?
+                        .FirstOrDefault(h => h.Name?.Equals("From", StringComparison.OrdinalIgnoreCase) == true);
             var listResponse = await listRequest.ExecuteAsync();
             if (listResponse.Messages == null) return new List<EmailModel>();
 
+                    if (from?.Value != null)
+                    {
+                        // "John Doe <john@gmail.com>" → returns "John Doe" (full name)
+                        var match = Regex.Match(from.Value ?? "", @"^""?(.+?)""?\s*<");
+                        if (match.Success)
+                            return match.Groups[1].Value.Trim(); // removed .Split(' ')[0]
+                    }
+                }
+            }
+            catch { }
             var tasks = listResponse.Messages.Select(async msg =>
             {
                 var req = service.Users.Messages.Get("me", msg.Id);
@@ -252,6 +297,9 @@ namespace KoryProjectC_
                 return ParseEmail(message);
             });
 
+            var profile = await service.Users.GetProfile("me").ExecuteAsync();
+            return (profile.EmailAddress ?? "there").Split('@')[0];
+        }        // ─────────────────────────────────────────────────────────────────────────
             var results = await Task.WhenAll(tasks);
             return results.ToList();
         }
@@ -428,8 +476,28 @@ namespace KoryProjectC_
             string inReplyToId,
             string threadId)
         {
+            string fromEmail = AppState.UserEmail;
+            string fromName = AppState.UserEmail; // fallback
+
+            // Read full name from saved profile
+            string profilePath = Path.Combine(Application.StartupPath, "profile.json");
+            if (File.Exists(profilePath))
+            {
+                try
+                {
+                    var json = File.ReadAllText(profilePath);
+                    using var doc = System.Text.Json.JsonDocument.Parse(json);
+                    var root = doc.RootElement;
+                    if (root.TryGetProperty("FullName", out var fn) &&
+                        !string.IsNullOrWhiteSpace(fn.GetString()))
+                        fromName = fn.GetString()!;
+                }
+                catch { }
+            }
+
             string mime =
                 $"To: {to}\r\n" +
+                $"From: {fromName} <{fromEmail}>\r\n" +
                 $"Subject: {subject}\r\n" +
                 $"In-Reply-To: {inReplyToId}\r\n" +
                 $"References: {inReplyToId}\r\n" +
@@ -442,7 +510,6 @@ namespace KoryProjectC_
                 .Replace('/', '_')
                 .TrimEnd('=');
         }
-
         private static bool Has(string text, params string[] kw)
             => kw.Any(k => text.Contains(k, StringComparison.OrdinalIgnoreCase));
     }

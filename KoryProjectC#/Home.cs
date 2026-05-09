@@ -13,6 +13,7 @@ namespace KoryProjectC_
 {
     public partial class Home : Form
     {
+
         private Inbox ucInbox = null!;
         private InProgress ucInProgress = null!;
         private Answered ucAnswered = null!;
@@ -58,6 +59,9 @@ namespace KoryProjectC_
             int pending = emails.Count(e => !e.IsRead);
             int answered = await answeredTask;
             int avgResp = (int)Math.Round(await avgRespTask);
+            string name = await nameTask; // ← new
+            AppState.UserName = name;                                    // ADD THIS
+            AppState.UserEmail = (await _gmailService.Users.GetProfile("me").ExecuteAsync()).EmailAddress ?? ""; // ADD THIS
             string name = await nameTask;
             var pic = await picTask;
             if (pic != null)
@@ -108,6 +112,10 @@ namespace KoryProjectC_
                 ctrl.Dispose();
             }
             fullscreenCompose = null;
+
+            // Only refresh if handle is created
+            if (ucInProgress.IsHandleCreated)
+                ucInProgress.LoadDrafts();
 
             var emailContent = pnlMainContent.Controls.OfType<EmailContent>().FirstOrDefault();
             if (emailContent != null)
@@ -160,7 +168,11 @@ namespace KoryProjectC_
         }
 
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
-        private void InProgressBtn_Click(object sender, EventArgs e) => ucInProgress.BringToFront();
+        private void InProgressBtn_Click(object sender, EventArgs e)
+        {
+            ucInProgress.LoadDrafts();
+            ucInProgress.BringToFront();
+        }
         private void AnsweredBtn_Click(object sender, EventArgs e) => ucAnswered.BringToFront();
 
         private void logOutBtn_Click(object sender, EventArgs e)
