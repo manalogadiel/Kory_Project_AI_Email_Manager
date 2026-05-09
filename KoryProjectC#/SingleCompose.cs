@@ -1,254 +1,290 @@
 ﻿using Google.Apis.Gmail.v1;
 using System;
+using System.Drawing;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace KoryProjectC_
 {
     public partial class SingleCompose : Form
     {
-        private GmailService? _gmailService;
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly string GeminiApiKey =
-    File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";
+            File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";
 
         public SingleCompose(GmailService? gmailService = null)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
 
-            _gmailService = gmailService;
+            if (gmailService != null)
+                AppState.GmailService = gmailService;
 
-            KoryReplyBtn.Click += async (s, e) => await GenerateKoryReplyAsync();
-            ImproveBtn.Click += async (s, e) => await ImproveCurrentReplyAsync();
-        }
+            // Auto-load saved profile into Guna2TextBox1
+            LoadSavedProfile();
 
-        private void SingleCompose_Load(object sender, EventArgs e) { }
+            // Analyze
+            btnAnalyze.Click += async (s, e) => await AnalyzeTextAsync();
 
-        private void BackBtn_Click(object sender, EventArgs e) => this.Close();
-
-        private string GetRecipient() => toTextBox.Text.Trim();
-        private string GetSubject() => subjectTextBox.Text.Trim();
-
-        // ── KORY REPLY ────────────────────────────────────────────────────────────
-        private async Task GenerateKoryReplyAsync()
-        {
-
-            var typeDialog = new EmailTypeDialog();
-            if (typeDialog.ShowDialog(this) != DialogResult.OK) return;
-            string emailType = typeDialog.SelectedType;
-            string extraContext = typeDialog.ExtraContext;
-
-            string[] models = { "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash" };
-            string subject = GetSubject();
-            string recipient = GetRecipient();
-
-            string prompt = $@"You are an academic email assistant named KORY helping a professor or staff write a new email.
-
-Write a professional but natural-sounding email body for the context below.
-Rules:
-- Do NOT sound like AI. Write like a real person — warm, concise, human.
-- Do NOT use filler phrases like 'Certainly!', 'Of course!', 'I hope this email finds you well'.
-- Skip any salutation or closing signature. Write only the body.
-- Keep it 2–4 short paragraphs max.
-- Return ONLY a JSON object with key: ""reply"" containing the body text.
-
-To: {recipient}
-Subject: {subject}
-Email Type: {emailType}
-Additional Context: {extraContext}
-
-Output format: {{""reply"": ""...""}}";
-
-            KoryReplyBtn.Enabled = false;
-            KoryReplyBtn.Text = "Generating...";
-
-            string lastError = "";
-
-            foreach (string model in models)
+            // Edit Profile
+            EditBtn.Click += (s, e) =>
             {
+                var profileForm = new ProfileForm();
+                profileForm.LoadSavedProfile();
+
+                var screen = this.RectangleToScreen(this.ClientRectangle);
+                profileForm.Location = new Point(
+                    screen.Left + (screen.Width - profileForm.Width) / 2,
+                    screen.Top + (screen.Height - profileForm.Height) / 2
+                );
+
+                profileForm.OnSaved += (sender, args) =>
+                {
+                    Guna2TextBox1.Text = profileForm.txtPreview.Text
+                        .Replace("\r\n\r\n", " • ")
+                        .Replace("\r\n", " • ");
+                };
+
+                profileForm.ShowDialog(this);
+            };
+
+            // Save Draft
+            SaveDraftBtn.Click += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(guna2TextBox3.Text))
+                {
+                    MessageBox.Show("Please enter a recipient.", "Empty",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var draft = new DraftModel
+                {
+                    EmailId = $"single_{DateTime.Now.Ticks}",
+                    Subject = subjectTextBox.Text,
+                    Salutation = Guna2TextBox2.Text,
+                    Body = bodyTextBox.Text,
+                    Signature = Guna2TextBox1.Text,
+                    IsSingleCompose = true, // ADD THIS
+                    Original = new EmailModel
+                    {
+                        FromEmail = guna2TextBox3.Text,
+                        Subject = subjectTextBox.Text
+                    }
+                };
+
+                DraftHelper.SaveDraft(draft);
+                MessageBox.Show("Draft saved!", "Saved",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            };
+
+            // Send
+            SendBtn.Click += async (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(guna2TextBox3.Text))
+                {
+                    MessageBox.Show("Please enter a recipient.", "Empty",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(bodyTextBox.Text))
+                {
+                    MessageBox.Show("Please write a message.", "Empty",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (AppState.GmailService == null)
+                {
+                    MessageBox.Show("Gmail service not available.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                SendBtn.Enabled = false;
+                SendBtn.Text = "Sending...";
+
                 try
                 {
-                    string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GeminiApiKey}";
+                    string signature = Guna2TextBox1.Text
+                        .Replace(" • ", "\r\n")
+                        .Replace("•", "\r\n");
 
-                    var requestBody = new
-                    {
-                        contents = new[] { new { parts = new[] { new { text = prompt } } } },
-                        generationConfig = new { temperature = 0.85 }
-                    };
+                    string fullBody =
+                        $"{Guna2TextBox2.Text}\r\n\r\n" +
+                        $"{bodyTextBox.Text}\r\n\r\n" +
+                        $"{signature}";
 
-                    string jsonBody = JsonSerializer.Serialize(requestBody);
-                    var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+                    await GmailHelper.SendNewEmailAsync(
+                        AppState.GmailService,
+                        guna2TextBox3.Text,
+                        subjectTextBox.Text,
+                        fullBody
+                    );
 
-                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
-                    HttpResponseMessage response = await _httpClient.PostAsync(modelUrl, content, cts.Token);
-                    string responseBody = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show("Email sent successfully!", "Sent",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        lastError = $"Model: {model}\nStatus: {response.StatusCode}\nResponse: {responseBody}";
-                        continue;
-                    }
-
-                    using JsonDocument doc = JsonDocument.Parse(responseBody);
-                    string generatedText = doc.RootElement
-                        .GetProperty("candidates")[0]
-                        .GetProperty("content")
-                        .GetProperty("parts")[0]
-                        .GetProperty("text")
-                        .GetString() ?? "";
-
-                    int start = generatedText.IndexOf('{');
-                    int end = generatedText.LastIndexOf('}');
-                    if (start < 0 || end < 0)
-                    {
-                        lastError = $"Model: {model}\nNo JSON found in:\n{generatedText}";
-                        continue;
-                    }
-
-                    generatedText = generatedText.Substring(start, end - start + 1);
-
-                    using JsonDocument result = JsonDocument.Parse(generatedText);
-                    string reply = result.RootElement.TryGetProperty("reply", out var r)
-                        ? r.GetString() ?? "" : "";
-
-                    if (string.IsNullOrWhiteSpace(reply))
-                    {
-                        lastError = $"Model: {model}\nReply was empty.\nRaw: {generatedText}";
-                        continue;
-                    }
-
-                    var confirm = MessageBox.Show(
-                        $"KORY generated this:\n\n{reply.Replace("\\n", "\n")}\n\nApply to compose area?",
-                        "Apply AI Reply?",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-
-                    if (confirm == DialogResult.Yes)
-                        bodyTextBox.Text = reply.Replace("\n", "\r\n");
-
-                    KoryReplyBtn.Enabled = true;
-                    KoryReplyBtn.Text = "Kory Reply";
-                    return;
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
-                    lastError = $"Model: {model}\nException: {ex.GetType().Name}\n{ex.Message}";
+                    MessageBox.Show($"Failed to send: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-
-            // Shows the REAL error now
-            MessageBox.Show($"All models failed.\n\nLast error:\n{lastError}", "Debug Error",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            KoryReplyBtn.Enabled = true;
-            KoryReplyBtn.Text = "Kory Reply";
+                finally
+                {
+                    SendBtn.Enabled = true;
+                    SendBtn.Text = "Send";
+                }
+            };
         }
 
-        // ── IMPROVE ───────────────────────────────────────────────────────────────
-        private async Task ImproveCurrentReplyAsync()
+        private void LoadSavedProfile()
         {
-            string currentText = bodyTextBox.Text?.Trim() ?? "";
-
-            if (string.IsNullOrWhiteSpace(currentText))
+            string profilePath = Path.Combine(Application.StartupPath, "profile.json");
+            if (!File.Exists(profilePath)) return;
+            try
             {
-                MessageBox.Show("Nothing to improve. Please write something first.", "Info",
+                var json = File.ReadAllText(profilePath);
+                var data = JsonSerializer.Deserialize<ProfileForm.ProfileData>(json);
+                if (data == null) return;
+
+                string preview =
+                    $"{data.ComplementaryClose}\r\n\r\n" +
+                    $"{data.FullName}\r\n" +
+                    $"{data.Title}\r\n" +
+                    $"{data.Department}";
+
+                Guna2TextBox1.Text = preview
+                    .Replace("\r\n\r\n", " • ")
+                    .Replace("\r\n", " • ");
+            }
+            catch { }
+        }
+
+        private async Task AnalyzeTextAsync()
+        {
+            if (string.IsNullOrWhiteSpace(bodyTextBox.Text))
+            {
+                MessageBox.Show("Please enter some text to analyze.", "Info",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
+            btnAnalyze.Enabled = false;
+            btnAnalyze.Text = "Analyzing...";
+
             string[] models = { "gemini-2.5-flash", "gemini-2.0-flash" };
-
-            string prompt = $@"You are a writing assistant. Improve the email body below.
-Rules:
-- Keep the exact same meaning, intent, and facts. Do NOT add new ideas.
-- Make it sound more natural, clear, and professional — but still human.
-- Do NOT use AI filler phrases like 'Certainly!', 'Of course!', 'I hope this finds you well'.
-- Do NOT change the salutation or signature if present.
-- Return ONLY a JSON object with key: ""improved"" containing the improved text.
-
-Original:
-""{currentText}""
-
-Output format: {{""improved"": ""...""}}";
-
-            ImproveBtn.Enabled = false;
-            ImproveBtn.Text = "Improving...";
+            bool success = false;
 
             foreach (string model in models)
             {
-                try
-                {
-                    string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GeminiApiKey}";
-
-                    var requestBody = new
-                    {
-                        contents = new[] { new { parts = new[] { new { text = prompt } } } },
-                        generationConfig = new { temperature = 0.5 }
-                    };
-
-                    string jsonBody = JsonSerializer.Serialize(requestBody);
-                    var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-
-                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
-                    HttpResponseMessage response = await _httpClient.PostAsync(modelUrl, content, cts.Token);
-
-                    if (!response.IsSuccessStatusCode) continue;
-
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    using JsonDocument doc = JsonDocument.Parse(responseBody);
-                    string generatedText = doc.RootElement
-                        .GetProperty("candidates")[0]
-                        .GetProperty("content")
-                        .GetProperty("parts")[0]
-                        .GetProperty("text")
-                        .GetString() ?? "";
-
-                    int start = generatedText.IndexOf('{');
-                    int end = generatedText.LastIndexOf('}');
-                    if (start < 0 || end < 0) continue;
-                    generatedText = generatedText.Substring(start, end - start + 1);
-
-                    using JsonDocument result = JsonDocument.Parse(generatedText);
-                    string improved = result.RootElement.TryGetProperty("improved", out var imp)
-                        ? imp.GetString() ?? "" : "";
-
-                    if (string.IsNullOrWhiteSpace(improved)) continue;
-
-                    var confirm = MessageBox.Show(
-                        $"Improved version:\n\n{improved.Replace("\\n", "\n")}\n\nApply changes?",
-                        "Apply Improvements?",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-
-                    if (confirm == DialogResult.Yes)
-                        bodyTextBox.Text = improved.Replace("\n", "\r\n");
-
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Improve failed with {model}: {ex.Message}");
-                }
+                success = await TryAnalyzeWithModel(model);
+                if (success) break;
             }
 
-            MessageBox.Show("Could not improve the text. Please try again.", "Error",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!success)
+                MessageBox.Show("All models failed. Please try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            ImproveBtn.Enabled = true;
-            ImproveBtn.Text = "Improve";
+            btnAnalyze.Enabled = true;
+            btnAnalyze.Text = "Analyze";
         }
 
-        private void SendBtn_Click(object sender, EventArgs e) { }
+        public void LoadDraft(DraftModel draft)
+        {
+            guna2TextBox3.Text = draft.Original?.FromEmail ?? "";
+            subjectTextBox.Text = draft.Subject;
+            Guna2TextBox2.Text = draft.Salutation;
+            bodyTextBox.Text = draft.Body;
+            Guna2TextBox1.Text = draft.Signature;
+        }
+
+        private async Task<bool> TryAnalyzeWithModel(string modelName)
+        {
+            string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{modelName}:generateContent?key={GeminiApiKey}";
+
+            try
+            {
+                var prompt = new
+                {
+                    contents = new[]
+                    {
+                        new
+                        {
+                            parts = new[]
+                            {
+                                new
+                                {
+                                    text = $@"Analyze the following text and return ONLY a JSON object with keys: clarity (0-100), tone (0-100), prof (0-100).
+
+Text: ""{bodyTextBox.Text}""
+
+Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
+                                }
+                            }
+                        }
+                    },
+                    generationConfig = new { temperature = 0.2 }
+                };
+
+                string jsonBody = JsonSerializer.Serialize(prompt);
+                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+                var response = await _httpClient.PostAsync(modelUrl, content, cts.Token);
+
+                if (!response.IsSuccessStatusCode) return false;
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+                using JsonDocument doc = JsonDocument.Parse(responseBody);
+                string generatedText = doc.RootElement
+                    .GetProperty("candidates")[0]
+                    .GetProperty("content")
+                    .GetProperty("parts")[0]
+                    .GetProperty("text")
+                    .GetString() ?? "";
+
+                int start = generatedText.IndexOf('{');
+                int end = generatedText.LastIndexOf('}');
+                if (start < 0 || end < 0) return false;
+                generatedText = generatedText.Substring(start, end - start + 1);
+
+                var scores = JsonSerializer.Deserialize<ScoreResponse>(generatedText);
+                if (scores == null) return false;
+
+                UpdateProgressBar(progressClarity, scores.clarity);
+                UpdateProgressBar(progressTone, scores.tone);
+                UpdateProgressBar(progressProf, scores.prof);
+                return true;
+            }
+            catch { return false; }
+        }
+
+        private void UpdateProgressBar(Guna2CircleProgressBar bar, int value)
+        {
+            if (bar.InvokeRequired) { bar.Invoke(() => UpdateProgressBar(bar, value)); return; }
+            bar.Value = value;
+            bar.Text = $"{value}%";
+            bar.ProgressColor = value > 80 ? Color.LimeGreen : value >= 50 ? Color.Goldenrod : Color.Crimson;
+        }
+
+        private class ScoreResponse
+        {
+            public int clarity { get; set; }
+            public int tone { get; set; }
+            public int prof { get; set; }
+        }
+
+        private void SingleCompose_Load(object sender, EventArgs e) { }
+        private void BackBtn_Click(object sender, EventArgs e) => this.Close();
         private void guna2GradientButton1_Click(object sender, EventArgs e) { }
-        private void KoryReplyBtn_Click(object sender, EventArgs e) { }
-        private void ImproveBtn_Click(object sender, EventArgs e) { }
+        private void SendBtn_Click(object sender, EventArgs e) { }
     }
 }

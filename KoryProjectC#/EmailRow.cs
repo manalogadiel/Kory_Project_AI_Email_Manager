@@ -92,5 +92,10 @@ namespace KoryProjectC_
             compose.LoadEmail(Email, _gmailService);
             home.ShowFullscreenCompose(compose);
         }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

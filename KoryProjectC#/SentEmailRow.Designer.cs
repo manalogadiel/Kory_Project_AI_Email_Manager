@@ -1,0 +1,131 @@
+﻿namespace KoryProjectC_
+{
+    partial class SentEmailRow
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            rowPanel = new Guna.UI2.WinForms.Guna2Panel();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            rowPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("League Spartan SemiBold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.ForeColor = Color.White;
+            guna2HtmlLabel1.Location = new Point(87, 12);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(294, 34);
+            guna2HtmlLabel1.TabIndex = 1;
+            guna2HtmlLabel1.Text = "To: gadielmanalo19@gmail.com";
+            // 
+            // rowPanel
+            // 
+            rowPanel.BackColor = Color.Transparent;
+            rowPanel.BorderColor = Color.FromArgb(39, 40, 64);
+            rowPanel.BorderRadius = 30;
+            rowPanel.BorderThickness = 1;
+            rowPanel.Controls.Add(guna2HtmlLabel3);
+            rowPanel.Controls.Add(guna2HtmlLabel1);
+            rowPanel.Controls.Add(guna2HtmlLabel2);
+            rowPanel.Controls.Add(guna2CirclePictureBox1);
+            rowPanel.CustomizableEdges = customizableEdges2;
+            rowPanel.FillColor = Color.FromArgb(29, 40, 97);
+            rowPanel.Location = new Point(0, 0);
+            rowPanel.Name = "rowPanel";
+            rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            rowPanel.Size = new Size(1189, 80);
+            rowPanel.TabIndex = 1;
+            rowPanel.UseTransparentBackground = true;
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.ForeColor = Color.White;
+            guna2HtmlLabel2.Location = new Point(87, 37);
+            guna2HtmlLabel2.MaximumSize = new Size(900, 30);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(185, 28);
+            guna2HtmlLabel2.TabIndex = 2;
+            guna2HtmlLabel2.Text = "Your drafted subject text.";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            guna2CirclePictureBox1.ImageRotate = 0F;
+            guna2CirclePictureBox1.Location = new Point(18, 15);
+            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox1.Size = new Size(50, 50);
+            guna2CirclePictureBox1.TabIndex = 0;
+            guna2CirclePictureBox1.TabStop = false;
+            // 
+            // guna2HtmlLabel3
+            // 
+            guna2HtmlLabel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            guna2HtmlLabel3.BackColor = Color.Transparent;
+            guna2HtmlLabel3.Font = new Font("League Spartan Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel3.ForeColor = Color.FromArgb(142, 144, 166);
+            guna2HtmlLabel3.Location = new Point(1051, 29);
+            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            guna2HtmlLabel3.Size = new Size(92, 24);
+            guna2HtmlLabel3.TabIndex = 5;
+            guna2HtmlLabel3.Text = "Mon, 10:50 AM";
+            guna2HtmlLabel3.TextAlignment = ContentAlignment.TopRight;
+            // 
+            // SentEmailRow
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(rowPanel);
+            Name = "SentEmailRow";
+            Size = new Size(1189, 80);
+            Load += SentEmailRow_Load;
+            rowPanel.ResumeLayout(false);
+            rowPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2Panel rowPanel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+    }
+}

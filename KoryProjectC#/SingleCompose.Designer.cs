@@ -69,7 +69,7 @@
             guna2vScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
             bodyTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             subjectTextBox = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            EditBtn = new Guna.UI2.WinForms.Guna2GradientButton();
             Guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -180,30 +180,30 @@
             subjectTextBox.Size = new Size(444, 44);
             subjectTextBox.TabIndex = 33;
             // 
-            // guna2GradientButton1
+            // EditBtn
             // 
-            guna2GradientButton1.BorderColor = Color.FromArgb(107, 92, 231);
-            guna2GradientButton1.BorderRadius = 10;
-            guna2GradientButton1.BorderThickness = 1;
-            guna2GradientButton1.CustomizableEdges = customizableEdges44;
-            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton1.FillColor = Color.FromArgb(15, 16, 32);
-            guna2GradientButton1.FillColor2 = Color.FromArgb(15, 16, 32);
-            guna2GradientButton1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2GradientButton1.ForeColor = Color.FromArgb(107, 92, 231);
-            guna2GradientButton1.Image = Properties.Resources.editIcon;
-            guna2GradientButton1.Location = new Point(533, 720);
-            guna2GradientButton1.Margin = new Padding(3, 4, 3, 4);
-            guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges45;
-            guna2GradientButton1.Size = new Size(114, 30);
-            guna2GradientButton1.TabIndex = 32;
-            guna2GradientButton1.Text = "Edit Profile";
-            guna2GradientButton1.Click += guna2GradientButton1_Click;
+            EditBtn.BorderColor = Color.FromArgb(107, 92, 231);
+            EditBtn.BorderRadius = 10;
+            EditBtn.BorderThickness = 1;
+            EditBtn.CustomizableEdges = customizableEdges44;
+            EditBtn.DisabledState.BorderColor = Color.DarkGray;
+            EditBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            EditBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            EditBtn.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            EditBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            EditBtn.FillColor = Color.FromArgb(15, 16, 32);
+            EditBtn.FillColor2 = Color.FromArgb(15, 16, 32);
+            EditBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EditBtn.ForeColor = Color.FromArgb(107, 92, 231);
+            EditBtn.Image = Properties.Resources.editIcon;
+            EditBtn.Location = new Point(533, 720);
+            EditBtn.Margin = new Padding(3, 4, 3, 4);
+            EditBtn.Name = "EditBtn";
+            EditBtn.ShadowDecoration.CustomizableEdges = customizableEdges45;
+            EditBtn.Size = new Size(114, 30);
+            EditBtn.TabIndex = 32;
+            EditBtn.Text = "Edit Profile";
+            EditBtn.Click += guna2GradientButton1_Click;
             // 
             // Guna2TextBox6
             // 
@@ -376,7 +376,6 @@
             ImproveBtn.Size = new Size(114, 30);
             ImproveBtn.TabIndex = 22;
             ImproveBtn.Text = "Improve";
-            ImproveBtn.Click += ImproveBtn_Click;
             // 
             // KoryReplyBtn
             // 
@@ -401,7 +400,6 @@
             KoryReplyBtn.Size = new Size(114, 30);
             KoryReplyBtn.TabIndex = 21;
             KoryReplyBtn.Text = "Kory Reply";
-            KoryReplyBtn.Click += KoryReplyBtn_Click;
             // 
             // SendBtn
             // 
@@ -608,7 +606,7 @@
             Controls.Add(BackBtn);
             Controls.Add(btnAnalyze);
             Controls.Add(subjectTextBox);
-            Controls.Add(guna2GradientButton1);
+            Controls.Add(EditBtn);
             Controls.Add(Guna2TextBox6);
             Controls.Add(Guna2TextBox5);
             Controls.Add(Guna2TextBox4);
@@ -636,7 +634,7 @@
         private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar2;
         internal Guna.UI2.WinForms.Guna2TextBox bodyTextBox;
         internal Guna.UI2.WinForms.Guna2TextBox subjectTextBox;
-        internal Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        internal Guna.UI2.WinForms.Guna2GradientButton EditBtn;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox6;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox5;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox4;
@@ -653,7 +651,7 @@
         internal Guna.UI2.WinForms.Guna2TextBox toTextBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel toLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel subjectLabel;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        internal Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
     }
 }
