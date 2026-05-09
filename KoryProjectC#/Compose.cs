@@ -14,13 +14,15 @@ namespace KoryProjectC_
     public partial class Compose : Form
     {
         private readonly HttpClient _httpClient = new HttpClient();
-        private static readonly string GeminiApiKey = 
-        File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyACJA_l8JJ9gXJsva7nBTiNH6x1rEFAdhI";  
-        
+        private static readonly string GeminiApiKey =
+        File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyACJA_l8JJ9gXJsva7nBTiNH6x1rEFAdhI";
+
 
         public Compose()
         {
             InitializeComponent();
+            KoryReplyBtn.Click += async (s, e) => await GenerateKoryReplyAsync();
+            ImproveBtn.Click += async (s, e) => await ImproveCurrentReplyAsync();
             btnAnalyze.Click += async (s, e) => await AnalyzeText();
             Guna2TextBox1.Click += (s, e) =>
             {
@@ -450,19 +452,189 @@ Output format: {{""subject"": ""...""}}";
 
             this.Invoke(() => txtSubject.PlaceholderText = "Could not generate subject");
         }
+
+        // ── KORY REPLY ──────────────────────────────────────────────────────────────
+        private async Task GenerateKoryReplyAsync()
+        {
+            string[] models = { "gemini-2.5-flash", "gemini-2.0-flash" };
+
+            // Grab current email context from the loaded fields
+            string emailContext = $@"
+Sender: {NameForm.Text} <{EmailForm.Text}>
+Subject: {guna2HtmlLabel1.Text}
+".Trim();
+
+            string salutation = txtSalutation.Text;
+
+            string prompt = $@"You are an academic email assistant named KORY helping a professor or staff reply to a student email.
+
+Write a professional but natural-sounding reply to the email below.
+Rules:
+- Do NOT sound like AI. Write like a real person — warm, concise, human.
+- Do NOT use filler phrases like 'Certainly!', 'Of course!', 'I hope this email finds you well', 'Please do not hesitate'.
+- Skip the salutation line (it is already handled separately as: ""{salutation}"").
+- Skip any closing signature line (e.g. 'Sincerely, ...'). End naturally.
+- Keep it 2–4 short paragraphs max.
+- Return ONLY a JSON object with key: ""reply"" containing the reply body text.
+
+Email to reply to:
+{emailContext}
+
+Output format: {{""reply"": ""...""}}";
+
+            foreach (string model in models)
+            {
+                try
+                {
+                    string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GeminiApiKey}";
+
+                    var requestBody = new
+                    {
+                        contents = new[] { new { parts = new[] { new { text = prompt } } } },
+                        generationConfig = new { temperature = 0.85 }  // higher temp = more human-sounding
+                    };
+
+                    string jsonBody = JsonSerializer.Serialize(requestBody);
+                    var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+                    HttpResponseMessage response = await _httpClient.PostAsync(modelUrl, content, cts.Token);
+
+                    if (!response.IsSuccessStatusCode) continue;
+
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    using JsonDocument doc = JsonDocument.Parse(responseBody);
+                    string generatedText = doc.RootElement
+                        .GetProperty("candidates")[0]
+                        .GetProperty("content")
+                        .GetProperty("parts")[0]
+                        .GetProperty("text")
+                        .GetString() ?? "";
+
+                    int start = generatedText.IndexOf('{');
+                    int end = generatedText.LastIndexOf('}');
+                    if (start < 0 || end < 0) continue;
+                    generatedText = generatedText.Substring(start, end - start + 1);
+
+                    using JsonDocument result = JsonDocument.Parse(generatedText);
+                    string reply = result.RootElement.TryGetProperty("reply", out var r) ? r.GetString() ?? "" : "";
+
+                    if (string.IsNullOrWhiteSpace(reply)) continue;
+
+                    // Ask user to apply
+                    var confirm = MessageBox.Show(
+    $"KORY generated this reply:\n\n{reply.Replace("\\n", "\n")}\n\nApply to compose area?",
+    "Apply AI Reply?",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question);
+
+                    if (confirm == DialogResult.Yes)
+                    {
+                        this.Invoke(() => txtInput.Text = reply.Replace("\n", "\r\n"));
+                    }
+
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"KORY Reply failed with {model}: {ex.Message}");
+                }
+            }
+
+            MessageBox.Show("Could not generate a reply. Please try again.", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        // ── IMPROVE ──────────────────────────────────────────────────────────────────
+        private async Task ImproveCurrentReplyAsync()
+        {
+            string currentText = txtInput.Text?.Trim() ?? "";
+
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                MessageBox.Show("Nothing to improve. Please write something first.", "Info",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string[] models = { "gemini-2.5-flash", "gemini-2.0-flash" };
+
+            string prompt = $@"You are a writing assistant. Improve the email reply below.
+Rules:
+- Keep the exact same meaning, intent, and facts. Do NOT add new ideas.
+- Make it sound more natural, clear, and professional — but still human.
+- Do NOT use AI filler phrases like 'Certainly!', 'Of course!', 'I hope this finds you well'.
+- Do NOT change the salutation or signature if present.
+- Return ONLY a JSON object with key: ""improved"" containing the improved text.
+
+Original reply:
+""{currentText}""
+
+Output format: {{""improved"": ""...""}}";
+
+            foreach (string model in models)
+            {
+                try
+                {
+                    string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GeminiApiKey}";
+
+                    var requestBody = new
+                    {
+                        contents = new[] { new { parts = new[] { new { text = prompt } } } },
+                        generationConfig = new { temperature = 0.5 }
+                    };
+
+                    string jsonBody = JsonSerializer.Serialize(requestBody);
+                    var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+                    HttpResponseMessage response = await _httpClient.PostAsync(modelUrl, content, cts.Token);
+
+                    if (!response.IsSuccessStatusCode) continue;
+
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    using JsonDocument doc = JsonDocument.Parse(responseBody);
+                    string generatedText = doc.RootElement
+                        .GetProperty("candidates")[0]
+                        .GetProperty("content")
+                        .GetProperty("parts")[0]
+                        .GetProperty("text")
+                        .GetString() ?? "";
+
+                    int start = generatedText.IndexOf('{');
+                    int end = generatedText.LastIndexOf('}');
+                    if (start < 0 || end < 0) continue;
+                    generatedText = generatedText.Substring(start, end - start + 1);
+
+                    using JsonDocument result = JsonDocument.Parse(generatedText);
+                    string improved = result.RootElement.TryGetProperty("improved", out var imp) ? imp.GetString() ?? "" : "";
+
+                    if (string.IsNullOrWhiteSpace(improved)) continue;
+
+                    var confirm = MessageBox.Show(
+    $"Improved version:\n\n{improved.Replace("\\n", "\n")}\n\nApply changes?",
+    "Apply Improvements?",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question);
+
+                    if (confirm == DialogResult.Yes)
+                    {
+                        this.Invoke(() => txtInput.Text = improved.Replace("\n", "\r\n"));
+                    }
+
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Improve failed with {model}: {ex.Message}");
+                }
+            }
+
+            MessageBox.Show("Could not improve the text. Please try again.", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-        
-        
-

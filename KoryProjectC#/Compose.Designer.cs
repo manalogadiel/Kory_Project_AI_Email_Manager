@@ -571,7 +571,7 @@
             KoryReplyBtn.ShadowDecoration.CustomizableEdges = customizableEdges32;
             KoryReplyBtn.Size = new Size(114, 30);
             KoryReplyBtn.TabIndex = 5;
-            KoryReplyBtn.Text = "Kory Reply";
+            KoryReplyBtn.Text = "Kory ReSply";
             // 
             // SendBtn
             // 

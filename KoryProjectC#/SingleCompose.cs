@@ -20,5 +20,15 @@ namespace KoryProjectC_
             this.MaximizeBox = false;
             this.MinimizeBox = false;
         }
+
+        private void SingleCompose_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

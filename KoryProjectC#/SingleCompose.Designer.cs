@@ -482,6 +482,7 @@
             BackBtn.Size = new Size(95, 40);
             BackBtn.TabIndex = 34;
             BackBtn.Text = "Back";
+            BackBtn.Click += BackBtn_Click;
             // 
             // SingleCompose
             // 
@@ -507,9 +508,10 @@
             Controls.Add(txtInput);
             Controls.Add(Guna2TextBox2);
             Controls.Add(Guna2TextBox1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "SingleCompose";
             Text = "SingleCompose";
+            Load += SingleCompose_Load;
             ResumeLayout(false);
         }
 
