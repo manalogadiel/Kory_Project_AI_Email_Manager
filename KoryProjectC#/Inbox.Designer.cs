@@ -931,6 +931,7 @@
             catNon.Size = new Size(373, 224);
             catNon.TabIndex = 21;
             catNon.UseTransparentBackground = true;
+            catNon.Paint += catNon_Paint;
             catNon.MouseClick += category_Click;
             catNon.MouseEnter += category_MouseEnter;
             catNon.MouseLeave += category_MouseLeave;

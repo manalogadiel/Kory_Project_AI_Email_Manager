@@ -1,11 +1,7 @@
 ﻿using Google.Apis.Gmail.v1;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +9,6 @@ namespace KoryProjectC_
 {
     public partial class Home : Form
     {
-
         private Inbox ucInbox = null!;
         private InProgress ucInProgress = null!;
         private Answered ucAnswered = null!;
@@ -59,9 +54,11 @@ namespace KoryProjectC_
             int pending = emails.Count(e => !e.IsRead);
             int answered = await answeredTask;
             int avgResp = (int)Math.Round(await avgRespTask);
-            string name = await nameTask; // ← new
-            AppState.UserName = name;                                    // ADD THIS
-            AppState.UserEmail = (await _gmailService.Users.GetProfile("me").ExecuteAsync()).EmailAddress ?? ""; // ADD THIS
+            string name = await nameTask;
+
+            AppState.UserName = name;
+            AppState.UserEmail = (await _gmailService.Users.GetProfile("me").ExecuteAsync()).EmailAddress ?? "";
+
             var pic = await picTask;
             if (pic != null)
             {
@@ -93,12 +90,14 @@ namespace KoryProjectC_
             arPlaceholder.Text = avgRespMinutes > 0 ? $"{avgRespMinutes}m" : "—";
         }
 
+        // ── COMPOSE ───────────────────────────────────────────────────────────
+
         public void ShowFullscreenCompose(Compose compose)
         {
             fullscreenCompose = compose;
-            this.Controls.Add(compose);
             compose.Size = this.ClientSize;
             compose.Location = new Point(0, 0);
+            this.Controls.Add(compose);
             compose.BringToFront();
             compose.Visible = true;
         }
@@ -112,7 +111,6 @@ namespace KoryProjectC_
             }
             fullscreenCompose = null;
 
-            // Only refresh if handle is created
             if (ucInProgress.IsHandleCreated)
                 ucInProgress.LoadDrafts();
 
@@ -126,22 +124,41 @@ namespace KoryProjectC_
             ucInbox.BringToFront();
         }
 
+        // ── ANSWERED CONTENT ──────────────────────────────────────────────────
+
         public void ShowAnsweredContent(EmailModel sentEmail, GmailService service)
         {
-            // Close any existing AnsweredContent windows first
-            foreach (var existing in Application.OpenForms.OfType<AnsweredContent>().ToList())
-                existing.Close();
+            // Remove any existing AnsweredContent
+            foreach (var ctrl in this.Controls.OfType<AnsweredContent>().ToList())
+            {
+                this.Controls.Remove(ctrl);
+                ctrl.Dispose();
+            }
 
             var content = new AnsweredContent();
-            content.StartPosition = FormStartPosition.CenterParent;
-            content.Show(this);
+            content.TopLevel = false;
+            content.FormBorderStyle = FormBorderStyle.None;
+            content.Size = this.ClientSize;
+            content.Location = new Point(0, 0);
+
+            this.Controls.Add(content);
+            content.BringToFront();
+            content.Visible = true;
+
             _ = content.LoadAsync(sentEmail, service);
         }
 
         public void ShowAnswered()
         {
+            foreach (var ctrl in this.Controls.OfType<AnsweredContent>().ToList())
+            {
+                this.Controls.Remove(ctrl);
+                ctrl.Dispose();
+            }
             ucAnswered.BringToFront();
         }
+
+        // ── DASHBOARD SETUP ───────────────────────────────────────────────────
 
         private void SetupDashboard()
         {
@@ -160,6 +177,8 @@ namespace KoryProjectC_
             ucInbox.BringToFront();
         }
 
+        // ── BUTTONS ───────────────────────────────────────────────────────────
+
         private void composeBtn_Click(object sender, EventArgs e)
         {
             SingleCompose compose = new SingleCompose(_gmailService);
@@ -167,11 +186,13 @@ namespace KoryProjectC_
         }
 
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
+
         private void InProgressBtn_Click(object sender, EventArgs e)
         {
             ucInProgress.LoadDrafts();
             ucInProgress.BringToFront();
         }
+
         private void AnsweredBtn_Click(object sender, EventArgs e) => ucAnswered.BringToFront();
 
         private void logOutBtn_Click(object sender, EventArgs e)
@@ -184,19 +205,15 @@ namespace KoryProjectC_
 
             string tokenPath = Path.Combine(Application.StartupPath, "token_store");
             if (Directory.Exists(tokenPath))
-            {
                 foreach (var file in Directory.GetFiles(tokenPath))
                     File.Delete(file);
-            }
 
             var login = new LoginForm();
             login.Show();
             this.Close();
         }
-        public async Task RefreshAfterSendAsync()
-        {
-            await RefreshStatsAsync();
-        }
+
+        public async Task RefreshAfterSendAsync() => await RefreshStatsAsync();
 
         private void pnlMainContent_Paint(object sender, PaintEventArgs e) { }
         private void guna2TextBox1_TextChanged(object sender, EventArgs e) { }
