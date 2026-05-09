@@ -14,6 +14,7 @@ namespace KoryProjectC_
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly string GeminiApiKey =
             File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";
+        private string _draftId = "";
 
         public SingleCompose(GmailService? gmailService = null)
         {
@@ -77,6 +78,7 @@ namespace KoryProjectC_
                 };
 
                 DraftHelper.SaveDraft(draft);
+                _draftId = draft.EmailId; // track current draft id
                 MessageBox.Show("Draft saved!", "Saved",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
@@ -129,6 +131,15 @@ namespace KoryProjectC_
 
                     MessageBox.Show("Email sent successfully!", "Sent",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Delete draft if it existed
+                    if (!string.IsNullOrEmpty(_draftId))
+                        DraftHelper.DeleteDraft(_draftId);
+
+                    // Refresh answered tab
+                    var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+                    if (home != null)
+                        await home.RefreshAfterSendAsync();
 
                     this.Close();
                 }
@@ -199,6 +210,7 @@ namespace KoryProjectC_
 
         public void LoadDraft(DraftModel draft)
         {
+            _draftId = draft.EmailId;
             guna2TextBox3.Text = draft.Original?.FromEmail ?? "";
             subjectTextBox.Text = draft.Subject;
             Guna2TextBox2.Text = draft.Salutation;
