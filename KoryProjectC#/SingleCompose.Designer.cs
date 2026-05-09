@@ -96,7 +96,7 @@
             // 
             // btnAnalyze
             // 
-            btnAnalyze.BorderColor = Color.Gray;
+            btnAnalyze.BorderColor = Color.MediumPurple;
             btnAnalyze.BorderRadius = 10;
             btnAnalyze.BorderThickness = 1;
             btnAnalyze.CustomizableEdges = customizableEdges1;
@@ -107,13 +107,13 @@
             btnAnalyze.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAnalyze.FillColor = Color.FromArgb(15, 16, 32);
             btnAnalyze.FillColor2 = Color.FromArgb(15, 16, 32);
-            btnAnalyze.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAnalyze.ForeColor = Color.DarkGray;
-            btnAnalyze.Location = new Point(499, 186);
+            btnAnalyze.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAnalyze.ForeColor = Color.MediumPurple;
+            btnAnalyze.Location = new Point(565, 179);
             btnAnalyze.Margin = new Padding(3, 4, 3, 4);
             btnAnalyze.Name = "btnAnalyze";
             btnAnalyze.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnAnalyze.Size = new Size(114, 29);
+            btnAnalyze.Size = new Size(87, 26);
             btnAnalyze.TabIndex = 24;
             btnAnalyze.Text = "Analyze";
             // 
@@ -197,7 +197,7 @@
             EditBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             EditBtn.FillColor = Color.FromArgb(15, 16, 32);
             EditBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            EditBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EditBtn.Font = new Font("League Spartan", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EditBtn.ForeColor = Color.FromArgb(107, 92, 231);
             EditBtn.Image = Properties.Resources.editIcon;
             EditBtn.Location = new Point(533, 720);
@@ -346,7 +346,7 @@
             SaveDraftBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SaveDraftBtn.FillColor = Color.FromArgb(15, 16, 32);
             SaveDraftBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            SaveDraftBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveDraftBtn.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SaveDraftBtn.ForeColor = Color.DarkGray;
             SaveDraftBtn.Image = Properties.Resources.saveIcon;
             SaveDraftBtn.Location = new Point(653, 720);
@@ -370,7 +370,7 @@
             ImproveBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             ImproveBtn.FillColor = Color.FromArgb(15, 16, 32);
             ImproveBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            ImproveBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ImproveBtn.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ImproveBtn.ForeColor = Color.FromArgb(107, 92, 231);
             ImproveBtn.Image = Properties.Resources.sparkleIcon;
             ImproveBtn.Location = new Point(653, 758);
@@ -394,7 +394,7 @@
             KoryReplyBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             KoryReplyBtn.FillColor = Color.FromArgb(15, 16, 32);
             KoryReplyBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            KoryReplyBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            KoryReplyBtn.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             KoryReplyBtn.ForeColor = Color.FromArgb(0, 192, 192);
             KoryReplyBtn.Image = Properties.Resources.pawIcon;
             KoryReplyBtn.Location = new Point(533, 758);
@@ -416,7 +416,7 @@
             SendBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SendBtn.FillColor = Color.FromArgb(98, 117, 217);
             SendBtn.FillColor2 = Color.FromArgb(29, 40, 97);
-            SendBtn.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SendBtn.Font = new Font("League Spartan", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SendBtn.ForeColor = Color.White;
             SendBtn.Image = Properties.Resources.sentIcon;
             SendBtn.Location = new Point(781, 716);

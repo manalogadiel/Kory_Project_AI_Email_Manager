@@ -35,7 +35,7 @@ namespace KoryProjectC_
             _sentEmail = sentEmail;
             _service = service;
 
-            // ── RIGHT SIDE: the email YOU sent ──────────────────────────────
+            // ── RIGHT SIDE: the email YOU sent (15, 16, 32) ──────────────────
             guna2HtmlLabel2.Text = !string.IsNullOrWhiteSpace(sentEmail.Subject)
                 ? sentEmail.Subject : "(No Subject)";
             guna2HtmlLabel4.Text = sentEmail.FromName;
@@ -43,19 +43,18 @@ namespace KoryProjectC_
             guna2Button3.Text = sentEmail.Date;
 
             string sentHtml = !string.IsNullOrEmpty(sentEmail.BodyHtml)
-                ? InjectDarkModeStyles(sentEmail.BodyHtml)
-                : BuildPlainHtml(sentEmail.BodyText ?? sentEmail.Snippet ?? "");
+                ? InjectDarkModeStyles(sentEmail.BodyHtml, "#0f1020")
+                : BuildPlainHtml(sentEmail.BodyText ?? sentEmail.Snippet ?? "", "#0f1020");
 
-            await InitWebViewAsync(sentEmailContent, sentHtml);
+            await InitWebViewAsync(sentEmailContent, sentHtml, Color.FromArgb(15, 16, 32));
 
-            // ── LEFT SIDE: original email you replied to ─────────────────────
+            // ── LEFT SIDE: original email you replied to (14, 15, 20) ────────
             try
             {
                 var threadReq = service.Users.Threads.Get("me", sentEmail.ThreadId);
                 threadReq.Format = UsersResource.ThreadsResource.GetRequest.FormatEnum.Full;
                 var thread = await threadReq.ExecuteAsync();
 
-                // Get first message in thread that isn't the sent one
                 var original = thread.Messages?
                     .FirstOrDefault(m => m.Id != sentEmail.Id);
 
@@ -70,10 +69,10 @@ namespace KoryProjectC_
                     guna2Button2.Text = orig.Date;
 
                     string origHtml = !string.IsNullOrEmpty(orig.BodyHtml)
-                        ? InjectDarkModeStyles(orig.BodyHtml)
-                        : BuildPlainHtml(orig.BodyText ?? orig.Snippet ?? "");
+                        ? InjectDarkModeStyles(orig.BodyHtml, "#0e0f14")
+                        : BuildPlainHtml(orig.BodyText ?? orig.Snippet ?? "", "#0e0f14");
 
-                    await InitWebViewAsync(EmailContent, origHtml);
+                    await InitWebViewAsync(EmailContent, origHtml, Color.FromArgb(14, 15, 20));
                 }
                 else
                 {
@@ -81,8 +80,10 @@ namespace KoryProjectC_
                     NameForm.Text = "";
                     EmailForm.Text = "";
                     guna2Button2.Text = "";
+
                     await InitWebViewAsync(EmailContent,
-                        BuildPlainHtml("No original email found in this thread."));
+                        BuildPlainHtml("No original email found in this thread.", "#0e0f14"),
+                        Color.FromArgb(14, 15, 20));
                 }
             }
             catch (Exception ex)
@@ -95,53 +96,52 @@ namespace KoryProjectC_
 
         // ── HELPERS — same style as Compose.cs ───────────────────────────────
 
-        private static async Task InitWebViewAsync(WebView2 wv, string html)
+        private static async Task InitWebViewAsync(WebView2 wv, string html, Color bgColor)
         {
             await wv.EnsureCoreWebView2Async(null);
+            wv.DefaultBackgroundColor = bgColor;
             wv.NavigateToString(html);
         }
 
-        private static string InjectDarkModeStyles(string html)
+        private static string InjectDarkModeStyles(string html, string bgHex)
         {
-            const string style = @"
+            string style = $@"
 <style>
   html, body, div, p, span, td, th, li, a, h1, h2, h3, h4, h5, h6,
-  table, tr, section, article, header, footer, main, blockquote {
-      background-color: #0e0f14 !important;
+  table, tr, section, article, header, footer, main, blockquote {{
+      background-color: {bgHex} !important;
       color: #d4d4d4 !important;
-  }
-  a { color: #7b9fff !important; }
-  img { opacity: 0.9; }
+      font-family: Segoe UI, sans-serif !important;
+      font-size: 14px !important;
+  }}
+  a {{ color: #7b9fff !important; }}
+  img {{ opacity: 0.9; }}
   [style*='background:#fff'],
   [style*='background: #fff'],
   [style*='background:white'],
   [style*='background-color:#fff'],
   [style*='background-color: #fff'],
-  [style*='background-color:white'] {
-      background-color: #0e0f14 !important;
-  }
+  [style*='background-color:white'] {{
+      background-color: {bgHex} !important;
+  }}
   [style*='color:#000'],
   [style*='color: #000'],
   [style*='color:black'],
   [style*='color:#333'],
   [style*='color:#222'],
-  [style*='color:#111'] {
+  [style*='color:#111'] {{
       color: #d4d4d4 !important;
-  }
+  }}
 </style>";
 
             if (html.Contains("</head>", StringComparison.OrdinalIgnoreCase))
-                return html.Replace("</head>", style + "</head>",
-                    StringComparison.OrdinalIgnoreCase);
-
+                return html.Replace("</head>", style + "</head>", StringComparison.OrdinalIgnoreCase);
             if (html.Contains("<body", StringComparison.OrdinalIgnoreCase))
-                return html.Replace("<body", style + "<body",
-                    StringComparison.OrdinalIgnoreCase);
-
+                return html.Replace("<body", style + "<body", StringComparison.OrdinalIgnoreCase);
             return style + html;
         }
 
-        private static string BuildPlainHtml(string text)
+        private static string BuildPlainHtml(string text, string bgHex)
         {
             var encoded = System.Net.WebUtility.HtmlEncode(text)
                 .Replace("&#xA;", "<br>")
@@ -151,10 +151,10 @@ namespace KoryProjectC_
 <head><meta charset='utf-8'></head>
 <body style='
     color: #d4d4d4;
-    background-color: #0e0f14;
+    background-color: {bgHex};
     font-family: Segoe UI, sans-serif;
     font-size: 14px;
-    padding: 24px;
+    padding: 24px 24px 24px 0px;
     line-height: 1.7;
     word-wrap: break-word;'>
 {encoded}
@@ -247,6 +247,11 @@ namespace KoryProjectC_
         }
 
         private void AnsweredContent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
         {
 
         }

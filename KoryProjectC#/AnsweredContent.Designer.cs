@@ -35,6 +35,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             Guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             panelEmailBody = new Guna.UI2.WinForms.Guna2Panel();
@@ -54,6 +56,7 @@
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             bgPanel = new Guna.UI2.WinForms.Guna2Panel();
+            guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             Guna2Panel1.SuspendLayout();
             panelEmailBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)EmailContent).BeginInit();
@@ -63,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)sentEmailContent).BeginInit();
             guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
+            guna2CustomGradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // guna2Button1
@@ -116,7 +120,7 @@
             // 
             EmailContent.AllowExternalDrop = true;
             EmailContent.CreationProperties = null;
-            EmailContent.DefaultBackgroundColor = Color.Transparent;
+            EmailContent.DefaultBackgroundColor = Color.FromArgb(15, 16, 32);
             EmailContent.Dock = DockStyle.Fill;
             EmailContent.ForeColor = Color.WhiteSmoke;
             EmailContent.Location = new Point(0, 0);
@@ -166,12 +170,12 @@
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("League Spartan", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = SystemColors.ButtonFace;
-            guna2HtmlLabel1.Location = new Point(35, 95);
+            guna2HtmlLabel1.Location = new Point(42, 95);
             guna2HtmlLabel1.MaximumSize = new Size(705, 40);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(459, 31);
+            guna2HtmlLabel1.Size = new Size(385, 37);
             guna2HtmlLabel1.TabIndex = 3;
             guna2HtmlLabel1.Text = "ATTENTION! Grade Inquiry for CS1101";
             // 
@@ -226,7 +230,7 @@
             sentEmailContent.AllowExternalDrop = true;
             sentEmailContent.BackColor = Color.FromArgb(15, 16, 32);
             sentEmailContent.CreationProperties = null;
-            sentEmailContent.DefaultBackgroundColor = Color.Transparent;
+            sentEmailContent.DefaultBackgroundColor = Color.White;
             sentEmailContent.Dock = DockStyle.Fill;
             sentEmailContent.ForeColor = Color.WhiteSmoke;
             sentEmailContent.Location = new Point(0, 0);
@@ -238,8 +242,10 @@
             // guna2Panel4
             // 
             guna2Panel4.AutoScroll = true;
-            guna2Panel4.BackColor = Color.FromArgb(19, 20, 42);
-            guna2Panel4.BorderColor = Color.FromArgb(27, 30, 43);
+            guna2Panel4.BackColor = Color.Transparent;
+            guna2Panel4.BackgroundImageLayout = ImageLayout.Center;
+            guna2Panel4.BorderColor = Color.FromArgb(50, 51, 92);
+            guna2Panel4.BorderRadius = 25;
             guna2Panel4.BorderThickness = 1;
             guna2Panel4.Controls.Add(guna2Button3);
             guna2Panel4.Controls.Add(guna2HtmlLabel2);
@@ -247,10 +253,12 @@
             guna2Panel4.Controls.Add(guna2HtmlLabel4);
             guna2Panel4.Controls.Add(guna2CirclePictureBox2);
             guna2Panel4.CustomizableEdges = customizableEdges17;
-            guna2Panel4.Location = new Point(771, 81);
+            guna2Panel4.FillColor = Color.FromArgb(22, 23, 50);
+            guna2Panel4.ForeColor = Color.Transparent;
+            guna2Panel4.Location = new Point(7, 92);
             guna2Panel4.Name = "guna2Panel4";
             guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Panel4.Size = new Size(770, 160);
+            guna2Panel4.Size = new Size(753, 149);
             guna2Panel4.TabIndex = 10;
             // 
             // guna2Button3
@@ -258,11 +266,11 @@
             guna2Button3.CustomizableEdges = customizableEdges14;
             guna2Button3.DisabledState.BorderColor = Color.DarkGray;
             guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.FillColor = Color.FromArgb(19, 20, 42);
+            guna2Button3.DisabledState.FillColor = Color.FromArgb(22, 23, 50);
             guna2Button3.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button3.DisabledState.Image = Properties.Resources.clockIcon;
             guna2Button3.Enabled = false;
-            guna2Button3.FillColor = Color.FromArgb(19, 20, 42);
+            guna2Button3.FillColor = Color.FromArgb(22, 23, 50);
             guna2Button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button3.Image = Properties.Resources.clockIcon;
@@ -276,14 +284,15 @@
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.Font = new Font("League Spartan", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = SystemColors.ButtonFace;
-            guna2HtmlLabel2.Location = new Point(35, 95);
+            guna2HtmlLabel2.Location = new Point(36, 90);
             guna2HtmlLabel2.MaximumSize = new Size(705, 40);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(459, 31);
+            guna2HtmlLabel2.Size = new Size(385, 37);
             guna2HtmlLabel2.TabIndex = 3;
             guna2HtmlLabel2.Text = "ATTENTION! Grade Inquiry for CS1101";
+            guna2HtmlLabel2.Click += guna2HtmlLabel2_Click;
             // 
             // guna2HtmlLabel3
             // 
@@ -320,13 +329,32 @@
             // 
             // bgPanel
             // 
-            bgPanel.BackColor = Color.FromArgb(15, 16, 32);
+            bgPanel.BackColor = Color.Transparent;
+            bgPanel.BorderColor = Color.FromArgb(50, 51, 92);
+            bgPanel.BorderRadius = 25;
+            bgPanel.BorderThickness = 1;
             bgPanel.CustomizableEdges = customizableEdges19;
-            bgPanel.Location = new Point(771, 241);
+            bgPanel.FillColor = Color.FromArgb(15, 16, 32);
+            bgPanel.Location = new Point(7, 246);
             bgPanel.Name = "bgPanel";
             bgPanel.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            bgPanel.Size = new Size(770, 913);
+            bgPanel.Size = new Size(753, 655);
             bgPanel.TabIndex = 1;
+            // 
+            // guna2CustomGradientPanel1
+            // 
+            guna2CustomGradientPanel1.Controls.Add(guna2Panel4);
+            guna2CustomGradientPanel1.Controls.Add(bgPanel);
+            guna2CustomGradientPanel1.CustomizableEdges = customizableEdges21;
+            guna2CustomGradientPanel1.FillColor = Color.FromArgb(22, 23, 50);
+            guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(78, 79, 177);
+            guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(30, 32, 68);
+            guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(22, 23, 50);
+            guna2CustomGradientPanel1.Location = new Point(770, 0);
+            guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2CustomGradientPanel1.Size = new Size(780, 919);
+            guna2CustomGradientPanel1.TabIndex = 14;
             // 
             // AnsweredContent
             // 
@@ -336,10 +364,9 @@
             ClientSize = new Size(1542, 913);
             Controls.Add(sentPanel);
             Controls.Add(panelEmailBody);
-            Controls.Add(guna2Panel4);
             Controls.Add(Guna2Panel2);
             Controls.Add(Guna2Panel1);
-            Controls.Add(bgPanel);
+            Controls.Add(guna2CustomGradientPanel1);
             Name = "AnsweredContent";
             Text = "AnsweredContent";
             Load += AnsweredContent_Load;
@@ -354,6 +381,7 @@
             guna2Panel4.ResumeLayout(false);
             guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
+            guna2CustomGradientPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -377,5 +405,6 @@
         internal Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         internal Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
         private Guna.UI2.WinForms.Guna2Panel bgPanel;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
     }
 }

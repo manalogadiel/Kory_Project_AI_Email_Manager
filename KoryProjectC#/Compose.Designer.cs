@@ -68,10 +68,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -98,16 +98,16 @@
             SendBtn = new Guna.UI2.WinForms.Guna2GradientButton();
             txtSalutation = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            catPounce = new Guna.UI2.WinForms.Guna2PictureBox();
             panelEmailBody = new Guna.UI2.WinForms.Guna2Panel();
             EmailContent = new Microsoft.Web.WebView2.WinForms.WebView2();
-            catPounce = new Guna.UI2.WinForms.Guna2PictureBox();
             Guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Guna2CirclePictureBox1).BeginInit();
             Guna2Panel1.SuspendLayout();
             Guna2GradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)catPounce).BeginInit();
             panelEmailBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)EmailContent).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)catPounce).BeginInit();
             SuspendLayout();
             // 
             // Guna2Panel2
@@ -152,12 +152,12 @@
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("League Spartan", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = SystemColors.ButtonFace;
             guna2HtmlLabel1.Location = new Point(35, 95);
             guna2HtmlLabel1.MaximumSize = new Size(705, 40);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(459, 31);
+            guna2HtmlLabel1.Size = new Size(385, 37);
             guna2HtmlLabel1.TabIndex = 3;
             guna2HtmlLabel1.Text = "ATTENTION! Grade Inquiry for CS1101";
             guna2HtmlLabel1.Click += guna2HtmlLabel1_Click;
@@ -262,7 +262,7 @@
             // 
             // btnAnalyze
             // 
-            btnAnalyze.BorderColor = Color.Gray;
+            btnAnalyze.BorderColor = Color.MediumPurple;
             btnAnalyze.BorderRadius = 10;
             btnAnalyze.BorderThickness = 1;
             btnAnalyze.CustomizableEdges = customizableEdges10;
@@ -273,9 +273,9 @@
             btnAnalyze.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAnalyze.FillColor = Color.FromArgb(15, 16, 32);
             btnAnalyze.FillColor2 = Color.FromArgb(15, 16, 32);
-            btnAnalyze.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAnalyze.ForeColor = Color.DarkGray;
-            btnAnalyze.Location = new Point(396, 846);
+            btnAnalyze.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold);
+            btnAnalyze.ForeColor = Color.MediumPurple;
+            btnAnalyze.Location = new Point(561, 202);
             btnAnalyze.Margin = new Padding(3, 4, 3, 4);
             btnAnalyze.Name = "btnAnalyze";
             btnAnalyze.ShadowDecoration.CustomizableEdges = customizableEdges11;
@@ -363,7 +363,7 @@
             guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2GradientButton1.FillColor = Color.FromArgb(15, 16, 32);
             guna2GradientButton1.FillColor2 = Color.FromArgb(15, 16, 32);
-            guna2GradientButton1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2GradientButton1.Font = new Font("League Spartan", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2GradientButton1.ForeColor = Color.FromArgb(107, 92, 231);
             guna2GradientButton1.Image = Properties.Resources.editIcon;
             guna2GradientButton1.Location = new Point(586, 749);
@@ -519,7 +519,7 @@
             SaveDraftBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SaveDraftBtn.FillColor = Color.FromArgb(15, 16, 32);
             SaveDraftBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            SaveDraftBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveDraftBtn.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             SaveDraftBtn.ForeColor = Color.DarkGray;
             SaveDraftBtn.Image = Properties.Resources.saveIcon;
             SaveDraftBtn.Location = new Point(276, 846);
@@ -543,7 +543,7 @@
             ImproveBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             ImproveBtn.FillColor = Color.FromArgb(15, 16, 32);
             ImproveBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            ImproveBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ImproveBtn.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             ImproveBtn.ForeColor = Color.FromArgb(107, 92, 231);
             ImproveBtn.Image = Properties.Resources.sparkleIcon;
             ImproveBtn.Location = new Point(156, 845);
@@ -567,7 +567,7 @@
             KoryReplyBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             KoryReplyBtn.FillColor = Color.FromArgb(15, 16, 32);
             KoryReplyBtn.FillColor2 = Color.FromArgb(15, 16, 32);
-            KoryReplyBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            KoryReplyBtn.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             KoryReplyBtn.ForeColor = Color.FromArgb(0, 192, 192);
             KoryReplyBtn.Image = Properties.Resources.pawIcon;
             KoryReplyBtn.Location = new Point(36, 845);
@@ -576,7 +576,7 @@
             KoryReplyBtn.ShadowDecoration.CustomizableEdges = customizableEdges32;
             KoryReplyBtn.Size = new Size(114, 30);
             KoryReplyBtn.TabIndex = 5;
-            KoryReplyBtn.Text = "Kory ReSply";
+            KoryReplyBtn.Text = "Kory Reply";
             // 
             // SendBtn
             // 
@@ -652,6 +652,21 @@
             Guna2TextBox1.Size = new Size(535, 76);
             Guna2TextBox1.TabIndex = 0;
             // 
+            // catPounce
+            // 
+            catPounce.CustomizableEdges = customizableEdges39;
+            catPounce.FillColor = Color.Transparent;
+            catPounce.Image = Properties.Resources.catPounce;
+            catPounce.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            catPounce.ImageRotate = 60F;
+            catPounce.Location = new Point(328, 72);
+            catPounce.Name = "catPounce";
+            catPounce.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            catPounce.Size = new Size(221, 187);
+            catPounce.SizeMode = PictureBoxSizeMode.Zoom;
+            catPounce.TabIndex = 17;
+            catPounce.TabStop = false;
+            // 
             // panelEmailBody
             // 
             panelEmailBody.AutoScroll = true;
@@ -678,21 +693,6 @@
             EmailContent.ZoomFactor = 1D;
             EmailContent.Click += EmailContent_Click;
             // 
-            // catPounce
-            // 
-            catPounce.CustomizableEdges = customizableEdges39;
-            catPounce.FillColor = Color.Transparent;
-            catPounce.Image = Properties.Resources.catPounce;
-            catPounce.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            catPounce.ImageRotate = 60F;
-            catPounce.Location = new Point(328, 72);
-            catPounce.Name = "catPounce";
-            catPounce.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            catPounce.Size = new Size(221, 187);
-            catPounce.SizeMode = PictureBoxSizeMode.Zoom;
-            catPounce.TabIndex = 17;
-            catPounce.TabStop = false;
-            // 
             // Compose
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -712,9 +712,9 @@
             ((System.ComponentModel.ISupportInitialize)Guna2CirclePictureBox1).EndInit();
             Guna2Panel1.ResumeLayout(false);
             Guna2GradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)catPounce).EndInit();
             panelEmailBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)EmailContent).EndInit();
-            ((System.ComponentModel.ISupportInitialize)catPounce).EndInit();
             ResumeLayout(false);
         }
 
