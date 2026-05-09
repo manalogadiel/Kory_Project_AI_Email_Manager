@@ -66,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)sentEmailContent).BeginInit();
             guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
+            bgPanel.SuspendLayout();
             guna2CustomGradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             panelEmailBody.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             panelEmailBody.Controls.Add(EmailContent);
             panelEmailBody.CustomizableEdges = customizableEdges5;
-            panelEmailBody.Location = new Point(43, 268);
+            panelEmailBody.Location = new Point(24, 268);
             panelEmailBody.Name = "panelEmailBody";
             panelEmailBody.ShadowDecoration.CustomizableEdges = customizableEdges6;
             panelEmailBody.Size = new Size(709, 608);
@@ -333,6 +334,7 @@
             bgPanel.BorderColor = Color.FromArgb(50, 51, 92);
             bgPanel.BorderRadius = 25;
             bgPanel.BorderThickness = 1;
+            bgPanel.Controls.Add(sentPanel);
             bgPanel.CustomizableEdges = customizableEdges19;
             bgPanel.FillColor = Color.FromArgb(15, 16, 32);
             bgPanel.Location = new Point(11, 246);
@@ -368,7 +370,7 @@
             Controls.Add(Guna2Panel1);
             Controls.Add(guna2CustomGradientPanel1);
             Name = "AnsweredContent";
-            Text = "AnsweredContent";
+            Size = new Size(1540, 960);
             Load += AnsweredContent_Load;
             Guna2Panel1.ResumeLayout(false);
             panelEmailBody.ResumeLayout(false);
@@ -381,6 +383,7 @@
             guna2Panel4.ResumeLayout(false);
             guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
+            bgPanel.ResumeLayout(false);
             guna2CustomGradientPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }

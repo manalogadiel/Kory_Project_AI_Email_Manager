@@ -14,7 +14,7 @@ namespace KoryProjectC_
     {
         private static readonly string[] Scopes =
         {
-            GmailService.Scope.GmailReadonly,
+            GmailService.Scope.GmailModify,
             GmailService.Scope.GmailSend,
             "https://www.googleapis.com/auth/userinfo.profile"
         };
@@ -113,41 +113,24 @@ namespace KoryProjectC_
         }
 
         public static async Task<double> GetAvgResponseMinutesAsync(
-            GmailService service, int sampleSize = 20)
+    GmailService service, int sampleSize = 20)
         {
-            var sentReq = service.Users.Messages.List("me");
-            sentReq.LabelIds = "SENT";
-            sentReq.MaxResults = sampleSize;
-            var sentResp = await sentReq.ExecuteAsync();
+            var startOfDay = new DateTimeOffset(DateTime.Today,
+                TimeZoneInfo.Local.GetUtcOffset(DateTime.Today));
+            long unixTimestamp = startOfDay.ToUnixTimeSeconds();
 
-            if (sentResp.Messages == null || !sentResp.Messages.Any()) return 0;
+            var req = service.Users.Messages.List("me");
+            req.LabelIds = "SENT";
+            req.Q = $"after:{unixTimestamp}";
+            req.MaxResults = 200;
 
-            var threadTasks = sentResp.Messages.Take(sampleSize).Select(async msg =>
-            {
-                try
-                {
-                    var getReq = service.Users.Messages.Get("me", msg.Id);
-                    getReq.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Minimal;
-                    var sentMsg = await getReq.ExecuteAsync();
-                    if (sentMsg.ThreadId == null) return (double?)null;
+            var resp = await req.ExecuteAsync();
+            if (resp.Messages == null) return 0;
 
-                    var threadReq = service.Users.Threads.Get("me", sentMsg.ThreadId);
-                    threadReq.Format = UsersResource.ThreadsResource.GetRequest.FormatEnum.Minimal;
-                    var thread = await threadReq.ExecuteAsync();
-                    if (thread.Messages == null || thread.Messages.Count < 2) return (double?)null;
+            double hoursElapsed = (DateTime.Now - DateTime.Today).TotalHours;
+            if (hoursElapsed < 0.1) return 0;
 
-                    var first = thread.Messages.First();
-                    var sent = thread.Messages.FirstOrDefault(m => m.Id == sentMsg.Id);
-                    if (first.InternalDate == null || sent?.InternalDate == null) return (double?)null;
-
-                    double minutes = (sent.InternalDate.Value - first.InternalDate.Value) / 60_000.0;
-                    return (minutes < 0 || minutes > 10_080) ? (double?)null : minutes;
-                }
-                catch { return (double?)null; }
-            });
-
-            var validTimes = (await Task.WhenAll(threadTasks)).OfType<double>().ToList();
-            return validTimes.Count > 0 ? validTimes.Average() : 0;
+            return Math.Round(resp.Messages.Count / hoursElapsed, 1);
         }
 
         public static async Task<string> GetUserNameAsync(GmailService service)

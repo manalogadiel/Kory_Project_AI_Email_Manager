@@ -264,9 +264,10 @@
             avgResponseText.Location = new Point(24, 13);
             avgResponseText.Margin = new Padding(3, 4, 3, 4);
             avgResponseText.Name = "avgResponseText";
-            avgResponseText.Size = new Size(115, 28);
+            avgResponseText.Size = new Size(79, 28);
             avgResponseText.TabIndex = 8;
-            avgResponseText.Text = "Avg. Response";
+            avgResponseText.Text = "Emails/Hr";
+            avgResponseText.Click += avgResponseText_Click;
             // 
             // placehold
             // 
@@ -492,7 +493,7 @@
             pnlMainContent.Margin = new Padding(0);
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.ShadowDecoration.CustomizableEdges = customizableEdges29;
-            pnlMainContent.Size = new Size(1233, 591);
+            pnlMainContent.Size = new Size(1233, 575);
             pnlMainContent.TabIndex = 5;
             pnlMainContent.Paint += pnlMainContent_Paint;
             // 

@@ -34,12 +34,15 @@ namespace KoryProjectC_
             _sentEmail = sentEmail;
             _service = service;
 
-            // ── RIGHT SIDE: the email YOU sent (15, 16, 32) ──────────────────
+            // ── RIGHT SIDE: the email YOU sent ───────────────────────────────
             guna2HtmlLabel2.Text = !string.IsNullOrWhiteSpace(sentEmail.Subject)
                 ? sentEmail.Subject : "(No Subject)";
             guna2HtmlLabel4.Text = sentEmail.FromName;
             guna2HtmlLabel3.Text = sentEmail.FromEmail;
             guna2Button3.Text = sentEmail.Date;
+
+            // Avatar for the sent-email panel (your own profile / sender)
+            SetAvatar(guna2CirclePictureBox2, sentEmail.FromName, sentEmail.FromEmail);
 
             string sentHtml = !string.IsNullOrEmpty(sentEmail.BodyHtml)
                 ? InjectDarkModeStyles(sentEmail.BodyHtml, "#0f1020")
@@ -47,7 +50,7 @@ namespace KoryProjectC_
 
             await InitWebViewAsync(sentEmailContent, sentHtml, Color.FromArgb(15, 16, 32));
 
-            // ── LEFT SIDE: original email you replied to (14, 15, 20) ────────
+            // ── LEFT SIDE: original email you replied to ──────────────────────
             try
             {
                 var threadReq = service.Users.Threads.Get("me", sentEmail.ThreadId);
@@ -66,6 +69,9 @@ namespace KoryProjectC_
                     NameForm.Text = orig.FromName;
                     EmailForm.Text = orig.FromEmail;
                     guna2Button2.Text = orig.Date;
+
+                    // Avatar for the received-email panel (original sender)
+                    SetAvatar(Guna2CirclePictureBox1, orig.FromName, orig.FromEmail);
 
                     string origHtml = !string.IsNullOrEmpty(orig.BodyHtml)
                         ? InjectDarkModeStyles(orig.BodyHtml, "#0e0f14")
@@ -93,13 +99,92 @@ namespace KoryProjectC_
             }
         }
 
-        // ── HELPERS — same style as Compose.cs ───────────────────────────────
+        // ── Avatar ────────────────────────────────────────────────────────────
+        // Shared helper used by both picture boxes. Generates a deterministic
+        // coloured circle with the sender's initials — same logic as EmailRow.
+
+        private static void SetAvatar(
+            Guna.UI2.WinForms.Guna2CirclePictureBox box,
+            string fromName, string fromEmail)
+        {
+            try
+            {
+                string initials = GetInitials(fromName, fromEmail);
+                Color avatarColor = GetAvatarColor(fromName + fromEmail);
+
+                int size = box.Width;
+                var bmp = new Bitmap(size, size);
+
+                using (var g = Graphics.FromImage(bmp))
+                {
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+                    g.FillEllipse(new SolidBrush(avatarColor), 0, 0, size, size);
+
+                    float fontSize = size * 0.35f;
+                    var font = new Font("Segoe UI", fontSize, FontStyle.Bold, GraphicsUnit.Pixel);
+                    var format = new StringFormat
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center
+                    };
+
+                    g.DrawString(initials, font, new SolidBrush(Color.White),
+                        new RectangleF(0, 0, size, size), format);
+                }
+
+                box.Image = bmp;
+            }
+            catch { /* leave default if anything fails */ }
+        }
+
+        private static string GetInitials(string name, string email)
+        {
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var parts = name.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length >= 2)
+                    return $"{parts[0][0]}{parts[^1][0]}".ToUpper();
+                if (parts.Length == 1 && parts[0].Length > 0)
+                    return parts[0][0].ToString().ToUpper();
+            }
+
+            if (!string.IsNullOrWhiteSpace(email))
+                return email[0].ToString().ToUpper();
+
+            return "?";
+        }
+
+        private static Color GetAvatarColor(string seed)
+        {
+            Color[] palette =
+            {
+                Color.FromArgb(98,  117, 217),
+                Color.FromArgb(76,  175, 130),
+                Color.FromArgb(229, 115,  95),
+                Color.FromArgb(100, 160, 220),
+                Color.FromArgb(186, 104, 200),
+                Color.FromArgb(77,  182, 172),
+                Color.FromArgb(240, 154,  56),
+                Color.FromArgb(129, 199, 132),
+                Color.FromArgb(229, 115, 155),
+                Color.FromArgb(111, 143, 175),
+            };
+
+            int hash = 0;
+            foreach (char c in seed)
+                hash = (hash * 31 + c) & 0x7fffffff;
+
+            return palette[hash % palette.Length];
+        }
+
+        // ── WebView helpers ───────────────────────────────────────────────────
 
         private static async Task InitWebViewAsync(WebView2 wv, string html, Color bgColor)
         {
             try
             {
-                // Wait until the control has a valid window handle
                 int attempts = 0;
                 while (!wv.IsHandleCreated && attempts < 20)
                 {
@@ -110,12 +195,11 @@ namespace KoryProjectC_
                 if (wv.IsDisposed) return;
 
                 await wv.EnsureCoreWebView2Async(null);
-
                 wv.DefaultBackgroundColor = bgColor;
                 wv.NavigateToString(html);
             }
             catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException
-                                     || ex is System.InvalidOperationException)
+                                     || ex is InvalidOperationException)
             {
                 await Task.Delay(500);
                 try
@@ -187,6 +271,8 @@ namespace KoryProjectC_
 </body></html>";
         }
 
+        // ── Email parsing ─────────────────────────────────────────────────────
+
         private static EmailModel ParseMessage(GmailMessage message)
         {
             var email = new EmailModel
@@ -228,7 +314,6 @@ namespace KoryProjectC_
             email.BodyHtml = GetBody(message.Payload, "text/html");
             email.BodyText = GetBody(message.Payload, "text/plain");
 
-            // Fallback: if still no subject after headers, keep default
             if (string.IsNullOrWhiteSpace(email.Subject))
                 email.Subject = "(No Subject)";
 
@@ -260,8 +345,7 @@ namespace KoryProjectC_
             {
                 var b64 = part.Body.Data.Replace('-', '+').Replace('_', '/');
                 b64 = b64.PadRight(b64.Length + (4 - b64.Length % 4) % 4, '=');
-                return System.Text.Encoding.UTF8.GetString(
-                    Convert.FromBase64String(b64));
+                return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(b64));
             }
             if (part.Parts != null)
                 foreach (var sub in part.Parts)
@@ -272,14 +356,7 @@ namespace KoryProjectC_
             return "";
         }
 
-        private void AnsweredContent_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void AnsweredContent_Load(object sender, EventArgs e) { }
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e) { }
     }
 }
