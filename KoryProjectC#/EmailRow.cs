@@ -29,9 +29,10 @@ namespace KoryProjectC_
             guna2HtmlLabel2.Text = email.Snippet;
             guna2HtmlLabel3.Text = email.Date;
 
+            guna2CirclePictureBox2.Visible = !email.IsRead;
+
             if (!email.IsRead)
-                guna2HtmlLabel1.Font = new Font(
-                    guna2HtmlLabel1.Font, FontStyle.Bold);
+                guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Bold);
         }
 
         private void AttachEvents(Control control)
@@ -70,7 +71,6 @@ namespace KoryProjectC_
         {
             if (Email == null) return;
 
-            // If this row has a draft action, use it
             if (OnDraftClicked != null)
             {
                 OnDraftClicked.Invoke();
@@ -82,6 +82,15 @@ namespace KoryProjectC_
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
 
+            if (!Email.IsRead)
+            {
+                Email.IsRead = true;
+                guna2CirclePictureBox2.Visible = false;
+                guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
+                _ = MarkAsReadAsync();
+                home.RefreshBadges();
+            }
+
             if (IsAnsweredRow)
             {
                 home.ShowAnsweredContent(Email, _gmailService);
@@ -92,7 +101,22 @@ namespace KoryProjectC_
             compose.LoadEmail(Email, _gmailService);
             home.ShowFullscreenCompose(compose);
         }
-
+        private async Task MarkAsReadAsync()
+        {
+            if (_gmailService == null || Email == null) return;
+            try
+            {
+                var request = new Google.Apis.Gmail.v1.Data.ModifyMessageRequest
+                {
+                    RemoveLabelIds = new List<string> { "UNREAD" }
+                };
+                await _gmailService.Users.Messages.Modify(request, "me", Email.Id).ExecuteAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Mark as read failed: {ex.Message}");
+            }
+        }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
         {
 
