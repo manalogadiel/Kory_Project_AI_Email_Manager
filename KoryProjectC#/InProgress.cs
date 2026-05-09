@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace KoryProjectC_
 {
@@ -15,6 +7,35 @@ namespace KoryProjectC_
         public InProgress()
         {
             InitializeComponent();
+        }
+
+        public void LoadDrafts()
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            var drafts = DraftHelper.LoadDrafts();
+            drafts.Reverse();
+
+            foreach (var draft in drafts)
+            {
+                if (draft.Original == null) continue;
+
+                var card = new EmailRow();
+                card.Width = flowLayoutPanel1.Width - 25;
+                card.SetEmail(draft.Original, AppState.GmailService!);
+                card.OnDraftClicked = () => OpenDraft(draft);
+                flowLayoutPanel1.Controls.Add(card);
+            }
+        }
+        private void OpenDraft(DraftModel draft)
+        {
+            var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+            if (home == null || draft.Original == null) return;
+
+            var compose = new Compose();
+            compose.LoadEmail(draft.Original, AppState.GmailService!);
+            compose.LoadDraft(draft);
+            home.ShowFullscreenCompose(compose);
         }
     }
 }

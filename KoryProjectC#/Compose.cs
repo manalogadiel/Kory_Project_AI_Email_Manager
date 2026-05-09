@@ -101,6 +101,8 @@ namespace KoryProjectC_
                     MessageBox.Show("Reply sent successfully!", "Sent",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    DraftHelper.DeleteDraft(_currentEmail.Id);
+
                     Application.OpenForms
                         .OfType<Home>()
                         .FirstOrDefault()
@@ -116,6 +118,32 @@ namespace KoryProjectC_
                     SendBtn.Enabled = true;
                     SendBtn.Text = "Send";
                 }
+
+            };
+            SaveDraftBtn.Click += (s, e) =>
+            {
+                if (_currentEmail == null) return;
+
+                var draft = new DraftModel
+                {
+                    EmailId = _currentEmail.Id,
+                    Subject = txtSubject.Text,
+                    Salutation = txtSalutation.Text,
+                    Body = txtInput.Text,
+                    Signature = Guna2TextBox1.Text,
+                    Original = _currentEmail
+                };
+
+                DraftHelper.SaveDraft(draft);
+
+                MessageBox.Show("Draft saved!", "Saved",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Go back to inbox
+                Application.OpenForms
+                    .OfType<Home>()
+                    .FirstOrDefault()
+                    ?.HideFullscreenCompose();
             };
         }
 
@@ -466,7 +494,8 @@ Body:
 {(string.IsNullOrEmpty(email.BodyText) ? "(HTML email — no plain text)" : email.BodyText)}
 ".Trim();
 
-            txtSubject.PlaceholderText = "Generating subject...";
+            if (this.IsHandleCreated && !this.IsDisposed)
+                this.Invoke(() => txtSubject.PlaceholderText = "Generating subject...");
 
             string prompt = $@"You are an academic email assistant named KORY. Given the email below, generate only a reply subject line.
 
@@ -516,13 +545,15 @@ Output format: {{""subject"": ""...""}}";
                     generatedText = generatedText.Substring(start, end - start + 1);
 
                     using JsonDocument result = JsonDocument.Parse(generatedText);
-                    string subject = result.RootElement.TryGetProperty("subject", out var s) ? s.GetString() ?? "" : "";
+                    string subject = result.RootElement.TryGetProperty("subject", out var s)
+                        ? s.GetString() ?? "" : "";
 
-                    this.Invoke(() =>
-                    {
-                        txtSubject.Text = subject;
-                        txtSubject.PlaceholderText = "";
-                    });
+                    if (this.IsHandleCreated && !this.IsDisposed)
+                        this.Invoke(() =>
+                        {
+                            txtSubject.Text = subject;
+                            txtSubject.PlaceholderText = "";
+                        });
 
                     return;
                 }
@@ -532,7 +563,8 @@ Output format: {{""subject"": ""...""}}";
                 }
             }
 
-            this.Invoke(() => txtSubject.PlaceholderText = "Could not generate subject");
+            if (this.IsHandleCreated && !this.IsDisposed)
+                this.Invoke(() => txtSubject.PlaceholderText = "Could not generate subject");
         }
 
         // ── KORY REPLY ──────────────────────────────────────────────────────────────
@@ -715,8 +747,15 @@ Output format: {{""improved"": ""...""}}";
             MessageBox.Show("Could not improve the text. Please try again.", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        public void LoadDraft(DraftModel draft)
+        {
+            txtSubject.Text = draft.Subject;
+            txtSalutation.Text = draft.Salutation;
+            txtInput.Text = draft.Body;
+            Guna2TextBox1.Text = draft.Signature;
+        }
 
-        
+
     }
 
 }

@@ -131,6 +131,10 @@ namespace KoryProjectC_
             }
             fullscreenCompose = null;
 
+            // Only refresh if handle is created
+            if (ucInProgress.IsHandleCreated)
+                ucInProgress.LoadDrafts();
+
             var emailContent = pnlMainContent.Controls.OfType<EmailContent>().FirstOrDefault();
             if (emailContent != null)
             {
@@ -140,7 +144,6 @@ namespace KoryProjectC_
 
             ucInbox.BringToFront();
         }
-
         private void SetupDashboard()
         {
             ucInbox = new Inbox();
@@ -165,7 +168,11 @@ namespace KoryProjectC_
         }
 
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
-        private void InProgressBtn_Click(object sender, EventArgs e) => ucInProgress.BringToFront();
+        private void InProgressBtn_Click(object sender, EventArgs e)
+        {
+            ucInProgress.LoadDrafts();
+            ucInProgress.BringToFront();
+        }
         private void AnsweredBtn_Click(object sender, EventArgs e) => ucAnswered.BringToFront();
 
         private void logOutBtn_Click(object sender, EventArgs e)
