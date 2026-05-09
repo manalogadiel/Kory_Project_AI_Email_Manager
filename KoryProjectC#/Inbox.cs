@@ -50,7 +50,7 @@ namespace KoryProjectC_
             };
         }
 
-        private void LoadCategoryData()
+        public void LoadCategoryData()
         {
             // Remove old click handlers first
             catGrade.MouseClick -= category_Click;
@@ -82,6 +82,17 @@ namespace KoryProjectC_
                 // Set badge
                 map.Badge.Enabled = unread > 0;
                 map.Badge.Text = $"{unread} new";
+
+                if (unread > 0)
+                {
+                    map.Badge.Enabled = true;
+                    map.Badge.FillColor = Color.FromArgb(107, 92, 231);
+                }
+                else
+                {
+                    map.Badge.Enabled = true; // keep enabled
+                    map.Badge.FillColor = Color.FromArgb(107, 92, 231); // dimmed purple instead of gray
+                }
 
                 // Wire click with correct category (capture variable)
                 var cat = map.Name;
