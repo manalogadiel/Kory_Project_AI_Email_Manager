@@ -9,6 +9,7 @@ namespace KoryProjectC_
         public EmailModel? Email { get; private set; }
         private GmailService? _gmailService;
         public Action? OnDraftClicked;
+        public bool IsAnsweredRow { get; set; } = false;
         private readonly Color normalFill = Color.FromArgb(26, 28, 46);
         private readonly Color hoverFill = Color.FromArgb(17, 18, 30);
         private readonly Color normalBorder = Color.FromArgb(39, 40, 64);
@@ -17,13 +18,9 @@ namespace KoryProjectC_
         public EmailRow()
         {
             InitializeComponent();
-        
             AttachEvents(this);
-
-
         }
 
-        /// <summary>Populate the card with real email data.</summary>
         public void SetEmail(EmailModel email, GmailService service)
         {
             Email = email;
@@ -32,7 +29,6 @@ namespace KoryProjectC_
             guna2HtmlLabel2.Text = email.Snippet;
             guna2HtmlLabel3.Text = email.Date;
 
-            // Bold sender name for unread emails
             if (!email.IsRead)
                 guna2HtmlLabel1.Font = new Font(
                     guna2HtmlLabel1.Font, FontStyle.Bold);
@@ -42,7 +38,11 @@ namespace KoryProjectC_
         {
             control.MouseEnter += OnHoverEnter;
             control.MouseLeave += OnHoverLeave;
-            control.MouseClick += OnRowClick;
+
+            // Only attach click to the top-level UserControl and rowPanel, not every child
+            if (control == this || control == rowPanel)
+                control.MouseClick += OnRowClick;
+
             foreach (Control child in control.Controls)
                 AttachEvents(child);
         }
@@ -64,7 +64,6 @@ namespace KoryProjectC_
             }
         }
 
-
         public Action<EmailModel>? OnEmailClicked;
 
         private void OnRowClick(object? sender, MouseEventArgs e)
@@ -82,6 +81,12 @@ namespace KoryProjectC_
 
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
+
+            if (IsAnsweredRow)
+            {
+                home.ShowAnsweredContent(Email, _gmailService);
+                return;
+            }
 
             var compose = new Compose();
             compose.LoadEmail(Email, _gmailService);
