@@ -693,7 +693,7 @@
             guna2ImageButton6.ImageOffset = new Point(0, 0);
             guna2ImageButton6.ImageRotate = 0F;
             guna2ImageButton6.ImageSize = new Size(25, 25);
-            guna2ImageButton6.Location = new Point(29, 181);
+            guna2ImageButton6.Location = new Point(29, 170);
             guna2ImageButton6.Name = "guna2ImageButton6";
             guna2ImageButton6.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton6.ShadowDecoration.CustomizableEdges = customizableEdges35;
