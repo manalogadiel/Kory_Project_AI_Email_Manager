@@ -30,15 +30,15 @@ namespace KoryProjectC_
             guna2HtmlLabel2.Text = email.Snippet;
             guna2HtmlLabel3.Text = email.Date;
 
+            // Unread dot visibility
             guna2CirclePictureBox2.Visible = !email.IsRead;
 
+            // Bold sender name when unread
             if (!email.IsRead)
-                guna2HtmlLabel1.Font = new Font(
-                    guna2HtmlLabel1.Font, FontStyle.Bold);
-
-            // Populate the avatar circle — was never called before
-            SetSenderAvatar(email.FromName, email.FromEmail);
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Bold);
+
+            // Populate the avatar circle with initials
+            SetSenderAvatar(email.FromName, email.FromEmail);
         }
 
         private void AttachEvents(Control control)
@@ -46,6 +46,7 @@ namespace KoryProjectC_
             control.MouseEnter += OnHoverEnter;
             control.MouseLeave += OnHoverLeave;
 
+            // Only attach click to the top-level UserControl and rowPanel, not every child
             if (control == this || control == rowPanel)
                 control.MouseClick += OnRowClick;
 
@@ -87,6 +88,7 @@ namespace KoryProjectC_
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
 
+            // Mark as read on click — update UI immediately, then sync to Gmail
             if (!Email.IsRead)
             {
                 Email.IsRead = true;
@@ -105,6 +107,23 @@ namespace KoryProjectC_
             var compose = new Compose();
             compose.LoadEmail(Email, _gmailService);
             home.ShowFullscreenCompose(compose);
+        }
+
+        private async Task MarkAsReadAsync()
+        {
+            if (_gmailService == null || Email == null) return;
+            try
+            {
+                var request = new Google.Apis.Gmail.v1.Data.ModifyMessageRequest
+                {
+                    RemoveLabelIds = new List<string> { "UNREAD" }
+                };
+                await _gmailService.Users.Messages.Modify(request, "me", Email.Id).ExecuteAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Mark as read failed: {ex.Message}");
+            }
         }
 
         // ── Avatar helpers ────────────────────────────────────────────────────
@@ -128,14 +147,13 @@ namespace KoryProjectC_
 
                     float fontSize = size * 0.35f;
                     var font = new Font("Segoe UI", fontSize, FontStyle.Bold, GraphicsUnit.Pixel);
-                    var textBrush = new SolidBrush(Color.White);
                     var format = new StringFormat
                     {
                         Alignment = StringAlignment.Center,
                         LineAlignment = StringAlignment.Center
                     };
 
-                    g.DrawString(initials, font, textBrush,
+                    g.DrawString(initials, font, new SolidBrush(Color.White),
                         new RectangleF(0, 0, size, size), format);
                 }
 
@@ -180,24 +198,6 @@ namespace KoryProjectC_
             int hash = 0;
             foreach (char c in seed)
                 hash = (hash * 31 + c) & 0x7fffffff;
-        private async Task MarkAsReadAsync()
-        {
-            if (_gmailService == null || Email == null) return;
-            try
-            {
-                var request = new Google.Apis.Gmail.v1.Data.ModifyMessageRequest
-                {
-                    RemoveLabelIds = new List<string> { "UNREAD" }
-                };
-                await _gmailService.Users.Messages.Modify(request, "me", Email.Id).ExecuteAsync();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Mark as read failed: {ex.Message}");
-            }
-        }
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
 
             return palette[hash % palette.Length];
         }
