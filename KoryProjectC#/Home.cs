@@ -51,18 +51,20 @@ namespace KoryProjectC_
         {
             if (_gmailService == null) return;
 
-            // Run all three calls at the same time
             var emailsTask = GmailHelper.FetchEmailsAsync(_gmailService);
             var answeredTask = GmailHelper.GetSentTodayCountAsync(_gmailService);
             var avgRespTask = GmailHelper.GetAvgResponseMinutesAsync(_gmailService);
+            var nameTask = GmailHelper.GetUserNameAsync(_gmailService); // ← new
 
-            await Task.WhenAll(emailsTask, answeredTask, avgRespTask);
+            await Task.WhenAll(emailsTask, answeredTask, avgRespTask, nameTask);
 
             var emails = await emailsTask;
             int pending = emails.Count(e => !e.IsRead);
             int answered = await answeredTask;
             int avgResp = (int)Math.Round(await avgRespTask);
+            string name = await nameTask; // ← new
 
+            title.Text = $"Hi, {name}!"; // ← new
             UpdateHeaderStats(pending, answered, avgResp);
         }
 

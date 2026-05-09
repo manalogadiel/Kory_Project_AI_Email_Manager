@@ -164,6 +164,43 @@ namespace KoryProjectC_
             return validTimes.Count > 0 ? validTimes.Average() : 0;
         }
 
+        public static async Task<string> GetUserNameAsync(GmailService service)
+        {
+            try
+            {
+                // Grab one sent message and read the From header for the display name
+                var sentReq = service.Users.Messages.List("me");
+                sentReq.LabelIds = "SENT";
+                sentReq.MaxResults = 1;
+                var sentResp = await sentReq.ExecuteAsync();
+
+                if (sentResp.Messages?.Any() == true)
+                {
+                    var getReq = service.Users.Messages.Get("me", sentResp.Messages[0].Id);
+                    getReq.Format = UsersResource.MessagesResource.GetRequest.FormatEnum.Metadata;
+                    getReq.MetadataHeaders = new[] { "From" };
+                    var msg = await getReq.ExecuteAsync();
+
+                    var from = msg.Payload?.Headers?
+                        .FirstOrDefault(h => h.Name?
+                        .Equals("From", StringComparison.OrdinalIgnoreCase) == true);
+
+                    if (from != null)
+                    {
+                        // "John Doe <john@gmail.com>" → returns "John"
+                        var match = Regex.Match(from.Value ?? "", @"^""?(.+?)""?\s*<");
+                        if (match.Success)
+                            return match.Groups[1].Value.Trim().Split(' ')[0];
+                    }
+                }
+            }
+            catch { }
+
+            // Fallback: use the part before @ in the email address
+            var profile = await service.Users.GetProfile("me").ExecuteAsync();
+            return (profile.EmailAddress ?? "there").Split('@')[0];
+        }
+
         // ─────────────────────────────────────────────────────────────────────────
         //  EXISTING PRIVATE HELPERS (unchanged)
         // ─────────────────────────────────────────────────────────────────────────

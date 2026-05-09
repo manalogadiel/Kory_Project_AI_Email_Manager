@@ -95,18 +95,20 @@
             guna2Panel2.CustomizableEdges = customizableEdges13;
             guna2Panel2.Dock = DockStyle.Top;
             guna2Panel2.Location = new Point(0, 0);
+            guna2Panel2.Margin = new Padding(3, 2, 3, 2);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2Panel2.Size = new Size(1522, 255);
+            guna2Panel2.Size = new Size(1332, 191);
             guna2Panel2.TabIndex = 3;
             // 
             // guna2Panel4
             // 
             guna2Panel4.CustomizableEdges = customizableEdges1;
-            guna2Panel4.Location = new Point(301, 255);
+            guna2Panel4.Location = new Point(263, 191);
+            guna2Panel4.Margin = new Padding(3, 2, 3, 2);
             guna2Panel4.Name = "guna2Panel4";
             guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Panel4.Size = new Size(250, 59);
+            guna2Panel4.Size = new Size(219, 44);
             guna2Panel4.TabIndex = 7;
             // 
             // guna2CustomGradientPanel1
@@ -125,10 +127,11 @@
             guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(78, 79, 177);
             guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(30, 32, 68);
             guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(22, 23, 50);
-            guna2CustomGradientPanel1.Location = new Point(30, 33);
+            guna2CustomGradientPanel1.Location = new Point(26, 25);
+            guna2CustomGradientPanel1.Margin = new Padding(3, 2, 3, 2);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2CustomGradientPanel1.Size = new Size(1463, 189);
+            guna2CustomGradientPanel1.Size = new Size(1280, 142);
             guna2CustomGradientPanel1.TabIndex = 0;
             guna2CustomGradientPanel1.Paint += guna2CustomGradientPanel1_Paint;
             // 
@@ -142,11 +145,10 @@
             NewPending.Controls.Add(newPendingText);
             NewPending.CustomizableEdges = customizableEdges3;
             NewPending.FillColor = Color.FromArgb(20, 22, 39);
-            NewPending.Location = new Point(888, 40);
-            NewPending.Margin = new Padding(3, 4, 3, 4);
+            NewPending.Location = new Point(777, 30);
             NewPending.Name = "NewPending";
             NewPending.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            NewPending.Size = new Size(170, 124);
+            NewPending.Size = new Size(149, 93);
             NewPending.TabIndex = 5;
             NewPending.Paint += guna2Panel7_Paint;
             // 
@@ -155,10 +157,9 @@
             npPlaceholder.BackColor = Color.Transparent;
             npPlaceholder.Font = new Font("League Spartan", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             npPlaceholder.ForeColor = Color.White;
-            npPlaceholder.Location = new Point(21, 49);
-            npPlaceholder.Margin = new Padding(3, 4, 3, 4);
+            npPlaceholder.Location = new Point(18, 37);
             npPlaceholder.Name = "npPlaceholder";
-            npPlaceholder.Size = new Size(12, 39);
+            npPlaceholder.Size = new Size(11, 32);
             npPlaceholder.TabIndex = 6;
             npPlaceholder.Text = "-";
             npPlaceholder.Click += guna2HtmlLabel1_Click_2;
@@ -168,10 +169,9 @@
             newPendingText.BackColor = Color.Transparent;
             newPendingText.Font = new Font("League Spartan ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             newPendingText.ForeColor = Color.FromArgb(120, 127, 152);
-            newPendingText.Location = new Point(21, 13);
-            newPendingText.Margin = new Padding(3, 4, 3, 4);
+            newPendingText.Location = new Point(18, 10);
             newPendingText.Name = "newPendingText";
-            newPendingText.Size = new Size(100, 28);
+            newPendingText.Size = new Size(80, 21);
             newPendingText.TabIndex = 6;
             newPendingText.Text = "New Pending";
             newPendingText.Click += guna2HtmlLabel1_Click_1;
@@ -186,11 +186,10 @@
             AnsweredToday.Controls.Add(answeredTodayText);
             AnsweredToday.CustomizableEdges = customizableEdges5;
             AnsweredToday.FillColor = Color.FromArgb(20, 22, 39);
-            AnsweredToday.Location = new Point(1065, 40);
-            AnsweredToday.Margin = new Padding(3, 4, 3, 4);
+            AnsweredToday.Location = new Point(932, 30);
             AnsweredToday.Name = "AnsweredToday";
             AnsweredToday.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            AnsweredToday.Size = new Size(170, 124);
+            AnsweredToday.Size = new Size(149, 93);
             AnsweredToday.TabIndex = 5;
             AnsweredToday.Paint += guna2Panel6_Paint;
             // 
@@ -199,10 +198,9 @@
             atPlaceholder.BackColor = Color.Transparent;
             atPlaceholder.Font = new Font("League Spartan", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             atPlaceholder.ForeColor = Color.White;
-            atPlaceholder.Location = new Point(22, 49);
-            atPlaceholder.Margin = new Padding(3, 4, 3, 4);
+            atPlaceholder.Location = new Point(19, 37);
             atPlaceholder.Name = "atPlaceholder";
-            atPlaceholder.Size = new Size(12, 39);
+            atPlaceholder.Size = new Size(11, 32);
             atPlaceholder.TabIndex = 7;
             atPlaceholder.Text = "-";
             // 
@@ -211,10 +209,9 @@
             answeredTodayText.BackColor = Color.Transparent;
             answeredTodayText.Font = new Font("League Spartan ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             answeredTodayText.ForeColor = Color.FromArgb(120, 127, 152);
-            answeredTodayText.Location = new Point(22, 13);
-            answeredTodayText.Margin = new Padding(3, 4, 3, 4);
+            answeredTodayText.Location = new Point(19, 10);
             answeredTodayText.Name = "answeredTodayText";
-            answeredTodayText.Size = new Size(124, 28);
+            answeredTodayText.Size = new Size(101, 21);
             answeredTodayText.TabIndex = 7;
             answeredTodayText.Text = "Answered Today";
             // 
@@ -228,11 +225,10 @@
             AvgResponse.Controls.Add(avgResponseText);
             AvgResponse.CustomizableEdges = customizableEdges7;
             AvgResponse.FillColor = Color.FromArgb(20, 22, 39);
-            AvgResponse.Location = new Point(1242, 40);
-            AvgResponse.Margin = new Padding(3, 4, 3, 4);
+            AvgResponse.Location = new Point(1087, 30);
             AvgResponse.Name = "AvgResponse";
             AvgResponse.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            AvgResponse.Size = new Size(170, 124);
+            AvgResponse.Size = new Size(149, 93);
             AvgResponse.TabIndex = 4;
             AvgResponse.Paint += guna2Panel8_Paint;
             // 
@@ -241,10 +237,9 @@
             arPlaceholder.BackColor = Color.Transparent;
             arPlaceholder.Font = new Font("League Spartan", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             arPlaceholder.ForeColor = Color.White;
-            arPlaceholder.Location = new Point(24, 49);
-            arPlaceholder.Margin = new Padding(3, 4, 3, 4);
+            arPlaceholder.Location = new Point(21, 37);
             arPlaceholder.Name = "arPlaceholder";
-            arPlaceholder.Size = new Size(12, 39);
+            arPlaceholder.Size = new Size(11, 32);
             arPlaceholder.TabIndex = 8;
             arPlaceholder.Text = "-";
             // 
@@ -253,10 +248,9 @@
             avgResponseText.BackColor = Color.Transparent;
             avgResponseText.Font = new Font("League Spartan ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             avgResponseText.ForeColor = Color.FromArgb(120, 127, 152);
-            avgResponseText.Location = new Point(24, 13);
-            avgResponseText.Margin = new Padding(3, 4, 3, 4);
+            avgResponseText.Location = new Point(21, 10);
             avgResponseText.Name = "avgResponseText";
-            avgResponseText.Size = new Size(115, 28);
+            avgResponseText.Size = new Size(91, 21);
             avgResponseText.TabIndex = 8;
             avgResponseText.Text = "Avg. Response";
             // 
@@ -265,10 +259,9 @@
             placehold.BackColor = Color.Transparent;
             placehold.Font = new Font("League Spartan ExtraLight", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             placehold.ForeColor = Color.FromArgb(120, 127, 152);
-            placehold.Location = new Point(169, 100);
-            placehold.Margin = new Padding(3, 4, 3, 4);
+            placehold.Location = new Point(148, 75);
             placehold.Name = "placehold";
-            placehold.Size = new Size(409, 28);
+            placehold.Size = new Size(325, 21);
             placehold.TabIndex = 2;
             placehold.Text = "You have {} unread emails waiting.  Let's tackle them!";
             placehold.Click += placehold_Click;
@@ -278,12 +271,11 @@
             title.BackColor = Color.Transparent;
             title.Font = new Font("League Spartan", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             title.ForeColor = Color.White;
-            title.Location = new Point(169, 63);
-            title.Margin = new Padding(3, 4, 3, 4);
+            title.Location = new Point(148, 47);
             title.Name = "title";
-            title.Size = new Size(149, 39);
+            title.Size = new Size(50, 32);
             title.TabIndex = 1;
-            title.Text = "KORY Insight";
+            title.Text = "Hi, ...";
             title.Click += guna2HtmlLabel1_Click;
             // 
             // guna2PictureBox1
@@ -292,11 +284,10 @@
             guna2PictureBox1.CustomizableEdges = customizableEdges9;
             guna2PictureBox1.Image = Properties.Resources.helloKitty;
             guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(-56, -33);
-            guna2PictureBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2PictureBox1.Location = new Point(-49, -25);
             guna2PictureBox1.Name = "guna2PictureBox1";
             guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2PictureBox1.Size = new Size(309, 223);
+            guna2PictureBox1.Size = new Size(270, 167);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 0;
             guna2PictureBox1.TabStop = false;
@@ -309,10 +300,11 @@
             guna2Panel1.Controls.Add(InboxBtn);
             guna2Panel1.CustomizableEdges = customizableEdges21;
             guna2Panel1.Dock = DockStyle.Left;
-            guna2Panel1.Location = new Point(0, 255);
+            guna2Panel1.Location = new Point(0, 191);
+            guna2Panel1.Margin = new Padding(3, 2, 3, 2);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel1.Size = new Size(301, 658);
+            guna2Panel1.Size = new Size(263, 494);
             guna2Panel1.TabIndex = 4;
             // 
             // composeBtn
@@ -330,11 +322,10 @@
             composeBtn.ForeColor = Color.White;
             composeBtn.Image = Properties.Resources.composeIcon3;
             composeBtn.ImageAlign = HorizontalAlignment.Left;
-            composeBtn.Location = new Point(30, 178);
-            composeBtn.Margin = new Padding(3, 4, 3, 4);
+            composeBtn.Location = new Point(26, 134);
             composeBtn.Name = "composeBtn";
             composeBtn.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            composeBtn.Size = new Size(238, 55);
+            composeBtn.Size = new Size(208, 41);
             composeBtn.TabIndex = 3;
             composeBtn.Text = "Compose";
             composeBtn.TextAlign = HorizontalAlignment.Left;
@@ -361,10 +352,11 @@
             AnsweredBtn.HoverState.Image = Properties.Resources.answeredIcon1;
             AnsweredBtn.Image = Properties.Resources.answeredIcon31;
             AnsweredBtn.ImageAlign = HorizontalAlignment.Left;
-            AnsweredBtn.Location = new Point(30, 119);
+            AnsweredBtn.Location = new Point(26, 89);
+            AnsweredBtn.Margin = new Padding(3, 2, 3, 2);
             AnsweredBtn.Name = "AnsweredBtn";
             AnsweredBtn.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            AnsweredBtn.Size = new Size(242, 52);
+            AnsweredBtn.Size = new Size(212, 39);
             AnsweredBtn.TabIndex = 2;
             AnsweredBtn.Text = "Answered";
             AnsweredBtn.TextAlign = HorizontalAlignment.Left;
@@ -391,10 +383,11 @@
             InProgressBtn.HoverState.Image = Properties.Resources.inprogressIcon3;
             InProgressBtn.Image = Properties.Resources.inprogressIcon2;
             InProgressBtn.ImageAlign = HorizontalAlignment.Left;
-            InProgressBtn.Location = new Point(30, 61);
+            InProgressBtn.Location = new Point(26, 46);
+            InProgressBtn.Margin = new Padding(3, 2, 3, 2);
             InProgressBtn.Name = "InProgressBtn";
             InProgressBtn.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            InProgressBtn.Size = new Size(242, 52);
+            InProgressBtn.Size = new Size(212, 39);
             InProgressBtn.TabIndex = 1;
             InProgressBtn.Text = "In Progress";
             InProgressBtn.TextAlign = HorizontalAlignment.Left;
@@ -422,10 +415,11 @@
             InboxBtn.HoverState.Image = Properties.Resources.Inbox3Icon1;
             InboxBtn.Image = Properties.Resources.inbox2Icon;
             InboxBtn.ImageAlign = HorizontalAlignment.Left;
-            InboxBtn.Location = new Point(30, 3);
+            InboxBtn.Location = new Point(26, 2);
+            InboxBtn.Margin = new Padding(3, 2, 3, 2);
             InboxBtn.Name = "InboxBtn";
             InboxBtn.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            InboxBtn.Size = new Size(242, 52);
+            InboxBtn.Size = new Size(212, 39);
             InboxBtn.TabIndex = 0;
             InboxBtn.Text = "Inbox";
             InboxBtn.TextAlign = HorizontalAlignment.Left;
@@ -434,11 +428,11 @@
             // pnlMainContent
             // 
             pnlMainContent.CustomizableEdges = customizableEdges23;
-            pnlMainContent.Location = new Point(301, 313);
+            pnlMainContent.Location = new Point(263, 235);
             pnlMainContent.Margin = new Padding(0);
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            pnlMainContent.Size = new Size(1233, 575);
+            pnlMainContent.Size = new Size(1079, 431);
             pnlMainContent.TabIndex = 5;
             pnlMainContent.Paint += pnlMainContent_Paint;
             // 
@@ -446,33 +440,36 @@
             // 
             guna2Panel3.CustomizableEdges = customizableEdges25;
             guna2Panel3.Dock = DockStyle.Right;
-            guna2Panel3.Location = new Point(1492, 255);
+            guna2Panel3.Location = new Point(1306, 191);
+            guna2Panel3.Margin = new Padding(3, 2, 3, 2);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            guna2Panel3.Size = new Size(30, 658);
+            guna2Panel3.Size = new Size(26, 494);
             guna2Panel3.TabIndex = 6;
             // 
             // guna2Panel5
             // 
             guna2Panel5.CustomizableEdges = customizableEdges27;
-            guna2Panel5.Location = new Point(301, 255);
+            guna2Panel5.Location = new Point(263, 191);
+            guna2Panel5.Margin = new Padding(3, 2, 3, 2);
             guna2Panel5.Name = "guna2Panel5";
             guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            guna2Panel5.Size = new Size(1192, 55);
+            guna2Panel5.Size = new Size(1043, 41);
             guna2Panel5.TabIndex = 7;
             // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 15, 20);
-            ClientSize = new Size(1522, 913);
+            ClientSize = new Size(1332, 685);
             Controls.Add(pnlMainContent);
             Controls.Add(guna2Panel5);
             Controls.Add(guna2Panel3);
             Controls.Add(guna2Panel1);
             Controls.Add(guna2Panel2);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Home";
             Text = "Form1";
             Load += Home_Load;
