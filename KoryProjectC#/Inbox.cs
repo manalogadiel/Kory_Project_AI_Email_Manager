@@ -10,14 +10,17 @@ namespace KoryProjectC_
         private Control? activeControl;
         private int currentTargetY;
 
-        // Maps each category to its UI controls
+        // Maps each category to its UI controls.
+        // DateLabel is the timestamp shown on the right side of the inbox card —
+        // it should show the date of the most recent email in that category.
         private record CategoryMap(
             string Name,
-            Guna.UI2.WinForms.Guna2HtmlLabel CategoryLabel,
-            Guna.UI2.WinForms.Guna2HtmlLabel SubjectLabel,
-            Guna.UI2.WinForms.Guna2HtmlLabel CountLabel,
-            Guna.UI2.WinForms.Guna2Button Badge,
-            Guna.UI2.WinForms.Guna2Panel Panel);
+            Guna2HtmlLabel CategoryLabel,
+            Guna2HtmlLabel SubjectLabel,
+            Guna2HtmlLabel CountLabel,
+            Guna2Button DateLabel,       // ← added: the timestamp control
+            Guna2Button Badge,
+            Guna2Panel Panel);
 
         private List<CategoryMap> _maps = new();
 
@@ -33,14 +36,17 @@ namespace KoryProjectC_
 
         private void BuildCategoryMaps()
         {
+            // Each CategoryMap now includes the date label control.
+            // Replace guna2HtmlLabelXX_date entries with the actual control
+            // names from your Designer file for each category row's timestamp.
             _maps = new List<CategoryMap>
             {
-                new("GRADE CONCERNS",    guna2HtmlLabel1,  guna2HtmlLabel2,  guna2HtmlLabel3,  guna2Button1,  catGrade),
-                new("ABSENTS / EXCUSES", guna2HtmlLabel6,  guna2HtmlLabel5,  guna2HtmlLabel4,  guna2Button3,  catAbsent),
-                new("REQUESTS",          guna2HtmlLabel9,  guna2HtmlLabel8,  guna2HtmlLabel7,  guna2Button5,  catRequest),
-                new("ACADEMIC CONCERNS", guna2HtmlLabel18, guna2HtmlLabel17, guna2HtmlLabel16, guna2Button11, catConcern),
-                new("REQUIREMENTS",      guna2HtmlLabel15, guna2HtmlLabel14, guna2HtmlLabel13, guna2Button9,  catRequirement),
-                new("NON-ACADEMIC",      guna2HtmlLabel12, guna2HtmlLabel11, guna2HtmlLabel10, guna2Button7,  catNon),
+                new("GRADE CONCERNS",    guna2HtmlLabel1,  guna2HtmlLabel2,  guna2HtmlLabel3,  guna2Button2,  guna2Button1,  catGrade),
+                new("ABSENTS / EXCUSES", guna2HtmlLabel6,  guna2HtmlLabel5,  guna2HtmlLabel4,  guna2Button4,  guna2Button3,  catAbsent),
+                new("REQUESTS",          guna2HtmlLabel9,  guna2HtmlLabel8,  guna2HtmlLabel7,  guna2Button6,  guna2Button5,  catRequest),
+                new("ACADEMIC CONCERNS", guna2HtmlLabel18, guna2HtmlLabel17, guna2HtmlLabel16, guna2Button12,  guna2Button11, catConcern),
+                new("REQUIREMENTS",      guna2HtmlLabel15, guna2HtmlLabel14, guna2HtmlLabel13, guna2Button10,  guna2Button9,  catRequirement),
+                new("NON-ACADEMIC",      guna2HtmlLabel12, guna2HtmlLabel11, guna2HtmlLabel10, guna2Button8,  guna2Button7,  catNon),
             };
         }
 
@@ -60,10 +66,18 @@ namespace KoryProjectC_
                 int total = emails.Count;
                 int unread = emails.Count(e => !e.IsRead);
 
+                // Most recent email in this category — used for subject and date
+                var latest = emails.FirstOrDefault();
+
                 // Set labels
                 map.CategoryLabel.Text = map.Name;
-                map.SubjectLabel.Text = emails.FirstOrDefault()?.Subject ?? "No emails yet";
+                map.SubjectLabel.Text = latest?.Subject ?? "No emails yet";
                 map.CountLabel.Text = $"{total} email{(total != 1 ? "s" : "")}";
+
+                // Set the date to match the most recent email in this category.
+                // This is the field that was previously never assigned, causing
+                // the inbox card to always show the Designer placeholder time.
+                map.DateLabel.Text = latest?.Date ?? "";
 
                 // Set badge
                 map.Badge.Enabled = unread > 0;
@@ -74,6 +88,10 @@ namespace KoryProjectC_
                 map.Panel.MouseClick += (_, _) => OpenCategory(cat);
             }
         }
+
+        // Call this after AppState.Emails is refreshed (e.g. after a fetch)
+        // so the inbox cards stay in sync without reconstructing the whole control.
+        public void RefreshCategoryData() => LoadCategoryData();
 
         private void OpenCategory(string category)
         {
@@ -109,7 +127,7 @@ namespace KoryProjectC_
         {
             foreach (Control ctrl in guna2Panel1.Controls)
             {
-                if (ctrl is Guna.UI2.WinForms.Guna2Panel && ctrl != current)
+                if (ctrl is Guna2Panel && ctrl != current)
                     if (originalPositions.TryGetValue(ctrl.Name, out int y))
                         ctrl.Location = new Point(ctrl.Location.X, y);
             }
@@ -166,10 +184,6 @@ namespace KoryProjectC_
         private void guna2Button2_Click(object sender, EventArgs e) { }
         private void guna2ImageButton1_Click(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
-
-        private void guna2Button10_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void guna2Button10_Click(object sender, EventArgs e) { }
     }
 }
