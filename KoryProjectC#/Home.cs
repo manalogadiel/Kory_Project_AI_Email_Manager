@@ -87,7 +87,7 @@ namespace KoryProjectC_
 
             npPlaceholder.Text = pending.ToString();
             atPlaceholder.Text = answered.ToString();
-            arPlaceholder.Text = avgRespMinutes > 0 ? $"{avgRespMinutes}m" : "—";
+            arPlaceholder.Text = avgRespMinutes > 0 ? $"{avgRespMinutes}/hr" : "—";
         }
 
         // ── COMPOSE ───────────────────────────────────────────────────────────
@@ -235,5 +235,10 @@ namespace KoryProjectC_
         private void guna2HtmlLabel1_Click_1(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click_2(object sender, EventArgs e) { }
         private void guna2Button1_Click(object sender, EventArgs e) { }
+
+        private void avgResponseText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
