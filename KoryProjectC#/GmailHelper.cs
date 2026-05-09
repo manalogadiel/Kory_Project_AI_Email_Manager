@@ -5,6 +5,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.Drawing;
 using System.Net.Http;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace KoryProjectC_
@@ -451,6 +452,7 @@ namespace KoryProjectC_
 
             await service.Users.Messages.Send(message, "me").ExecuteAsync();
         }
+
         private static string BuildRawReply(
             string to,
             string subject,
@@ -494,5 +496,32 @@ namespace KoryProjectC_
         }
         private static bool Has(string text, params string[] kw)
             => kw.Any(k => text.Contains(k, StringComparison.OrdinalIgnoreCase));
+        public static async Task SendNewEmailAsync(
+             GmailService service,
+             string to,
+             string subject,
+             string body)
+                    {
+                     string fromName = AppState.UserName;
+                     string fromEmail = AppState.UserEmail;
+
+                      string mime =
+                            $"To: {to}\r\n" +
+                            $"From: {fromName} <{fromEmail}>\r\n" +
+                            $"Subject: {subject}\r\n" +
+                            $"Content-Type: text/plain; charset=utf-8\r\n" +
+                            $"\r\n" +
+                            $"{body}";
+
+                        var message = new Google.Apis.Gmail.v1.Data.Message
+                        {
+                            Raw = Convert.ToBase64String(Encoding.UTF8.GetBytes(mime))
+                                .Replace('+', '-')
+                                .Replace('/', '_')
+                                .TrimEnd('=')
+                        };
+
+                        await service.Users.Messages.Send(message, "me").ExecuteAsync();
+                    }
     }
 }
