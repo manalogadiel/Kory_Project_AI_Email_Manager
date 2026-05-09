@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            BackBtn = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2vScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
@@ -41,33 +38,12 @@
             rowPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // BackBtn
-            // 
-            BackBtn.BorderRadius = 15;
-            BackBtn.CustomizableEdges = customizableEdges1;
-            BackBtn.DisabledState.BorderColor = Color.DarkGray;
-            BackBtn.DisabledState.CustomBorderColor = Color.DarkGray;
-            BackBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            BackBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            BackBtn.FillColor = Color.FromArgb(19, 20, 42);
-            BackBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BackBtn.ForeColor = Color.FromArgb(142, 144, 166);
-            BackBtn.HoverState.ForeColor = Color.White;
-            BackBtn.HoverState.Image = Properties.Resources.backIcon;
-            BackBtn.Image = Properties.Resources.darkbackIcon;
-            BackBtn.Location = new Point(0, 0);
-            BackBtn.Name = "BackBtn";
-            BackBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            BackBtn.Size = new Size(172, 40);
-            BackBtn.TabIndex = 5;
-            BackBtn.Text = "Back to folders";
-            // 
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(142, 144, 166);
-            guna2HtmlLabel2.Location = new Point(22, 47);
+            guna2HtmlLabel2.Location = new Point(28, 50);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(263, 28);
             guna2HtmlLabel2.TabIndex = 2;
@@ -79,7 +55,7 @@
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("League Spartan SemiBold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.White;
-            guna2HtmlLabel1.Location = new Point(22, 16);
+            guna2HtmlLabel1.Location = new Point(28, 16);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(170, 37);
             guna2HtmlLabel1.TabIndex = 1;
@@ -92,11 +68,11 @@
             guna2vScrollBar1.BorderRadius = 5;
             guna2vScrollBar1.InUpdate = false;
             guna2vScrollBar1.LargeChange = 10;
-            guna2vScrollBar1.Location = new Point(1197, 156);
+            guna2vScrollBar1.Location = new Point(1197, 111);
             guna2vScrollBar1.Name = "guna2vScrollBar1";
             guna2vScrollBar1.RightToLeft = RightToLeft.No;
             guna2vScrollBar1.ScrollbarSize = 21;
-            guna2vScrollBar1.Size = new Size(21, 444);
+            guna2vScrollBar1.Size = new Size(21, 486);
             guna2vScrollBar1.TabIndex = 4;
             // 
             // ECPanel
@@ -104,9 +80,9 @@
             ECPanel.AutoScroll = true;
             ECPanel.BackColor = Color.FromArgb(14, 15, 20);
             ECPanel.FlowDirection = FlowDirection.TopDown;
-            ECPanel.Location = new Point(0, 156);
+            ECPanel.Location = new Point(0, 111);
             ECPanel.Name = "ECPanel";
-            ECPanel.Size = new Size(1218, 444);
+            ECPanel.Size = new Size(1218, 486);
             ECPanel.TabIndex = 7;
             ECPanel.WrapContents = false;
             // 
@@ -120,7 +96,7 @@
             rowPanel.Controls.Add(guna2HtmlLabel1);
             rowPanel.CustomizableEdges = customizableEdges3;
             rowPanel.FillColor = Color.FromArgb(26, 28, 46);
-            rowPanel.Location = new Point(0, 46);
+            rowPanel.Location = new Point(0, 1);
             rowPanel.Name = "rowPanel";
             rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges4;
             rowPanel.Size = new Size(1192, 104);
@@ -132,7 +108,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(guna2vScrollBar1);
-            Controls.Add(BackBtn);
             Controls.Add(ECPanel);
             Controls.Add(rowPanel);
             Name = "Answered";
@@ -144,8 +119,6 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Button BackBtn;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar1;
