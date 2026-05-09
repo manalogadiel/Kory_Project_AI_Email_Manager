@@ -37,8 +37,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -68,8 +68,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -98,12 +100,14 @@
             Guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             panelEmailBody = new Guna.UI2.WinForms.Guna2Panel();
             EmailContent = new Microsoft.Web.WebView2.WinForms.WebView2();
+            catPounce = new Guna.UI2.WinForms.Guna2PictureBox();
             Guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Guna2CirclePictureBox1).BeginInit();
             Guna2Panel1.SuspendLayout();
             Guna2GradientPanel1.SuspendLayout();
             panelEmailBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)EmailContent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)catPounce).BeginInit();
             SuspendLayout();
             // 
             // Guna2Panel2
@@ -248,10 +252,11 @@
             Guna2GradientPanel1.Controls.Add(txtInput);
             Guna2GradientPanel1.Controls.Add(txtSalutation);
             Guna2GradientPanel1.Controls.Add(Guna2TextBox1);
-            Guna2GradientPanel1.CustomizableEdges = customizableEdges39;
+            Guna2GradientPanel1.Controls.Add(catPounce);
+            Guna2GradientPanel1.CustomizableEdges = customizableEdges41;
             Guna2GradientPanel1.Location = new Point(770, 0);
             Guna2GradientPanel1.Name = "Guna2GradientPanel1";
-            Guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            Guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges42;
             Guna2GradientPanel1.Size = new Size(770, 960);
             Guna2GradientPanel1.TabIndex = 8;
             // 
@@ -652,10 +657,10 @@
             panelEmailBody.AutoScroll = true;
             panelEmailBody.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             panelEmailBody.Controls.Add(EmailContent);
-            panelEmailBody.CustomizableEdges = customizableEdges41;
+            panelEmailBody.CustomizableEdges = customizableEdges43;
             panelEmailBody.Location = new Point(42, 267);
             panelEmailBody.Name = "panelEmailBody";
-            panelEmailBody.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            panelEmailBody.ShadowDecoration.CustomizableEdges = customizableEdges44;
             panelEmailBody.Size = new Size(709, 608);
             panelEmailBody.TabIndex = 9;
             // 
@@ -672,6 +677,21 @@
             EmailContent.TabIndex = 0;
             EmailContent.ZoomFactor = 1D;
             EmailContent.Click += EmailContent_Click;
+            // 
+            // catPounce
+            // 
+            catPounce.CustomizableEdges = customizableEdges39;
+            catPounce.FillColor = Color.Transparent;
+            catPounce.Image = Properties.Resources.catPounce;
+            catPounce.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            catPounce.ImageRotate = 60F;
+            catPounce.Location = new Point(328, 72);
+            catPounce.Name = "catPounce";
+            catPounce.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            catPounce.Size = new Size(221, 187);
+            catPounce.SizeMode = PictureBoxSizeMode.Zoom;
+            catPounce.TabIndex = 17;
+            catPounce.TabStop = false;
             // 
             // Compose
             // 
@@ -694,6 +714,7 @@
             Guna2GradientPanel1.ResumeLayout(false);
             panelEmailBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)EmailContent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)catPounce).EndInit();
             ResumeLayout(false);
         }
 
@@ -727,5 +748,6 @@
         internal Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
         internal Guna.UI2.WinForms.Guna2TextBox txtSubject;
         internal Guna.UI2.WinForms.Guna2GradientButton btnAnalyze;
+        private Guna.UI2.WinForms.Guna2PictureBox catPounce;
     }
 }

@@ -128,18 +128,13 @@ namespace KoryProjectC_
 
         public void ShowAnsweredContent(EmailModel sentEmail, GmailService service)
         {
-            // Remove any existing AnsweredContent inside pnlMainContent
-            foreach (var existing in pnlMainContent.Controls
-                .OfType<AnsweredContent>().ToList())
-            {
-                pnlMainContent.Controls.Remove(existing);
-                existing.Dispose();
-            }
+            // Close any existing AnsweredContent windows first
+            foreach (var existing in Application.OpenForms.OfType<AnsweredContent>().ToList())
+                existing.Close();
 
             var content = new AnsweredContent();
-            content.Dock = DockStyle.Fill;
-            pnlMainContent.Controls.Add(content);
-            content.BringToFront();
+            content.StartPosition = FormStartPosition.CenterParent;
+            content.Show(this);
             _ = content.LoadAsync(sentEmail, service);
         }
 

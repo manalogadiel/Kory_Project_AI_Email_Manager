@@ -113,6 +113,16 @@ namespace KoryProjectC_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap catPounce {
+            get {
+                object obj = ResourceManager.GetObject("catPounce", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clockIcon {
             get {
                 object obj = ResourceManager.GetObject("clockIcon", resourceCulture);
@@ -226,6 +236,16 @@ namespace KoryProjectC_.Properties {
         internal static System.Drawing.Bitmap inprogressIcon3 {
             get {
                 object obj = ResourceManager.GetObject("inprogressIcon3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap layingDown {
+            get {
+                object obj = ResourceManager.GetObject("layingDown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

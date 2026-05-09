@@ -286,5 +286,10 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
         private void BackBtn_Click(object sender, EventArgs e) => this.Close();
         private void guna2GradientButton1_Click(object sender, EventArgs e) { }
         private void SendBtn_Click(object sender, EventArgs e) { }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
