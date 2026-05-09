@@ -225,9 +225,9 @@
             guna2Button1.DisabledState.ForeColor = Color.White;
             guna2Button1.Enabled = false;
             guna2Button1.FillColor = Color.FromArgb(107, 92, 231);
-            guna2Button1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button1.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(182, 178);
+            guna2Button1.Location = new Point(182, 170);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Button1.Size = new Size(79, 31);
@@ -244,9 +244,9 @@
             guna2Button2.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button2.Enabled = false;
             guna2Button2.FillColor = Color.FromArgb(26, 28, 46);
-            guna2Button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button2.Font = new Font("League Spartan", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button2.ForeColor = Color.FromArgb(141, 143, 165);
-            guna2Button2.Location = new Point(238, 181);
+            guna2Button2.Location = new Point(238, 173);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Button2.Size = new Size(106, 25);
@@ -264,7 +264,7 @@
             guna2ImageButton1.ImageOffset = new Point(0, 0);
             guna2ImageButton1.ImageRotate = 0F;
             guna2ImageButton1.ImageSize = new Size(25, 25);
-            guna2ImageButton1.Location = new Point(29, 178);
+            guna2ImageButton1.Location = new Point(29, 170);
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges5;
@@ -274,23 +274,23 @@
             // guna2HtmlLabel3
             // 
             guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel3.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(141, 143, 165);
             guna2HtmlLabel3.Location = new Point(59, 181);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(66, 22);
+            guna2HtmlLabel3.Size = new Size(61, 28);
             guna2HtmlLabel3.TabIndex = 3;
             guna2HtmlLabel3.Text = "3 emails";
             // 
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.Font = new Font("League Spartan", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = Color.White;
             guna2HtmlLabel2.Location = new Point(29, 51);
             guna2HtmlLabel2.MaximumSize = new Size(315, 0);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(315, 54);
+            guna2HtmlLabel2.Size = new Size(315, 66);
             guna2HtmlLabel2.TabIndex = 2;
             guna2HtmlLabel2.Text = "This is the Most Recent Subject Test 123 123";
             // 
@@ -309,11 +309,11 @@
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.FromArgb(231, 76, 92);
             guna2HtmlLabel1.Location = new Point(49, 21);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(161, 20);
+            guna2HtmlLabel1.Size = new Size(132, 24);
             guna2HtmlLabel1.TabIndex = 0;
             guna2HtmlLabel1.Text = "GRADE CONCERNS";
             // 
@@ -353,9 +353,9 @@
             guna2Button5.DisabledState.ForeColor = Color.White;
             guna2Button5.Enabled = false;
             guna2Button5.FillColor = Color.FromArgb(107, 92, 231);
-            guna2Button5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button5.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button5.ForeColor = Color.White;
-            guna2Button5.Location = new Point(182, 178);
+            guna2Button5.Location = new Point(182, 170);
             guna2Button5.Name = "guna2Button5";
             guna2Button5.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Button5.Size = new Size(79, 31);
@@ -371,9 +371,9 @@
             guna2Button6.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button6.Enabled = false;
             guna2Button6.FillColor = Color.FromArgb(26, 28, 46);
-            guna2Button6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button6.Font = new Font("League Spartan", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button6.ForeColor = Color.FromArgb(141, 143, 165);
-            guna2Button6.Location = new Point(237, 181);
+            guna2Button6.Location = new Point(237, 173);
             guna2Button6.Name = "guna2Button6";
             guna2Button6.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Button6.Size = new Size(107, 25);
@@ -390,7 +390,7 @@
             guna2ImageButton3.ImageOffset = new Point(0, 0);
             guna2ImageButton3.ImageRotate = 0F;
             guna2ImageButton3.ImageSize = new Size(25, 25);
-            guna2ImageButton3.Location = new Point(29, 178);
+            guna2ImageButton3.Location = new Point(29, 170);
             guna2ImageButton3.Name = "guna2ImageButton3";
             guna2ImageButton3.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges13;
@@ -400,23 +400,23 @@
             // guna2HtmlLabel7
             // 
             guna2HtmlLabel7.BackColor = Color.Transparent;
-            guna2HtmlLabel7.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel7.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel7.ForeColor = Color.FromArgb(141, 143, 165);
             guna2HtmlLabel7.Location = new Point(59, 181);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            guna2HtmlLabel7.Size = new Size(66, 22);
+            guna2HtmlLabel7.Size = new Size(61, 28);
             guna2HtmlLabel7.TabIndex = 3;
             guna2HtmlLabel7.Text = "3 emails";
             // 
             // guna2HtmlLabel8
             // 
             guna2HtmlLabel8.BackColor = Color.Transparent;
-            guna2HtmlLabel8.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel8.Font = new Font("League Spartan", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel8.ForeColor = Color.White;
             guna2HtmlLabel8.Location = new Point(29, 51);
             guna2HtmlLabel8.MaximumSize = new Size(315, 0);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            guna2HtmlLabel8.Size = new Size(315, 54);
+            guna2HtmlLabel8.Size = new Size(315, 66);
             guna2HtmlLabel8.TabIndex = 2;
             guna2HtmlLabel8.Text = "This is the Most Recent Subject Test 123 123";
             // 
@@ -435,11 +435,11 @@
             // guna2HtmlLabel9
             // 
             guna2HtmlLabel9.BackColor = Color.Transparent;
-            guna2HtmlLabel9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel9.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel9.ForeColor = Color.FromArgb(96, 165, 250);
             guna2HtmlLabel9.Location = new Point(49, 21);
             guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            guna2HtmlLabel9.Size = new Size(94, 20);
+            guna2HtmlLabel9.Size = new Size(73, 24);
             guna2HtmlLabel9.TabIndex = 0;
             guna2HtmlLabel9.Text = "REQUESTS";
             // 
@@ -495,9 +495,9 @@
             guna2Button3.DisabledState.ForeColor = Color.White;
             guna2Button3.Enabled = false;
             guna2Button3.FillColor = Color.FromArgb(107, 92, 231);
-            guna2Button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button3.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.White;
-            guna2Button3.Location = new Point(182, 178);
+            guna2Button3.Location = new Point(182, 170);
             guna2Button3.Name = "guna2Button3";
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2Button3.Size = new Size(79, 31);
@@ -513,9 +513,9 @@
             guna2Button4.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button4.Enabled = false;
             guna2Button4.FillColor = Color.FromArgb(26, 28, 46);
-            guna2Button4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button4.Font = new Font("League Spartan", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button4.ForeColor = Color.FromArgb(141, 143, 165);
-            guna2Button4.Location = new Point(237, 181);
+            guna2Button4.Location = new Point(237, 173);
             guna2Button4.Name = "guna2Button4";
             guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges22;
             guna2Button4.Size = new Size(107, 25);
@@ -532,7 +532,7 @@
             guna2ImageButton2.ImageOffset = new Point(0, 0);
             guna2ImageButton2.ImageRotate = 0F;
             guna2ImageButton2.ImageSize = new Size(25, 25);
-            guna2ImageButton2.Location = new Point(29, 178);
+            guna2ImageButton2.Location = new Point(29, 170);
             guna2ImageButton2.Name = "guna2ImageButton2";
             guna2ImageButton2.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges23;
@@ -542,23 +542,23 @@
             // guna2HtmlLabel4
             // 
             guna2HtmlLabel4.BackColor = Color.Transparent;
-            guna2HtmlLabel4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel4.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel4.ForeColor = Color.FromArgb(141, 143, 165);
             guna2HtmlLabel4.Location = new Point(59, 181);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(66, 22);
+            guna2HtmlLabel4.Size = new Size(61, 28);
             guna2HtmlLabel4.TabIndex = 3;
             guna2HtmlLabel4.Text = "3 emails";
             // 
             // guna2HtmlLabel5
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel5.Font = new Font("League Spartan", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel5.ForeColor = Color.White;
             guna2HtmlLabel5.Location = new Point(29, 51);
             guna2HtmlLabel5.MaximumSize = new Size(315, 0);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(315, 54);
+            guna2HtmlLabel5.Size = new Size(315, 66);
             guna2HtmlLabel5.TabIndex = 2;
             guna2HtmlLabel5.Text = "This is the Most Recent Subject Test 123 123";
             // 
@@ -577,11 +577,11 @@
             // guna2HtmlLabel6
             // 
             guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel6.ForeColor = Color.FromArgb(107, 92, 231);
             guna2HtmlLabel6.Location = new Point(49, 21);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(173, 20);
+            guna2HtmlLabel6.Size = new Size(142, 24);
             guna2HtmlLabel6.TabIndex = 0;
             guna2HtmlLabel6.Text = "ABSENTS / EXCUSES";
             guna2HtmlLabel6.Click += category_Click;
@@ -656,9 +656,9 @@
             guna2Button11.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button11.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button11.FillColor = Color.FromArgb(107, 92, 231);
-            guna2Button11.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button11.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button11.ForeColor = Color.White;
-            guna2Button11.Location = new Point(182, 178);
+            guna2Button11.Location = new Point(182, 170);
             guna2Button11.Name = "guna2Button11";
             guna2Button11.ShadowDecoration.CustomizableEdges = customizableEdges32;
             guna2Button11.Size = new Size(79, 31);
@@ -674,9 +674,9 @@
             guna2Button12.DisabledState.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button12.Enabled = false;
             guna2Button12.FillColor = Color.FromArgb(26, 28, 46);
-            guna2Button12.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2Button12.Font = new Font("League Spartan", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button12.ForeColor = Color.FromArgb(141, 143, 165);
-            guna2Button12.Location = new Point(238, 181);
+            guna2Button12.Location = new Point(238, 173);
             guna2Button12.Name = "guna2Button12";
             guna2Button12.ShadowDecoration.CustomizableEdges = customizableEdges34;
             guna2Button12.Size = new Size(106, 25);
@@ -693,7 +693,7 @@
             guna2ImageButton6.ImageOffset = new Point(0, 0);
             guna2ImageButton6.ImageRotate = 0F;
             guna2ImageButton6.ImageSize = new Size(25, 25);
-            guna2ImageButton6.Location = new Point(29, 178);
+            guna2ImageButton6.Location = new Point(29, 170);
             guna2ImageButton6.Name = "guna2ImageButton6";
             guna2ImageButton6.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton6.ShadowDecoration.CustomizableEdges = customizableEdges35;
@@ -703,23 +703,23 @@
             // guna2HtmlLabel16
             // 
             guna2HtmlLabel16.BackColor = Color.Transparent;
-            guna2HtmlLabel16.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel16.Font = new Font("League Spartan", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel16.ForeColor = Color.FromArgb(141, 143, 165);
             guna2HtmlLabel16.Location = new Point(59, 181);
             guna2HtmlLabel16.Name = "guna2HtmlLabel16";
-            guna2HtmlLabel16.Size = new Size(66, 22);
+            guna2HtmlLabel16.Size = new Size(61, 28);
             guna2HtmlLabel16.TabIndex = 3;
             guna2HtmlLabel16.Text = "3 emails";
             // 
             // guna2HtmlLabel17
             // 
             guna2HtmlLabel17.BackColor = Color.Transparent;
-            guna2HtmlLabel17.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel17.Font = new Font("League Spartan", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel17.ForeColor = Color.White;
             guna2HtmlLabel17.Location = new Point(29, 51);
             guna2HtmlLabel17.MaximumSize = new Size(315, 0);
             guna2HtmlLabel17.Name = "guna2HtmlLabel17";
-            guna2HtmlLabel17.Size = new Size(315, 54);
+            guna2HtmlLabel17.Size = new Size(315, 66);
             guna2HtmlLabel17.TabIndex = 2;
             guna2HtmlLabel17.Text = "This is the Most Recent Subject Test 123 123";
             // 
@@ -738,11 +738,11 @@
             // guna2HtmlLabel18
             // 
             guna2HtmlLabel18.BackColor = Color.Transparent;
-            guna2HtmlLabel18.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel18.Font = new Font("League Spartan", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel18.ForeColor = Color.FromArgb(73, 153, 61);
             guna2HtmlLabel18.Location = new Point(49, 21);
             guna2HtmlLabel18.Name = "guna2HtmlLabel18";
-            guna2HtmlLabel18.Size = new Size(188, 20);
+            guna2HtmlLabel18.Size = new Size(158, 24);
             guna2HtmlLabel18.TabIndex = 0;
             guna2HtmlLabel18.Text = "ACADEMIC CONCERNS";
             // 
