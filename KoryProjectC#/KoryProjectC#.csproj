@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Apis.Auth" Version="1.74.0" />
     <PackageReference Include="Google.Apis.Gmail.v1" Version="1.74.0.4134" />
+    <PackageReference Include="Google.Apis.PeopleService.v1" Version="1.72.0.3973" />
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.7" />
     <PackageReference Include="MailKit" Version="4.16.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3912.50" />

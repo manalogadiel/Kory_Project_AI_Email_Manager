@@ -16,10 +16,14 @@ namespace KoryProjectC_
             GmailService.Scope.GmailReadonly,
             GmailService.Scope.GmailSend,
             "https://www.googleapis.com/auth/userinfo.profile"
+
         };
 
         // ── Stored credential so GetProfilePictureAsync can use the token ────────
         private static UserCredential? _credential;
+
+        // Make sure this scope is included
+        
 
         public static async Task<GmailService> AuthenticateAsync()
         {
@@ -210,6 +214,29 @@ namespace KoryProjectC_
 
         public static async Task<string> GetUserNameAsync(GmailService service)
         {
+            // 1. Use stored credential to call userinfo endpoint (same as GetProfilePictureAsync)
+            if (_credential != null)
+            {
+                try
+                {
+                    await _credential.RefreshTokenAsync(CancellationToken.None);
+                    string token = _credential.Token.AccessToken;
+
+                    using var http = new HttpClient();
+                    http.DefaultRequestHeaders.Authorization =
+                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                    string json = await http.GetStringAsync(
+                        "https://www.googleapis.com/oauth2/v1/userinfo");
+
+                    var match = Regex.Match(json, @"""given_name""\s*:\s*""(.+?)""");
+                    if (match.Success)
+                        return match.Groups[1].Value; // → "Gadiel Gospel"
+                }
+                catch { }
+            }
+
+            // 2. Fallback: display name from a sent email's From header
             try
             {
                 var sentReq = service.Users.Messages.List("me");
@@ -225,23 +252,23 @@ namespace KoryProjectC_
                     var msg = await getReq.ExecuteAsync();
 
                     var from = msg.Payload?.Headers?
-                        .FirstOrDefault(h => h.Name?
-                        .Equals("From", StringComparison.OrdinalIgnoreCase) == true);
+                        .FirstOrDefault(h => h.Name?.Equals("From", StringComparison.OrdinalIgnoreCase) == true);
 
-                    if (from != null)
+                    if (from?.Value != null)
                     {
-                        var match = Regex.Match(from.Value ?? "", @"^""?(.+?)""?\s*<");
+                        var match = Regex.Match(from.Value, @"^""?(.+?)""?\s*<");
                         if (match.Success)
-                            return match.Groups[1].Value.Trim().Split(' ')[0];
+                        {
+                            var parts = match.Groups[1].Value.Trim().Split(' ');
+                            return parts.Length >= 2 ? $"{parts[0]} {parts[1]}" : parts[0];
+                        }
                     }
                 }
             }
             catch { }
 
-            var profile = await service.Users.GetProfile("me").ExecuteAsync();
-            return (profile.EmailAddress ?? "there").Split('@')[0];
+            return "there";
         }
-
         // ─────────────────────────────────────────────────────────────────────────
         //  PRIVATE HELPERS
         // ─────────────────────────────────────────────────────────────────────────
