@@ -8,6 +8,7 @@ namespace KoryProjectC_
     {
         public EmailModel? Email { get; private set; }
         private GmailService? _gmailService;
+        public Action? OnDraftClicked;
         private readonly Color normalFill = Color.FromArgb(26, 28, 46);
         private readonly Color hoverFill = Color.FromArgb(17, 18, 30);
         private readonly Color normalBorder = Color.FromArgb(39, 40, 64);
@@ -68,7 +69,16 @@ namespace KoryProjectC_
 
         private void OnRowClick(object? sender, MouseEventArgs e)
         {
-            if (Email == null || _gmailService == null) return;
+            if (Email == null) return;
+
+            // If this row has a draft action, use it
+            if (OnDraftClicked != null)
+            {
+                OnDraftClicked.Invoke();
+                return;
+            }
+
+            if (_gmailService == null) return;
 
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
@@ -77,6 +87,5 @@ namespace KoryProjectC_
             compose.LoadEmail(Email, _gmailService);
             home.ShowFullscreenCompose(compose);
         }
-
     }
 }
