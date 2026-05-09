@@ -111,6 +111,8 @@ namespace KoryProjectC_
                     RemoveLabelIds = new List<string> { "UNREAD" }
                 };
                 await _gmailService.Users.Messages.Modify(request, "me", Email.Id).ExecuteAsync();
+                var match = AppState.Emails.FirstOrDefault(e => e.Id == Email.Id);
+                if (match != null) match.IsRead = true;
             }
             catch (Exception ex)
             {

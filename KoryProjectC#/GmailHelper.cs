@@ -14,7 +14,7 @@ namespace KoryProjectC_
     {
         private static readonly string[] Scopes =
         {
-            GmailService.Scope.GmailReadonly,
+            GmailService.Scope.GmailModify,
             GmailService.Scope.GmailSend,
             "https://www.googleapis.com/auth/userinfo.profile"
         };

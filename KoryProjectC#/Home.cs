@@ -215,6 +215,11 @@ namespace KoryProjectC_
         public void RefreshBadges()
         {
             ucInbox.LoadCategoryData();
+
+            // Recalculate unread count from AppState
+            int pending = AppState.Emails.Count(e => !e.IsRead);
+            npPlaceholder.Text = pending.ToString();
+            placehold.Text = $"You have {pending} unread email{(pending == 1 ? "" : "s")} waiting.  Let's tackle them!";
         }
 
         public async Task RefreshAfterSendAsync() => await RefreshStatsAsync();
