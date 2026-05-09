@@ -11,7 +11,7 @@ using GmailMessagePartHeader = Google.Apis.Gmail.v1.Data.MessagePartHeader;
 
 namespace KoryProjectC_
 {
-    public partial class AnsweredContent : Form
+    public partial class AnsweredContent : UserControl  // ← was Form
     {
         private GmailService? _service;
         private EmailModel? _sentEmail;
@@ -25,9 +25,7 @@ namespace KoryProjectC_
         private void BackBtn_Click(object? sender, EventArgs e)
         {
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
-            if (home == null) return;
-            home.ShowAnswered();
-            this.Close();
+            home?.ShowAnswered();
         }
 
         public async Task LoadAsync(EmailModel sentEmail, GmailService service)
@@ -35,7 +33,6 @@ namespace KoryProjectC_
             _sentEmail = sentEmail;
             _service = service;
 
-            // ── RIGHT SIDE: the email YOU sent (15, 16, 32) ──────────────────
             guna2HtmlLabel2.Text = !string.IsNullOrWhiteSpace(sentEmail.Subject)
                 ? sentEmail.Subject : "(No Subject)";
             guna2HtmlLabel4.Text = sentEmail.FromName;
@@ -48,7 +45,6 @@ namespace KoryProjectC_
 
             await InitWebViewAsync(sentEmailContent, sentHtml, Color.FromArgb(15, 16, 32));
 
-            // ── LEFT SIDE: original email you replied to (14, 15, 20) ────────
             try
             {
                 var threadReq = service.Users.Threads.Get("me", sentEmail.ThreadId);
@@ -94,8 +90,6 @@ namespace KoryProjectC_
             }
         }
 
-        // ── HELPERS — same style as Compose.cs ───────────────────────────────
-
         private static async Task InitWebViewAsync(WebView2 wv, string html, Color bgColor)
         {
             await wv.EnsureCoreWebView2Async(null);
@@ -135,9 +129,11 @@ namespace KoryProjectC_
 </style>";
 
             if (html.Contains("</head>", StringComparison.OrdinalIgnoreCase))
-                return html.Replace("</head>", style + "</head>", StringComparison.OrdinalIgnoreCase);
+                return html.Replace("</head>", style + "</head>",
+                    StringComparison.OrdinalIgnoreCase);
             if (html.Contains("<body", StringComparison.OrdinalIgnoreCase))
-                return html.Replace("<body", style + "<body", StringComparison.OrdinalIgnoreCase);
+                return html.Replace("<body", style + "<body",
+                    StringComparison.OrdinalIgnoreCase);
             return style + html;
         }
 
@@ -154,7 +150,7 @@ namespace KoryProjectC_
     background-color: {bgHex};
     font-family: Segoe UI, sans-serif;
     font-size: 14px;
-    padding: 24px 24px 24px 0px;
+    padding: 24px;
     line-height: 1.7;
     word-wrap: break-word;'>
 {encoded}
@@ -202,7 +198,6 @@ namespace KoryProjectC_
             email.BodyHtml = GetBody(message.Payload, "text/html");
             email.BodyText = GetBody(message.Payload, "text/plain");
 
-            // Fallback: if still no subject after headers, keep default
             if (string.IsNullOrWhiteSpace(email.Subject))
                 email.Subject = "(No Subject)";
 
@@ -246,14 +241,7 @@ namespace KoryProjectC_
             return "";
         }
 
-        private void AnsweredContent_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void AnsweredContent_Load(object sender, EventArgs e) { }
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e) { }
     }
 }

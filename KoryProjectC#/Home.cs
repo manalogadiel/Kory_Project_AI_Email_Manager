@@ -90,7 +90,7 @@ namespace KoryProjectC_
 
             npPlaceholder.Text = pending.ToString();
             atPlaceholder.Text = answered.ToString();
-            arPlaceholder.Text = avgRespMinutes > 0 ? $"{avgRespMinutes}m" : "—";
+            arPlaceholder.Text = avgRespMinutes > 0 ? $"{avgRespMinutes}/hr" : "—";
         }
 
         public void ShowFullscreenCompose(Compose compose)
@@ -128,18 +128,29 @@ namespace KoryProjectC_
 
         public void ShowAnsweredContent(EmailModel sentEmail, GmailService service)
         {
-            // Close any existing AnsweredContent windows first
-            foreach (var existing in Application.OpenForms.OfType<AnsweredContent>().ToList())
-                existing.Close();
+            // Remove any existing AnsweredContent
+            foreach (var existing in this.Controls.OfType<AnsweredContent>().ToList())
+            {
+                this.Controls.Remove(existing);
+                existing.Dispose();
+            }
 
             var content = new AnsweredContent();
-            content.StartPosition = FormStartPosition.CenterParent;
-            content.Show(this);
+            content.Size = this.ClientSize;
+            content.Location = new Point(0, 0);
+            this.Controls.Add(content);
+            content.BringToFront();
             _ = content.LoadAsync(sentEmail, service);
         }
 
         public void ShowAnswered()
         {
+            // Remove AnsweredContent from Home controls and bring ucAnswered back
+            foreach (var existing in this.Controls.OfType<AnsweredContent>().ToList())
+            {
+                this.Controls.Remove(existing);
+                existing.Dispose();
+            }
             ucAnswered.BringToFront();
         }
 
@@ -209,5 +220,10 @@ namespace KoryProjectC_
         private void guna2HtmlLabel1_Click_1(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click_2(object sender, EventArgs e) { }
         private void guna2Button1_Click(object sender, EventArgs e) { }
+
+        private void avgResponseText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
