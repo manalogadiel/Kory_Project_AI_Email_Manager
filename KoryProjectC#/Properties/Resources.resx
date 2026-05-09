@@ -130,20 +130,17 @@
   <data name="sparkleIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sparkleIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo1-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo1-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="backIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="editIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="answeredIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\answeredIcon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Inbox3Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Inbox3Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inbox1Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inbox1Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo1-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo1-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="answeredIcon31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\answeredIcon31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,6 +150,9 @@
   </data>
   <data name="sentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sentIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="normalImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\normalImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="saveIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,6 +172,9 @@
   <data name="magnifyingGlass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\magnifyingGlass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Inbox3Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Inbox3Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="inbox2Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\inbox2Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -181,13 +184,13 @@
   <data name="answeredIcon3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\answeredIcon3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="answeredIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\answeredIcon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inbox1Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inbox1Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Inbox3Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Inbox3Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="editIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="normalImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\normalImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="helloKitty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\helloKitty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

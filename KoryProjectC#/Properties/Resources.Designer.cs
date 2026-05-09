@@ -143,6 +143,16 @@ namespace KoryProjectC_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap helloKitty {
+            get {
+                object obj = ResourceManager.GetObject("helloKitty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap inbox1Icon {
             get {
                 object obj = ResourceManager.GetObject("inbox1Icon", resourceCulture);
@@ -236,6 +246,16 @@ namespace KoryProjectC_.Properties {
         internal static System.Drawing.Bitmap magnifyingGlass {
             get {
                 object obj = ResourceManager.GetObject("magnifyingGlass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap normalImage {
+            get {
+                object obj = ResourceManager.GetObject("normalImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
