@@ -3,6 +3,8 @@ using Google.Apis.Gmail.v1;
 using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using System.Drawing;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 
 namespace KoryProjectC_
@@ -12,8 +14,12 @@ namespace KoryProjectC_
         private static readonly string[] Scopes =
         {
             GmailService.Scope.GmailReadonly,
-            GmailService.Scope.GmailSend
+            GmailService.Scope.GmailSend,
+            "https://www.googleapis.com/auth/userinfo.profile"
         };
+
+        // ── Stored credential so GetProfilePictureAsync can use the token ────────
+        private static UserCredential? _credential;
 
         public static async Task<GmailService> AuthenticateAsync()
         {
@@ -35,11 +41,53 @@ namespace KoryProjectC_
                 new FileDataStore(
                     Path.Combine(Application.StartupPath, "token_store"), true));
 
+            _credential = credential; // ← store for profile picture use
+
             return new GmailService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,
                 ApplicationName = "KoryProject"
             });
+        }
+
+        // ── NEW: Fetch the Google account profile picture ─────────────────────────
+        /// <summary>
+        /// Downloads the authenticated user's Google profile picture.
+        /// Returns null if unavailable — picture box will just keep its default image.
+        /// </summary>
+        public static async Task<Image?> GetProfilePictureAsync()
+        {
+            if (_credential == null) return null;
+
+            try
+            {
+                // Refresh token if expired
+                await _credential.RefreshTokenAsync(CancellationToken.None);
+                string token = _credential.Token.AccessToken;
+
+                using var http = new HttpClient();
+                http.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                // Fetch profile info JSON (includes picture URL)
+                string json = await http.GetStringAsync(
+                    "https://www.googleapis.com/oauth2/v1/userinfo");
+
+                // Pull picture URL out of the JSON
+                var match = Regex.Match(json, @"""picture""\s*:\s*""(.+?)""");
+                if (!match.Success) return null;
+
+                string url = match.Groups[1].Value.Replace("\\/", "/");
+
+                // Download and return the image
+                byte[] bytes = await http.GetByteArrayAsync(url);
+                using var ms = new MemoryStream(bytes);
+                return Image.FromStream(ms);
+            }
+            catch
+            {
+                return null; // silently fall back — picture box stays as default
+            }
         }
 
         public static async Task<List<EmailModel>> FetchEmailsAsync(
@@ -64,9 +112,8 @@ namespace KoryProjectC_
             return results.ToList();
         }
 
-        // ── NEW: Count emails sent TODAY ──────────────────────────────────────────
         /// <summary>
-        /// Returns the number of emails the user has sent today.
+        /// Returns the number of reply emails the user has sent today.
         /// Feeds the "Answered Today" stat card.
         /// </summary>
         public static async Task<int> GetSentTodayCountAsync(GmailService service)
@@ -81,8 +128,7 @@ namespace KoryProjectC_
             var resp = await req.ExecuteAsync();
             if (resp.Messages == null) return 0;
 
-            // Fetch metadata only (fast) and check for In-Reply-To header
-            // — only actual replies to received emails will have this header
+            // Only count actual replies (messages that have an In-Reply-To header)
             var tasks = resp.Messages.Select(async msg =>
             {
                 var getReq = service.Users.Messages.Get("me", msg.Id);
@@ -99,11 +145,10 @@ namespace KoryProjectC_
             return results.Count(isReply => isReply);
         }
 
-        // ── NEW: Average response time across recent threads ──────────────────────
         /// <summary>
         /// Samples the last <paramref name="sampleSize"/> sent messages, finds each
         /// thread's first received message, and returns the mean response time in
-        /// minutes.  Feeds the "Avg. Response" stat card.
+        /// minutes. Feeds the "Avg. Response" stat card.
         /// Returns 0 if there is not enough data.
         /// </summary>
         public static async Task<double> GetAvgResponseMinutesAsync(
@@ -147,7 +192,6 @@ namespace KoryProjectC_
                         double minutes =
                             (sent.InternalDate.Value - first.InternalDate.Value) / 60_000.0;
 
-                        // Ignore negative or unrealistically long times (> 1 week)
                         if (minutes < 0 || minutes > 10_080) return (double?)null;
 
                         return (double?)minutes;
@@ -168,7 +212,6 @@ namespace KoryProjectC_
         {
             try
             {
-                // Grab one sent message and read the From header for the display name
                 var sentReq = service.Users.Messages.List("me");
                 sentReq.LabelIds = "SENT";
                 sentReq.MaxResults = 1;
@@ -187,7 +230,6 @@ namespace KoryProjectC_
 
                     if (from != null)
                     {
-                        // "John Doe <john@gmail.com>" → returns "John"
                         var match = Regex.Match(from.Value ?? "", @"^""?(.+?)""?\s*<");
                         if (match.Success)
                             return match.Groups[1].Value.Trim().Split(' ')[0];
@@ -196,13 +238,12 @@ namespace KoryProjectC_
             }
             catch { }
 
-            // Fallback: use the part before @ in the email address
             var profile = await service.Users.GetProfile("me").ExecuteAsync();
             return (profile.EmailAddress ?? "there").Split('@')[0];
         }
 
         // ─────────────────────────────────────────────────────────────────────────
-        //  EXISTING PRIVATE HELPERS (unchanged)
+        //  PRIVATE HELPERS
         // ─────────────────────────────────────────────────────────────────────────
 
         private static EmailModel ParseEmail(Google.Apis.Gmail.v1.Data.Message message)
