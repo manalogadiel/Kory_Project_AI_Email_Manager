@@ -80,6 +80,7 @@ namespace KoryProjectC_
                     return;
                 }
 
+
                 SendBtn.Enabled = false;
                 SendBtn.Text = "Sending...";
 
@@ -150,6 +151,8 @@ namespace KoryProjectC_
                     ?.HideFullscreenCompose();
             };
         }
+
+
 
         private async Task AnalyzeText()
         {
@@ -375,6 +378,8 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
             guna2HtmlLabel1.Text = email.Subject ?? "(no subject)";
             guna2Button2.Text = email.Date ?? "";
 
+            SetAvatar(Guna2CirclePictureBox1, email.FromName ?? "", email.FromEmail ?? "");
+
             string firstName = (email.FromName ?? "").Split(' ')[0];
             txtSalutation.Text = $"Dear {firstName},";
 
@@ -418,6 +423,82 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
                 }
                 catch { }
             }
+        }
+
+        private static void SetAvatar(
+    Guna.UI2.WinForms.Guna2CirclePictureBox box,
+    string fromName, string fromEmail)
+        {
+            try
+            {
+                string initials = GetInitials(fromName, fromEmail);
+                Color avatarColor = GetAvatarColor(fromName + fromEmail);
+
+                int size = box.Width;
+                var bmp = new Bitmap(size, size);
+
+                using (var g = Graphics.FromImage(bmp))
+                {
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+                    g.FillEllipse(new SolidBrush(avatarColor), 0, 0, size, size);
+
+                    float fontSize = size * 0.35f;
+                    var font = new Font("Segoe UI", fontSize, FontStyle.Bold, GraphicsUnit.Pixel);
+                    var format = new StringFormat
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center
+                    };
+
+                    g.DrawString(initials, font, new SolidBrush(Color.White),
+                        new RectangleF(0, 0, size, size), format);
+                }
+
+                box.Image = bmp;
+            }
+            catch { /* leave default if anything fails */ }
+        }
+
+        private static string GetInitials(string name, string email)
+        {
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var parts = name.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length >= 2)
+                    return $"{parts[0][0]}{parts[^1][0]}".ToUpper();
+                if (parts.Length == 1 && parts[0].Length > 0)
+                    return parts[0][0].ToString().ToUpper();
+            }
+
+            if (!string.IsNullOrWhiteSpace(email))
+                return email[0].ToString().ToUpper();
+
+            return "?";
+        }
+
+        private static Color GetAvatarColor(string seed)
+        {
+            Color[] palette =
+            {
+        Color.FromArgb(98,  117, 217),
+        Color.FromArgb(76,  175, 130),
+        Color.FromArgb(229, 115,  95),
+        Color.FromArgb(100, 160, 220),
+        Color.FromArgb(186, 104, 200),
+        Color.FromArgb(77,  182, 172),
+        Color.FromArgb(240, 154,  56),
+        Color.FromArgb(129, 199, 132),
+        Color.FromArgb(229, 115, 155),
+        Color.FromArgb(111, 143, 175),
+    };
+
+            int hash = 0;
+            foreach (char c in seed)
+                hash = (hash * 31 + c) & 0x7fffffff;
+
+            return palette[hash % palette.Length];
         }
         private static string InjectDarkModeStyles(string html)
         {
