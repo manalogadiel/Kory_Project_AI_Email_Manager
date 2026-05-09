@@ -13,18 +13,31 @@ namespace KoryProjectC_
         {
             flowLayoutPanel1.Controls.Clear();
 
-            var drafts = DraftHelper.LoadDrafts();
+            var drafts = DraftHelper.LoadDrafts().ToList();
             drafts.Reverse();
 
             foreach (var draft in drafts)
             {
                 if (draft.Original == null) continue;
 
-                var card = new EmailRow();
-                card.Width = flowLayoutPanel1.Width - 25;
-                card.SetEmail(draft.Original, AppState.GmailService!);
-                card.OnDraftClicked = () => OpenDraft(draft);
-                flowLayoutPanel1.Controls.Add(card);
+                if (draft.IsSingleCompose)
+                {
+                    // New email draft — use SentEmailRow
+                    var card = new SentEmailRow();
+                    card.Width = flowLayoutPanel1.Width - 25;
+                    card.SetDraft(draft);
+                    card.OnDraftClicked = () => OpenSingleDraft(draft);
+                    flowLayoutPanel1.Controls.Add(card);
+                }
+                else
+                {
+                    // Reply draft — use EmailRow
+                    var card = new EmailRow();
+                    card.Width = flowLayoutPanel1.Width - 25;
+                    card.SetEmail(draft.Original, AppState.GmailService!);
+                    card.OnDraftClicked = () => OpenDraft(draft);
+                    flowLayoutPanel1.Controls.Add(card);
+                }
             }
         }
         private void OpenDraft(DraftModel draft)
@@ -38,6 +51,12 @@ namespace KoryProjectC_
             home.ShowFullscreenCompose(compose);
         }
 
+        private void OpenSingleDraft(DraftModel draft)
+        {
+            var compose = new SingleCompose(AppState.GmailService);
+            compose.LoadDraft(draft);
+            compose.ShowDialog();
+        }
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 

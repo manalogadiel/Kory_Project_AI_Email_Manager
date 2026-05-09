@@ -15,10 +15,13 @@ namespace KoryProjectC_
         private static readonly string GeminiApiKey =
             File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";
 
-        public SingleCompose()
+        public SingleCompose(GmailService? gmailService = null)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
+
+            if (gmailService != null)
+                AppState.GmailService = gmailService;
 
             // Auto-load saved profile into Guna2TextBox1
             LoadSavedProfile();
@@ -63,8 +66,9 @@ namespace KoryProjectC_
                     EmailId = $"single_{DateTime.Now.Ticks}",
                     Subject = subjectTextBox.Text,
                     Salutation = Guna2TextBox2.Text,
-                    Body = txtInput.Text,
+                    Body = bodyTextBox.Text,
                     Signature = Guna2TextBox1.Text,
+                    IsSingleCompose = true, // ADD THIS
                     Original = new EmailModel
                     {
                         FromEmail = guna2TextBox3.Text,
@@ -88,7 +92,7 @@ namespace KoryProjectC_
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(txtInput.Text))
+                if (string.IsNullOrWhiteSpace(bodyTextBox.Text))
                 {
                     MessageBox.Show("Please write a message.", "Empty",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -113,7 +117,7 @@ namespace KoryProjectC_
 
                     string fullBody =
                         $"{Guna2TextBox2.Text}\r\n\r\n" +
-                        $"{txtInput.Text}\r\n\r\n" +
+                        $"{bodyTextBox.Text}\r\n\r\n" +
                         $"{signature}";
 
                     await GmailHelper.SendNewEmailAsync(
@@ -166,7 +170,7 @@ namespace KoryProjectC_
 
         private async Task AnalyzeTextAsync()
         {
-            if (string.IsNullOrWhiteSpace(txtInput.Text))
+            if (string.IsNullOrWhiteSpace(bodyTextBox.Text))
             {
                 MessageBox.Show("Please enter some text to analyze.", "Info",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -193,6 +197,15 @@ namespace KoryProjectC_
             btnAnalyze.Text = "Analyze";
         }
 
+        public void LoadDraft(DraftModel draft)
+        {
+            guna2TextBox3.Text = draft.Original?.FromEmail ?? "";
+            subjectTextBox.Text = draft.Subject;
+            Guna2TextBox2.Text = draft.Salutation;
+            bodyTextBox.Text = draft.Body;
+            Guna2TextBox1.Text = draft.Signature;
+        }
+
         private async Task<bool> TryAnalyzeWithModel(string modelName)
         {
             string modelUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{modelName}:generateContent?key={GeminiApiKey}";
@@ -211,7 +224,7 @@ namespace KoryProjectC_
                                 {
                                     text = $@"Analyze the following text and return ONLY a JSON object with keys: clarity (0-100), tone (0-100), prof (0-100).
 
-Text: ""{txtInput.Text}""
+Text: ""{bodyTextBox.Text}""
 
 Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
                                 }

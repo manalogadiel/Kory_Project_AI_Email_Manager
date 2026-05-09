@@ -128,29 +128,29 @@
             // 
             // bodyTextBox
             // 
-            txtInput.BorderColor = Color.FromArgb(39, 40, 64);
-            txtInput.BorderRadius = 15;
-            txtInput.CustomizableEdges = customizableEdges40;
-            txtInput.DefaultText = "";
-            txtInput.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtInput.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtInput.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtInput.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtInput.FillColor = Color.FromArgb(20, 22, 39);
-            txtInput.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtInput.Font = new Font("Segoe UI", 9F);
-            txtInput.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtInput.Location = new Point(26, 237);
-            txtInput.Margin = new Padding(3, 5, 3, 5);
-            txtInput.Multiline = true;
-            txtInput.Name = "txtInput";
-            txtInput.PlaceholderForeColor = Color.Silver;
-            txtInput.PlaceholderText = "";
-            txtInput.ScrollBars = ScrollBars.Vertical;
-            txtInput.SelectedText = "";
-            txtInput.ShadowDecoration.CustomizableEdges = customizableEdges41;
-            txtInput.Size = new Size(933, 469);
-            txtInput.TabIndex = 19;
+            bodyTextBox.BorderColor = Color.FromArgb(39, 40, 64);
+            bodyTextBox.BorderRadius = 15;
+            bodyTextBox.CustomizableEdges = customizableEdges40;
+            bodyTextBox.DefaultText = "";
+            bodyTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            bodyTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            bodyTextBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            bodyTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            bodyTextBox.FillColor = Color.FromArgb(20, 22, 39);
+            bodyTextBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            bodyTextBox.Font = new Font("Segoe UI", 9F);
+            bodyTextBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            bodyTextBox.Location = new Point(26, 237);
+            bodyTextBox.Margin = new Padding(3, 5, 3, 5);
+            bodyTextBox.Multiline = true;
+            bodyTextBox.Name = "bodyTextBox";
+            bodyTextBox.PlaceholderForeColor = Color.Silver;
+            bodyTextBox.PlaceholderText = "";
+            bodyTextBox.ScrollBars = ScrollBars.Vertical;
+            bodyTextBox.SelectedText = "";
+            bodyTextBox.ShadowDecoration.CustomizableEdges = customizableEdges41;
+            bodyTextBox.Size = new Size(933, 469);
+            bodyTextBox.TabIndex = 19;
             // 
             // subjectTextBox
             // 
@@ -376,7 +376,6 @@
             ImproveBtn.Size = new Size(114, 30);
             ImproveBtn.TabIndex = 22;
             ImproveBtn.Text = "Improve";
-            ImproveBtn.Click += ImproveBtn_Click;
             // 
             // KoryReplyBtn
             // 
@@ -401,7 +400,6 @@
             KoryReplyBtn.Size = new Size(114, 30);
             KoryReplyBtn.TabIndex = 21;
             KoryReplyBtn.Text = "Kory Reply";
-            KoryReplyBtn.Click += KoryReplyBtn_Click;
             // 
             // SendBtn
             // 
