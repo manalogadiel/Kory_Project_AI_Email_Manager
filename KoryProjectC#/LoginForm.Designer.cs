@@ -39,20 +39,21 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             Guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            Guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             Guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             Guna2ShadowPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // Guna2ShadowPanel1
             // 
             Guna2ShadowPanel1.BackColor = Color.Transparent;
+            Guna2ShadowPanel1.Controls.Add(guna2PictureBox1);
             Guna2ShadowPanel1.Controls.Add(Guna2TextBox3);
-            Guna2ShadowPanel1.Controls.Add(Guna2TextBox2);
             Guna2ShadowPanel1.Controls.Add(Guna2TextBox1);
             Guna2ShadowPanel1.Controls.Add(Guna2Button1);
             Guna2ShadowPanel1.FillColor = Color.FromArgb(25, 27, 46);
@@ -65,12 +66,29 @@
             Guna2ShadowPanel1.Size = new Size(550, 469);
             Guna2ShadowPanel1.TabIndex = 1;
             // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.CustomizableEdges = customizableEdges1;
+            guna2PictureBox1.Image = Properties.Resources.logo1_removebg_preview;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.InitialImage = Properties.Resources.logo1;
+            guna2PictureBox1.Location = new Point(86, 0);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox1.Size = new Size(395, 270);
+            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox1.TabIndex = 3;
+            guna2PictureBox1.TabStop = false;
+            guna2PictureBox1.Click += guna2PictureBox1_Click;
+            guna2PictureBox1.MouseEnter += guna2PictureBox1_MouseEnter;
+            guna2PictureBox1.MouseLeave += guna2PictureBox1_MouseLeave;
+            // 
             // Guna2TextBox3
             // 
             Guna2TextBox3.BackColor = Color.Transparent;
             Guna2TextBox3.BorderColor = Color.Transparent;
             Guna2TextBox3.BorderThickness = 0;
-            Guna2TextBox3.CustomizableEdges = customizableEdges1;
+            Guna2TextBox3.CustomizableEdges = customizableEdges3;
             Guna2TextBox3.DefaultText = "Academic Email Management";
             Guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -80,43 +98,16 @@
             Guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             Guna2TextBox3.Font = new Font("Segoe UI", 9F);
             Guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Guna2TextBox3.Location = new Point(86, 260);
+            Guna2TextBox3.Location = new Point(86, 259);
             Guna2TextBox3.Margin = new Padding(3, 5, 3, 5);
             Guna2TextBox3.Name = "Guna2TextBox3";
             Guna2TextBox3.PlaceholderText = "";
             Guna2TextBox3.ReadOnly = true;
             Guna2TextBox3.SelectedText = "";
-            Guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            Guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Guna2TextBox3.Size = new Size(395, 33);
             Guna2TextBox3.TabIndex = 2;
             Guna2TextBox3.TextAlign = HorizontalAlignment.Center;
-            // 
-            // Guna2TextBox2
-            // 
-            Guna2TextBox2.BorderColor = Color.Transparent;
-            Guna2TextBox2.BorderThickness = 0;
-            Guna2TextBox2.CustomizableEdges = customizableEdges3;
-            Guna2TextBox2.DefaultText = "KORY";
-            Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            Guna2TextBox2.FillColor = Color.FromArgb(25, 27, 46);
-            Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Guna2TextBox2.Font = new Font("Segoe UI", 15F);
-            Guna2TextBox2.ForeColor = SystemColors.Window;
-            Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Guna2TextBox2.Location = new Point(86, 208);
-            Guna2TextBox2.Margin = new Padding(5, 7, 5, 7);
-            Guna2TextBox2.Name = "Guna2TextBox2";
-            Guna2TextBox2.PlaceholderForeColor = Color.FromArgb(5, 6, 18);
-            Guna2TextBox2.PlaceholderText = "";
-            Guna2TextBox2.ReadOnly = true;
-            Guna2TextBox2.SelectedText = "";
-            Guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Guna2TextBox2.Size = new Size(395, 33);
-            Guna2TextBox2.TabIndex = 2;
-            Guna2TextBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // Guna2TextBox1
             // 
@@ -175,6 +166,7 @@
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientPanel1.Size = new Size(1540, 960);
             guna2GradientPanel1.TabIndex = 2;
+            guna2GradientPanel1.Paint += guna2GradientPanel1_Paint;
             // 
             // LoginForm
             // 
@@ -186,6 +178,7 @@
             Name = "LoginForm";
             Text = "LoginForm";
             Guna2ShadowPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             guna2GradientPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -194,9 +187,9 @@
 
         internal Guna.UI2.WinForms.Guna2ShadowPanel Guna2ShadowPanel1;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox3;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox2;
         internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox1;
         internal Guna.UI2.WinForms.Guna2Button Guna2Button1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

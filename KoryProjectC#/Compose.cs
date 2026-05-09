@@ -14,8 +14,8 @@ namespace KoryProjectC_
     public partial class Compose : Form
     {
         private readonly HttpClient _httpClient = new HttpClient();
-        private static readonly string GeminiApiKey =
-    File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "";  
+        private static readonly string GeminiApiKey = 
+        File.Exists("apikeys.txt") ? File.ReadAllText("apikeys.txt").Trim() : "AIzaSyAWAYzJodqFJZUc1sVfNFmwDIdye3MlY2Y";  
         
 
         public Compose()
