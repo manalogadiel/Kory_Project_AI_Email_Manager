@@ -25,6 +25,7 @@ namespace KoryProjectC_
         {
             Email = email;
             _gmailService = service;
+
             guna2HtmlLabel1.Text = email.FromName;
             guna2HtmlLabel2.Text = email.Snippet;
             guna2HtmlLabel3.Text = email.Date;
@@ -32,6 +33,9 @@ namespace KoryProjectC_
             if (!email.IsRead)
                 guna2HtmlLabel1.Font = new Font(
                     guna2HtmlLabel1.Font, FontStyle.Bold);
+
+            // Populate the avatar circle — was never called before
+            SetSenderAvatar(email.FromName, email.FromEmail);
         }
 
         private void AttachEvents(Control control)
@@ -39,7 +43,6 @@ namespace KoryProjectC_
             control.MouseEnter += OnHoverEnter;
             control.MouseLeave += OnHoverLeave;
 
-            // Only attach click to the top-level UserControl and rowPanel, not every child
             if (control == this || control == rowPanel)
                 control.MouseClick += OnRowClick;
 
@@ -70,7 +73,6 @@ namespace KoryProjectC_
         {
             if (Email == null) return;
 
-            // If this row has a draft action, use it
             if (OnDraftClicked != null)
             {
                 OnDraftClicked.Invoke();
@@ -93,9 +95,83 @@ namespace KoryProjectC_
             home.ShowFullscreenCompose(compose);
         }
 
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
+        // ── Avatar helpers ────────────────────────────────────────────────────
 
+        private void SetSenderAvatar(string fromName, string fromEmail)
+        {
+            try
+            {
+                string initials = GetInitials(fromName, fromEmail);
+                Color avatarColor = GetAvatarColor(fromName + fromEmail);
+
+                int size = guna2CirclePictureBox1.Width;
+                var bmp = new Bitmap(size, size);
+
+                using (var g = Graphics.FromImage(bmp))
+                {
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+                    g.FillEllipse(new SolidBrush(avatarColor), 0, 0, size, size);
+
+                    float fontSize = size * 0.35f;
+                    var font = new Font("Segoe UI", fontSize, FontStyle.Bold, GraphicsUnit.Pixel);
+                    var textBrush = new SolidBrush(Color.White);
+                    var format = new StringFormat
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center
+                    };
+
+                    g.DrawString(initials, font, textBrush,
+                        new RectangleF(0, 0, size, size), format);
+                }
+
+                guna2CirclePictureBox1.Image = bmp;
+            }
+            catch { /* leave default if anything fails */ }
         }
+
+        private static string GetInitials(string name, string email)
+        {
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var parts = name.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length >= 2)
+                    return $"{parts[0][0]}{parts[^1][0]}".ToUpper();
+                if (parts.Length == 1 && parts[0].Length > 0)
+                    return parts[0][0].ToString().ToUpper();
+            }
+
+            if (!string.IsNullOrWhiteSpace(email))
+                return email[0].ToString().ToUpper();
+
+            return "?";
+        }
+
+        private static Color GetAvatarColor(string seed)
+        {
+            Color[] palette =
+            {
+                Color.FromArgb(98,  117, 217),
+                Color.FromArgb(76,  175, 130),
+                Color.FromArgb(229, 115,  95),
+                Color.FromArgb(100, 160, 220),
+                Color.FromArgb(186, 104, 200),
+                Color.FromArgb(77,  182, 172),
+                Color.FromArgb(240, 154,  56),
+                Color.FromArgb(129, 199, 132),
+                Color.FromArgb(229, 115, 155),
+                Color.FromArgb(111, 143, 175),
+            };
+
+            int hash = 0;
+            foreach (char c in seed)
+                hash = (hash * 31 + c) & 0x7fffffff;
+
+            return palette[hash % palette.Length];
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
     }
 }
