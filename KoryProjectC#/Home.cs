@@ -139,6 +139,12 @@ namespace KoryProjectC_
             ucInbox.BringToFront();
         }
 
+        private void composeBtn_Click(object sender, EventArgs e)
+        {
+            SingleCompose compose = new SingleCompose();
+            compose.ShowDialog(this); // 'this' sets Home as the owner
+        }
+
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
         private void InProgressBtn_Click(object sender, EventArgs e) => ucInProgress.BringToFront();
         private void AnsweredBtn_Click(object sender, EventArgs e) => ucAnswered.BringToFront();
