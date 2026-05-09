@@ -21,18 +21,22 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             logOutNo = new Guna.UI2.WinForms.Guna2Button();
             logOutYES = new Guna.UI2.WinForms.Guna2Button();
             logOutTextConfirmation = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            guna2CustomGradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // logOutNo
             // 
-            logOutNo.BackColor = Color.FromArgb(66, 81, 162);
-            logOutNo.BorderColor = Color.White;
-            logOutNo.BorderRadius = 4;
-            logOutNo.BorderThickness = 2;
+            logOutNo.BackColor = Color.Transparent;
+            logOutNo.BorderColor = Color.FromArgb(36, 35, 61);
+            logOutNo.BorderRadius = 20;
+            logOutNo.BorderThickness = 1;
             logOutNo.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             logOutNo.CheckedState.FillColor = Color.FromArgb(28, 27, 51);
             logOutNo.CheckedState.ForeColor = Color.White;
@@ -41,15 +45,16 @@
             logOutNo.DisabledState.CustomBorderColor = Color.DarkGray;
             logOutNo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             logOutNo.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            logOutNo.FillColor = Color.Transparent;
+            logOutNo.FillColor = Color.FromArgb(28, 27, 51);
             logOutNo.Font = new Font("League Spartan", 12F);
-            logOutNo.ForeColor = Color.FromArgb(142, 144, 166);
+            logOutNo.ForeColor = Color.DarkGray;
             logOutNo.HoverState.FillColor = Color.FromArgb(23, 24, 29);
             logOutNo.HoverState.ForeColor = Color.White;
             logOutNo.ImageAlign = HorizontalAlignment.Left;
-            logOutNo.Location = new Point(25, 145);
+            logOutNo.Location = new Point(30, 100);
             logOutNo.Margin = new Padding(0);
             logOutNo.Name = "logOutNo";
+            logOutNo.PressedColor = Color.Gray;
             logOutNo.RightToLeft = RightToLeft.No;
             logOutNo.ShadowDecoration.CustomizableEdges = customizableEdges2;
             logOutNo.Size = new Size(143, 48);
@@ -60,9 +65,9 @@
             // logOutYES
             // 
             logOutYES.BackColor = Color.Transparent;
-            logOutYES.BorderColor = Color.White;
-            logOutYES.BorderRadius = 4;
-            logOutYES.BorderThickness = 2;
+            logOutYES.BorderColor = Color.FromArgb(36, 35, 61);
+            logOutYES.BorderRadius = 20;
+            logOutYES.BorderThickness = 1;
             logOutYES.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             logOutYES.CheckedState.FillColor = Color.FromArgb(28, 27, 51);
             logOutYES.CheckedState.ForeColor = Color.White;
@@ -71,15 +76,16 @@
             logOutYES.DisabledState.CustomBorderColor = Color.DarkGray;
             logOutYES.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             logOutYES.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            logOutYES.FillColor = Color.Transparent;
+            logOutYES.FillColor = Color.FromArgb(28, 27, 51);
             logOutYES.Font = new Font("League Spartan", 12F);
-            logOutYES.ForeColor = Color.FromArgb(142, 144, 166);
+            logOutYES.ForeColor = Color.DarkGray;
             logOutYES.HoverState.FillColor = Color.FromArgb(23, 24, 29);
             logOutYES.HoverState.ForeColor = Color.White;
             logOutYES.ImageAlign = HorizontalAlignment.Left;
-            logOutYES.Location = new Point(223, 145);
+            logOutYES.Location = new Point(184, 100);
             logOutYES.Margin = new Padding(0);
             logOutYES.Name = "logOutYES";
+            logOutYES.PressedColor = Color.Gray;
             logOutYES.RightToLeft = RightToLeft.No;
             logOutYES.ShadowDecoration.CustomizableEdges = customizableEdges4;
             logOutYES.Size = new Size(143, 48);
@@ -104,22 +110,39 @@
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("League Spartan Medium", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel1.Location = new Point(46, 49);
+            guna2HtmlLabel1.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.ForeColor = Color.White;
+            guna2HtmlLabel1.Location = new Point(44, 50);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(303, 47);
+            guna2HtmlLabel1.Size = new Size(253, 33);
             guna2HtmlLabel1.TabIndex = 5;
             guna2HtmlLabel1.Text = "Are you sure to log out?";
+            // 
+            // guna2CustomGradientPanel1
+            // 
+            guna2CustomGradientPanel1.BorderThickness = 5;
+            guna2CustomGradientPanel1.Controls.Add(logOutYES);
+            guna2CustomGradientPanel1.Controls.Add(guna2HtmlLabel1);
+            guna2CustomGradientPanel1.Controls.Add(logOutNo);
+            guna2CustomGradientPanel1.CustomizableEdges = customizableEdges5;
+            guna2CustomGradientPanel1.FillColor = Color.FromArgb(22, 23, 50);
+            guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(66, 81, 162);
+            guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(30, 32, 68);
+            guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(22, 23, 50);
+            guna2CustomGradientPanel1.Location = new Point(0, 0);
+            guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2CustomGradientPanel1.Size = new Size(354, 194);
+            guna2CustomGradientPanel1.TabIndex = 6;
             // 
             // logOutConfirmation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(66, 81, 162);
-            ClientSize = new Size(397, 233);
-            Controls.Add(guna2HtmlLabel1);
-            Controls.Add(logOutYES);
-            Controls.Add(logOutNo);
+            BackColor = Color.White;
+            ClientSize = new Size(354, 194);
+            Controls.Add(guna2CustomGradientPanel1);
+            ForeColor = Color.Transparent;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             MdiChildrenMinimizedAnchorBottom = false;
@@ -128,8 +151,9 @@
             Text = "logOutConfirmation";
             TransparencyKey = Color.Transparent;
             Load += logOutConfirmation_Load;
+            guna2CustomGradientPanel1.ResumeLayout(false);
+            guna2CustomGradientPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -137,5 +161,6 @@
         private Guna.UI2.WinForms.Guna2Button logOutYES;
         private Guna.UI2.WinForms.Guna2HtmlLabel logOutTextConfirmation;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
     }
 }

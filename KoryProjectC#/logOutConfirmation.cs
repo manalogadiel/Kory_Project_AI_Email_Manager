@@ -38,9 +38,7 @@ namespace KoryProjectC_
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
 
 
-            // Style label
-            logOutTextConfirmation.ForeColor = Color.White;
-            logOutTextConfirmation.Font = new Font("Segoe UI", 13f, FontStyle.Bold);
+            
 
         }
 
