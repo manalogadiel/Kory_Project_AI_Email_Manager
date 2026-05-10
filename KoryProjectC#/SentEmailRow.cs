@@ -34,7 +34,12 @@ namespace KoryProjectC_
         {
             OnDraftClicked?.Invoke();
         }
-
+        public void SetCompactWidth(int width)
+        {
+            this.Width = width;
+            rowPanel.Width = width;
+            guna2HtmlLabel3.Location = new Point(width - 140, guna2HtmlLabel3.Location.Y);
+        }
         private void SentEmailRow_Load(object sender, EventArgs e) { }
         private void rowPanel_Paint(object sender, PaintEventArgs e) { }
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e) { }

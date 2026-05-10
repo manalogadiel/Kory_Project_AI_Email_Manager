@@ -61,12 +61,12 @@ namespace KoryProjectC_
                 if (draft.IsSingleCompose)
                 {
                     var card = new SentEmailRow();
-                    card.Width = wrapper.Width - 50;
                     card.Location = new Point(0, 5);
                     card.SetDraft(draft);
+                    card.SetCompactWidth(wrapper.Width - 50);
                     card.OnDraftClicked = () => OpenSingleDraft(capturedDraft);
 
-                    deleteBtn.Location = new Point(wrapper.Width - 42, 28);
+                    deleteBtn.Location = new Point(wrapper.Width - 35, 25);
 
                     wrapper.Controls.Add(card);
                     wrapper.Controls.Add(deleteBtn);
