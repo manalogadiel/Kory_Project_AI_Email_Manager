@@ -1,6 +1,6 @@
 <p align="center">
   <img src="KoryProjectC%23/Resources/readmekory.png" width="160" alt="Kory Logo"/><br/>
-  <em>AI-Powered Academic Email Assistant for Educators</em>
+  <em>AI-Powered Academic Email Assistant for Educators and Students</em>
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/platform-Windows-blue?style=flat" />
