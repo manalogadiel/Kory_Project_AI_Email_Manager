@@ -1,24 +1,24 @@
-﻿namespace KoryProjectC_
-{
-    partial class SingleCompose
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+﻿        namespace KoryProjectC_
         {
-            if (disposing && (components != null))
+            partial class SingleCompose
             {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+                /// <summary>
+                /// Required designer variable.
+                /// </summary>
+                private System.ComponentModel.IContainer components = null;
+
+                /// <summary>
+                /// Clean up any resources being used.
+                /// </summary>
+                /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+                protected override void Dispose(bool disposing)
+                {
+                    if (disposing && (components != null))
+                    {
+                        components.Dispose();
+                    }
+                    base.Dispose(disposing);
+                }
 
         #region Windows Form Designer generated code
 
@@ -450,6 +450,8 @@
             Guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges27;
             Guna2TextBox2.Size = new Size(201, 41);
             Guna2TextBox2.TabIndex = 18;
+            Guna2TextBox2.PlaceholderText = "Dear Name,";
+            Guna2TextBox2.PlaceholderForeColor = Color.Gray;
             // 
             // Guna2TextBox1
             // 
@@ -553,7 +555,7 @@
             // 
             guna2TextBox3.BorderThickness = 0;
             guna2TextBox3.CustomizableEdges = customizableEdges34;
-            guna2TextBox3.DefaultText = "gadielmanalo19@gmail.com";
+            guna2TextBox3.DefaultText = "";
             guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -561,12 +563,13 @@
             guna2TextBox3.FillColor = Color.FromArgb(24, 23, 53);
             guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox3.Font = new Font("Segoe UI", 9F);
-            guna2TextBox3.ForeColor = Color.Transparent;
+            guna2TextBox3.ForeColor = Color.White;
             guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox3.Location = new Point(58, 88);
             guna2TextBox3.Margin = new Padding(3, 4, 3, 4);
             guna2TextBox3.Name = "guna2TextBox3";
-            guna2TextBox3.PlaceholderText = "";
+            guna2TextBox3.PlaceholderForeColor = Color.Gray;
+            guna2TextBox3.PlaceholderText = "sometext@email.com";
             guna2TextBox3.SelectedText = "";
             guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges35;
             guna2TextBox3.Size = new Size(405, 22);
@@ -576,7 +579,7 @@
             // 
             guna2TextBox7.BorderThickness = 0;
             guna2TextBox7.CustomizableEdges = customizableEdges36;
-            guna2TextBox7.DefaultText = "RE: Basty Pogi Andrei Pogi Crush si Diwata Paressss";
+            guna2TextBox7.DefaultText = "";
             guna2TextBox7.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             guna2TextBox7.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             guna2TextBox7.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -584,12 +587,13 @@
             guna2TextBox7.FillColor = Color.FromArgb(20, 22, 39);
             guna2TextBox7.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox7.Font = new Font("Segoe UI", 9F);
-            guna2TextBox7.ForeColor = Color.Transparent;
+            guna2TextBox7.ForeColor = Color.White;
             guna2TextBox7.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox7.Location = new Point(91, 142);
             guna2TextBox7.Margin = new Padding(3, 4, 3, 4);
             guna2TextBox7.Name = "guna2TextBox7";
-            guna2TextBox7.PlaceholderText = "";
+            guna2TextBox7.PlaceholderForeColor = Color.Gray;
+            guna2TextBox7.PlaceholderText = "Write your subject";
             guna2TextBox7.SelectedText = "";
             guna2TextBox7.ShadowDecoration.CustomizableEdges = customizableEdges37;
             guna2TextBox7.Size = new Size(372, 22);
@@ -652,28 +656,28 @@
         #endregion
 
         internal Guna.UI2.WinForms.Guna2GradientButton btnAnalyze;
-        private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar2;
-        internal Guna.UI2.WinForms.Guna2TextBox bodyTextBox;
-        internal Guna.UI2.WinForms.Guna2TextBox subjectTextBox;
-        internal Guna.UI2.WinForms.Guna2GradientButton EditBtn;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox6;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox5;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox4;
-        internal Guna.UI2.WinForms.Guna2CircleProgressBar progressProf;
-        internal Guna.UI2.WinForms.Guna2CircleProgressBar progressTone;
-        internal Guna.UI2.WinForms.Guna2CircleProgressBar progressClarity;
-        internal Guna.UI2.WinForms.Guna2GradientButton SaveDraftBtn;
-        internal Guna.UI2.WinForms.Guna2GradientButton ImproveBtn;
-        internal Guna.UI2.WinForms.Guna2GradientButton KoryReplyBtn;
-        internal Guna.UI2.WinForms.Guna2GradientButton SendBtn;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox2;
-        internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2Button BackBtn;
-        internal Guna.UI2.WinForms.Guna2TextBox toTextBox;
-        private Guna.UI2.WinForms.Guna2HtmlLabel toLabel;
-        private Guna.UI2.WinForms.Guna2HtmlLabel subjectLabel;
-        internal Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-    }
-}
+                private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar2;
+                internal Guna.UI2.WinForms.Guna2TextBox bodyTextBox;
+                internal Guna.UI2.WinForms.Guna2TextBox subjectTextBox;
+                internal Guna.UI2.WinForms.Guna2GradientButton EditBtn;
+                internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox6;
+                internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox5;
+                internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox4;
+                internal Guna.UI2.WinForms.Guna2CircleProgressBar progressProf;
+                internal Guna.UI2.WinForms.Guna2CircleProgressBar progressTone;
+                internal Guna.UI2.WinForms.Guna2CircleProgressBar progressClarity;
+                internal Guna.UI2.WinForms.Guna2GradientButton SaveDraftBtn;
+                internal Guna.UI2.WinForms.Guna2GradientButton ImproveBtn;
+                internal Guna.UI2.WinForms.Guna2GradientButton KoryReplyBtn;
+                internal Guna.UI2.WinForms.Guna2GradientButton SendBtn;
+                internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox2;
+                internal Guna.UI2.WinForms.Guna2TextBox Guna2TextBox1;
+                private Guna.UI2.WinForms.Guna2Button BackBtn;
+                internal Guna.UI2.WinForms.Guna2TextBox toTextBox;
+                private Guna.UI2.WinForms.Guna2HtmlLabel toLabel;
+                private Guna.UI2.WinForms.Guna2HtmlLabel subjectLabel;
+                internal Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+                private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
+                private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+            }
+        }

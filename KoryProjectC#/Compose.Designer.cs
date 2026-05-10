@@ -314,7 +314,6 @@
             txtInput.Margin = new Padding(3, 5, 3, 5);
             txtInput.Multiline = true;
             txtInput.Name = "txtInput";
-            txtInput.PlaceholderForeColor = Color.Silver;
             txtInput.PlaceholderText = "";
             txtInput.ScrollBars = ScrollBars.Vertical;
             txtInput.SelectedText = "";
@@ -343,7 +342,6 @@
             txtSubject.Margin = new Padding(3, 5, 3, 5);
             txtSubject.Multiline = true;
             txtSubject.Name = "txtSubject";
-            txtSubject.PlaceholderForeColor = Color.Green;
             txtSubject.PlaceholderText = "";
             txtSubject.SelectedText = "";
             txtSubject.ShadowDecoration.CustomizableEdges = customizableEdges15;
@@ -644,7 +642,6 @@
             Guna2TextBox1.Location = new Point(36, 749);
             Guna2TextBox1.Margin = new Padding(3, 5, 3, 5);
             Guna2TextBox1.Name = "Guna2TextBox1";
-            Guna2TextBox1.PlaceholderForeColor = Color.Green;
             Guna2TextBox1.PlaceholderText = "";
             Guna2TextBox1.ReadOnly = true;
             Guna2TextBox1.SelectedText = "";

@@ -459,7 +459,6 @@
             // 
             logOutBtn.BorderColor = Color.Silver;
             logOutBtn.BorderRadius = 20;
-            logOutBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             logOutBtn.CheckedState.FillColor = Color.FromArgb(28, 27, 51);
             logOutBtn.CheckedState.ForeColor = Color.White;
             logOutBtn.CheckedState.Image = Properties.Resources.logOut2;
@@ -471,9 +470,9 @@
             logOutBtn.FillColor = Color.Transparent;
             logOutBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logOutBtn.ForeColor = Color.FromArgb(142, 144, 166);
-            logOutBtn.HoverState.FillColor = Color.FromArgb(23, 24, 29);
+            logOutBtn.HoverState.FillColor = Color.FromArgb(28, 27, 51);
             logOutBtn.HoverState.ForeColor = Color.White;
-            logOutBtn.HoverState.Image = Properties.Resources.logOut1;
+            logOutBtn.HoverState.Image = Properties.Resources.logOut2;
             logOutBtn.Image = Properties.Resources.logOut3;
             logOutBtn.ImageAlign = HorizontalAlignment.Right;
             logOutBtn.Location = new Point(83, 581);
