@@ -112,7 +112,6 @@
             RefreshBtn.BackColor = Color.Transparent;
             RefreshBtn.BorderColor = Color.Silver;
             RefreshBtn.BorderRadius = 20;
-            RefreshBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             RefreshBtn.Checked = true;
             RefreshBtn.CheckedState.FillColor = Color.FromArgb(20, 22, 39);
             RefreshBtn.CheckedState.ForeColor = Color.White;

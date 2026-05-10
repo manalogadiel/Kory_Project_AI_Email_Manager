@@ -194,30 +194,29 @@
             // 
             RefreshBtn.BorderColor = Color.Silver;
             RefreshBtn.BorderRadius = 20;
-            RefreshBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            RefreshBtn.Checked = true;
-            RefreshBtn.CheckedState.FillColor = Color.FromArgb(20, 22, 39);
+            RefreshBtn.CheckedState.FillColor = Color.FromArgb(100, 99, 130);
             RefreshBtn.CheckedState.ForeColor = Color.White;
-            RefreshBtn.CheckedState.Image = Properties.Resources.refreshBtn3;
+            RefreshBtn.CheckedState.Image = Properties.Resources.refreshBtn2;
             RefreshBtn.Cursor = Cursors.Hand;
             RefreshBtn.CustomizableEdges = customizableEdges1;
             RefreshBtn.DisabledState.BorderColor = Color.DarkGray;
             RefreshBtn.DisabledState.CustomBorderColor = Color.DarkGray;
             RefreshBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             RefreshBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            RefreshBtn.FillColor = Color.Transparent;
+            RefreshBtn.FillColor = Color.FromArgb(20, 22, 39);
             RefreshBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             RefreshBtn.ForeColor = Color.FromArgb(142, 144, 166);
             RefreshBtn.HoverState.FillColor = Color.FromArgb(23, 24, 29);
             RefreshBtn.HoverState.ForeColor = Color.White;
             RefreshBtn.HoverState.Image = Properties.Resources.refreshBtn;
-            RefreshBtn.Image = Properties.Resources.refreshBtn2;
-            RefreshBtn.Location = new Point(1113, 506);
+            RefreshBtn.Image = Properties.Resources.refreshBtn3;
+            RefreshBtn.Location = new Point(1142, 508);
             RefreshBtn.Name = "RefreshBtn";
             RefreshBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
             RefreshBtn.Size = new Size(47, 46);
             RefreshBtn.TabIndex = 12;
             RefreshBtn.TextAlign = HorizontalAlignment.Left;
+            RefreshBtn.Click += RefreshBtn_Click_1;
             // 
             // catGrade
             // 

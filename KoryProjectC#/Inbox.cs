@@ -186,5 +186,10 @@ namespace KoryProjectC_
         private void guna2ImageButton1_Click(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
         private void guna2Button10_Click(object sender, EventArgs e) { }
+
+        private void RefreshBtn_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
