@@ -53,12 +53,12 @@ namespace KoryProjectC_
             if (!email.IsRead)
             {
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Bold);
-                guna2HtmlLabel3.Location = new Point(990, guna2HtmlLabel3.Location.Y); // unread position
+                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y); // unread position
             }
             else
             {
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
-                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y); // read position (original)
+                guna2HtmlLabel3.Location = new Point(1071, guna2HtmlLabel3.Location.Y); // read position (original)
             }
 
             SetSenderAvatar(email.FromName, email.FromEmail);
