@@ -17,7 +17,9 @@ namespace KoryProjectC_
         {
             _draft = draft;
             guna2HtmlLabel1.Text = $"To: {draft.Original?.FromEmail ?? ""}";
-            guna2HtmlLabel2.Text = draft.Subject;
+            guna2HtmlLabel2.Text = !string.IsNullOrWhiteSpace(draft.Subject)
+                ? $"Subject: {draft.Subject}"
+                : "Subject: None";
             guna2HtmlLabel3.Text = DateTime.Now.ToString("ddd, h:mm tt");
         }
 

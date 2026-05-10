@@ -22,7 +22,6 @@ namespace KoryProjectC_
 
                 if (draft.IsSingleCompose)
                 {
-                    // New email draft — use SentEmailRow
                     var card = new SentEmailRow();
                     card.Width = flowLayoutPanel1.Width - 25;
                     card.SetDraft(draft);
@@ -31,15 +30,16 @@ namespace KoryProjectC_
                 }
                 else
                 {
-                    // Reply draft — use EmailRow
                     var card = new EmailRow();
                     card.Width = flowLayoutPanel1.Width - 25;
                     card.SetEmail(draft.Original, AppState.GmailService!);
+                    card.ForceReadAppearance = true;
                     card.OnDraftClicked = () => OpenDraft(draft);
                     flowLayoutPanel1.Controls.Add(card);
                 }
             }
         }
+
         private void OpenDraft(DraftModel draft)
         {
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
@@ -57,19 +57,9 @@ namespace KoryProjectC_
             compose.LoadDraft(draft);
             compose.ShowDialog();
         }
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void guna2vScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
+        private void guna2vScrollBar1_Scroll(object sender, ScrollEventArgs e) { }
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e) { }
     }
 }

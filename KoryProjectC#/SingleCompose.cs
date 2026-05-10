@@ -24,7 +24,6 @@ namespace KoryProjectC_
             if (gmailService != null)
                 AppState.GmailService = gmailService;
 
-            // Auto-load saved profile into Guna2TextBox1
             LoadSavedProfile();
 
             // Analyze
@@ -65,20 +64,21 @@ namespace KoryProjectC_
                 var draft = new DraftModel
                 {
                     EmailId = $"single_{DateTime.Now.Ticks}",
-                    Subject = subjectTextBox.Text,
+                    Subject = guna2TextBox7.Text,
                     Salutation = Guna2TextBox2.Text,
                     Body = bodyTextBox.Text,
                     Signature = Guna2TextBox1.Text,
-                    IsSingleCompose = true, // ADD THIS
+                    IsSingleCompose = true,
                     Original = new EmailModel
                     {
                         FromEmail = guna2TextBox3.Text,
-                        Subject = subjectTextBox.Text
+                        Subject = guna2TextBox7.Text
                     }
                 };
 
                 DraftHelper.SaveDraft(draft);
-                _draftId = draft.EmailId; // track current draft id
+                _draftId = draft.EmailId;
+
                 MessageBox.Show("Draft saved!", "Saved",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
@@ -125,18 +125,16 @@ namespace KoryProjectC_
                     await GmailHelper.SendNewEmailAsync(
                         AppState.GmailService,
                         guna2TextBox3.Text,
-                        subjectTextBox.Text,
+                        guna2TextBox7.Text,
                         fullBody
                     );
 
                     MessageBox.Show("Email sent successfully!", "Sent",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Delete draft if it existed
                     if (!string.IsNullOrEmpty(_draftId))
                         DraftHelper.DeleteDraft(_draftId);
 
-                    // Refresh answered tab
                     var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
                     if (home != null)
                         await home.RefreshAfterSendAsync();
@@ -212,7 +210,7 @@ namespace KoryProjectC_
         {
             _draftId = draft.EmailId;
             guna2TextBox3.Text = draft.Original?.FromEmail ?? "";
-            subjectTextBox.Text = draft.Subject;
+            guna2TextBox7.Text = draft.Subject;
             Guna2TextBox2.Text = draft.Salutation;
             bodyTextBox.Text = draft.Body;
             Guna2TextBox1.Text = draft.Signature;
@@ -298,10 +296,6 @@ Output format: {{""clarity"": number, ""tone"": number, ""prof"": number}}"
         private void BackBtn_Click(object sender, EventArgs e) => this.Close();
         private void guna2GradientButton1_Click(object sender, EventArgs e) { }
         private void SendBtn_Click(object sender, EventArgs e) { }
-
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void guna2PictureBox1_Click(object sender, EventArgs e) { }
     }
 }

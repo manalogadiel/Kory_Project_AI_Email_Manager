@@ -73,10 +73,11 @@
             // guna2HtmlLabel3
             // 
             guna2HtmlLabel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            guna2HtmlLabel3.AutoSize = false;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("League Spartan Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(142, 144, 166);
-            guna2HtmlLabel3.Location = new Point(1051, 29);
+            guna2HtmlLabel3.Location = new Point(1071, 29);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(92, 24);
             guna2HtmlLabel3.TabIndex = 5;

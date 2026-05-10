@@ -15,10 +15,27 @@ namespace KoryProjectC_
         private readonly Color normalBorder = Color.FromArgb(39, 40, 64);
         private readonly Color hoverBorder = Color.FromArgb(43, 40, 89);
 
+        private bool _forceRead = false;
+
+        
         public EmailRow()
         {
             InitializeComponent();
             AttachEvents(this);
+        }
+
+        public bool ForceReadAppearance
+        {
+            set
+            {
+                _forceRead = value;
+                if (value)
+                {
+                    guna2CirclePictureBox2.Visible = false;
+                    guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
+                    guna2HtmlLabel3.Location = new Point(guna2HtmlLabel3.Location.X, guna2HtmlLabel3.Location.Y);
+                }
+            }
         }
 
         public void SetEmail(EmailModel email, GmailService service)
@@ -33,11 +50,17 @@ namespace KoryProjectC_
             // Unread dot visibility
             guna2CirclePictureBox2.Visible = !email.IsRead;
 
-            // Bold sender name when unread
             if (!email.IsRead)
+            {
+                // Bold sender name when unread
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Bold);
+            }
+            else
+            {
+                // Already read — move time to the right just like when clicked
+                guna2HtmlLabel3.Location = new Point(guna2HtmlLabel3.Location.X + 20, guna2HtmlLabel3.Location.Y);
+            }
 
-            // Populate the avatar circle with initials
             SetSenderAvatar(email.FromName, email.FromEmail);
         }
 

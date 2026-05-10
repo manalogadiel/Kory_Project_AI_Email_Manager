@@ -493,7 +493,7 @@
             pnlMainContent.Margin = new Padding(0);
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.ShadowDecoration.CustomizableEdges = customizableEdges29;
-            pnlMainContent.Size = new Size(1233, 575);
+            pnlMainContent.Size = new Size(1233, 583);
             pnlMainContent.TabIndex = 5;
             pnlMainContent.Paint += pnlMainContent_Paint;
             // 

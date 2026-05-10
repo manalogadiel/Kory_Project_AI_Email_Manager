@@ -40,6 +40,7 @@ namespace KoryProjectC_
                 {
                     var row = new EmailRow();
                     row.SetEmail(email, _gmailService);
+                    row.ForceReadAppearance = true;
                     row.IsAnsweredRow = true;
                     row.Width = ECPanel.Width - 10;
                     ECPanel.Controls.Add(row);
