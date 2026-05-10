@@ -7,6 +7,25 @@ namespace KoryProjectC_
         public InProgress()
         {
             InitializeComponent();
+            RefreshBtn.Click += RefreshBtn_Click;
+        }
+
+        private async void RefreshBtn_Click(object? sender, EventArgs e)
+        {
+            var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+            if (home == null) return;
+
+            RefreshBtn.Enabled = false;
+
+            try
+            {
+                await home.RefreshAllAsync();
+                LoadDrafts();
+            }
+            finally
+            {
+                RefreshBtn.Enabled = true;
+            }
         }
 
         public void LoadDrafts()
@@ -20,7 +39,6 @@ namespace KoryProjectC_
             {
                 if (draft.Original == null) continue;
 
-                // Wrapper panel to hold card + delete button
                 var wrapper = new Guna.UI2.WinForms.Guna2Panel
                 {
                     Size = new Size(flowLayoutPanel1.Width - 25, 90),
@@ -29,7 +47,6 @@ namespace KoryProjectC_
                     FillColor = Color.Transparent
                 };
 
-                // Delete button
                 var deleteBtn = new Guna.UI2.WinForms.Guna2Button
                 {
                     Text = "✕",
@@ -76,7 +93,7 @@ namespace KoryProjectC_
                     var card = new EmailRow();
                     card.Location = new Point(0, 5);
                     card.SetEmail(draft.Original, AppState.GmailService!);
-                    card.SetCompactWidth(wrapper.Width - 50); // call this instead
+                    card.SetCompactWidth(wrapper.Width - 50);
                     card.OnDraftClicked = () => OpenDraft(capturedDraft);
 
                     deleteBtn.Location = new Point(wrapper.Width - 35, 25);
@@ -88,6 +105,7 @@ namespace KoryProjectC_
                 flowLayoutPanel1.Controls.Add(wrapper);
             }
         }
+
         private void OpenDraft(DraftModel draft)
         {
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();

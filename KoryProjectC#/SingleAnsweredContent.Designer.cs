@@ -1,6 +1,6 @@
 ﻿namespace KoryProjectC_
 {
-    partial class SingleAsweredContent
+    partial class SingleAnsweredContent
     {
         /// <summary> 
         /// Required designer variable.
@@ -72,7 +72,7 @@
             guna2Panel4.Location = new Point(22, 82);
             guna2Panel4.Name = "guna2Panel4";
             guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            guna2Panel4.Size = new Size(729, 138);
+            guna2Panel4.Size = new Size(647, 138);
             guna2Panel4.TabIndex = 12;
             // 
             // guna2Button3
@@ -88,7 +88,7 @@
             guna2Button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.FromArgb(142, 144, 166);
             guna2Button3.Image = Properties.Resources.clockIcon;
-            guna2Button3.Location = new Point(547, 53);
+            guna2Button3.Location = new Point(446, 45);
             guna2Button3.Name = "guna2Button3";
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Button3.Size = new Size(160, 25);
@@ -148,10 +148,10 @@
             bgPanel.BorderThickness = 1;
             bgPanel.CustomizableEdges = customizableEdges6;
             bgPanel.FillColor = Color.FromArgb(15, 16, 32);
-            bgPanel.Location = new Point(22, 237);
+            bgPanel.Location = new Point(22, 240);
             bgPanel.Name = "bgPanel";
             bgPanel.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            bgPanel.Size = new Size(729, 655);
+            bgPanel.Size = new Size(647, 582);
             bgPanel.TabIndex = 11;
             // 
             // guna2Button1
@@ -188,17 +188,18 @@
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            guna2GradientPanel1.Size = new Size(780, 919);
+            guna2GradientPanel1.Size = new Size(703, 845);
             guna2GradientPanel1.TabIndex = 14;
             // 
-            // SingleAsweredContent
+            // SingleAnsweredContent
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(14, 15, 20);
+            ClientSize = new Size(700, 850);
             Controls.Add(guna2GradientPanel1);
-            Name = "SingleAsweredContent";
-            Size = new Size(780, 919);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "SingleAnsweredContent";
             guna2Panel4.ResumeLayout(false);
             guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();

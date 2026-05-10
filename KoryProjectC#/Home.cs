@@ -1,8 +1,6 @@
 ﻿using Google.Apis.Gmail.v1;
 using System;
-using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KoryProjectC_
@@ -28,7 +26,7 @@ namespace KoryProjectC_
             try
             {
                 _gmailService = await GmailHelper.AuthenticateAsync();
-                await RefreshStatsAsync();
+                await RefreshAllAsync();
             }
             catch (Exception ex)
             {
@@ -38,7 +36,11 @@ namespace KoryProjectC_
             }
         }
 
-        private async Task RefreshStatsAsync()
+        // ── Single source of truth for all refreshes ──────────────────────────
+        // Called on load, after sending, and by every RefreshBtn across views.
+        // Re-fetches inbox emails + sent stats, then updates all three panels.
+
+        public async Task RefreshAllAsync()
         {
             if (_gmailService == null) return;
 
@@ -56,6 +58,7 @@ namespace KoryProjectC_
             int avgResp = (int)Math.Round(await avgRespTask);
             string name = await nameTask;
 
+            AppState.Emails = emails;
             AppState.UserName = name;
             AppState.UserEmail = (await _gmailService.Users.GetProfile("me").ExecuteAsync()).EmailAddress ?? "";
 
@@ -75,8 +78,14 @@ namespace KoryProjectC_
             title.Text = $"Hi, {name}!";
             UpdateHeaderStats(pending, answered, avgResp);
 
+            // Refresh all three panels with the new data
+            ucInbox.LoadCategoryData();
             ucAnswered._gmailService = _gmailService;
             await ucAnswered.LoadSentEmailsAsync();
+
+            // Drafts live on disk, not Gmail — only reload if InProgress is visible
+            if (ucInProgress.Visible)
+                ucInProgress.LoadDrafts();
         }
 
         public void UpdateHeaderStats(int pending, int answered, int avgRespMinutes)
@@ -128,7 +137,6 @@ namespace KoryProjectC_
 
         public void ShowAnsweredContent(EmailModel sentEmail, GmailService service)
         {
-            // Remove any existing AnsweredContent
             foreach (var ctrl in this.Controls.OfType<AnsweredContent>().ToList())
             {
                 this.Controls.Remove(ctrl);
@@ -158,6 +166,28 @@ namespace KoryProjectC_
             ucAnswered.BringToFront();
         }
 
+        public void ShowSingleAnsweredContent(EmailModel email, GmailService service)
+        {
+            if (Application.OpenForms.OfType<SingleAnsweredContent>().Any())
+                return;
+
+            var content = new SingleAnsweredContent();
+            content.StartPosition = FormStartPosition.CenterParent;
+            _ = content.LoadFromEmail(email, service);
+            content.ShowDialog(this);
+        }
+
+        public void ShowSingleAnswered()
+        {
+            foreach (var existing in this.Controls
+                .OfType<SingleAnsweredContent>().ToList())
+            {
+                this.Controls.Remove(existing);
+                existing.Dispose();
+            }
+            ucAnswered.BringToFront();
+        }
+
         // ── DASHBOARD SETUP ───────────────────────────────────────────────────
 
         private void SetupDashboard()
@@ -177,7 +207,7 @@ namespace KoryProjectC_
             ucInbox.BringToFront();
         }
 
-        // ── BUTTONS ───────────────────────────────────────────────────────────
+        // ── NAV BUTTONS ───────────────────────────────────────────────────────
 
         private void composeBtn_Click(object sender, EventArgs e)
         {
@@ -186,14 +216,13 @@ namespace KoryProjectC_
         }
 
         private void InboxBtn_Click(object sender, EventArgs e) => ucInbox.BringToFront();
+        private void AnsweredBtn_Click(object sender, EventArgs e) => ucAnswered.BringToFront();
 
         private void InProgressBtn_Click(object sender, EventArgs e)
         {
             ucInProgress.LoadDrafts();
             ucInProgress.BringToFront();
         }
-
-        private void AnsweredBtn_Click(object sender, EventArgs e) => ucAnswered.BringToFront();
 
         private void logOutBtn_Click(object sender, EventArgs e)
         {
@@ -212,18 +241,20 @@ namespace KoryProjectC_
             login.Show();
             this.Close();
         }
+
         public void RefreshBadges()
         {
             ucInbox.LoadCategoryData();
 
-            // Recalculate unread count from AppState
             int pending = AppState.Emails.Count(e => !e.IsRead);
             npPlaceholder.Text = pending.ToString();
             placehold.Text = $"You have {pending} unread email{(pending == 1 ? "" : "s")} waiting.  Let's tackle them!";
         }
 
-        public async Task RefreshAfterSendAsync() => await RefreshStatsAsync();
+        // Kept for backward compatibility — now just delegates to RefreshAllAsync
+        public async Task RefreshAfterSendAsync() => await RefreshAllAsync();
 
+        // Designer stubs
         private void pnlMainContent_Paint(object sender, PaintEventArgs e) { }
         private void guna2TextBox1_TextChanged(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) { }
@@ -235,10 +266,6 @@ namespace KoryProjectC_
         private void guna2HtmlLabel1_Click_1(object sender, EventArgs e) { }
         private void guna2HtmlLabel1_Click_2(object sender, EventArgs e) { }
         private void guna2Button1_Click(object sender, EventArgs e) { }
-
-        private void avgResponseText_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void avgResponseText_Click(object sender, EventArgs e) { }
     }
 }

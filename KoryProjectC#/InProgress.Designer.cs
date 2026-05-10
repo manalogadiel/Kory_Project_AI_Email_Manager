@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -35,6 +37,7 @@
             guna2vScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             flowLayoutPanel1 = new FlowLayoutPanel();
             rowPanel = new Guna.UI2.WinForms.Guna2Panel();
+            RefreshBtn = new Guna.UI2.WinForms.Guna2Button();
             rowPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,16 +95,47 @@
             rowPanel.BorderColor = Color.FromArgb(39, 40, 64);
             rowPanel.BorderRadius = 20;
             rowPanel.BorderThickness = 1;
+            rowPanel.Controls.Add(RefreshBtn);
             rowPanel.Controls.Add(guna2HtmlLabel2);
             rowPanel.Controls.Add(guna2HtmlLabel1);
-            rowPanel.CustomizableEdges = customizableEdges1;
+            rowPanel.CustomizableEdges = customizableEdges3;
             rowPanel.FillColor = Color.FromArgb(26, 28, 46);
             rowPanel.Location = new Point(2, 1);
             rowPanel.Name = "rowPanel";
-            rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            rowPanel.ShadowDecoration.CustomizableEdges = customizableEdges4;
             rowPanel.Size = new Size(1192, 104);
             rowPanel.TabIndex = 10;
             rowPanel.UseTransparentBackground = true;
+            // 
+            // RefreshBtn
+            // 
+            RefreshBtn.BackColor = Color.Transparent;
+            RefreshBtn.BorderColor = Color.Silver;
+            RefreshBtn.BorderRadius = 20;
+            RefreshBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            RefreshBtn.Checked = true;
+            RefreshBtn.CheckedState.FillColor = Color.FromArgb(20, 22, 39);
+            RefreshBtn.CheckedState.ForeColor = Color.White;
+            RefreshBtn.CheckedState.Image = Properties.Resources.refreshBtn3;
+            RefreshBtn.Cursor = Cursors.Hand;
+            RefreshBtn.CustomizableEdges = customizableEdges1;
+            RefreshBtn.DisabledState.BorderColor = Color.DarkGray;
+            RefreshBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            RefreshBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            RefreshBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            RefreshBtn.FillColor = Color.Transparent;
+            RefreshBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RefreshBtn.ForeColor = Color.FromArgb(142, 144, 166);
+            RefreshBtn.HoverState.FillColor = Color.FromArgb(23, 24, 29);
+            RefreshBtn.HoverState.ForeColor = Color.White;
+            RefreshBtn.HoverState.Image = Properties.Resources.refreshBtn;
+            RefreshBtn.Image = Properties.Resources.refreshBtn2;
+            RefreshBtn.Location = new Point(1113, 28);
+            RefreshBtn.Name = "RefreshBtn";
+            RefreshBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            RefreshBtn.Size = new Size(47, 46);
+            RefreshBtn.TabIndex = 14;
+            RefreshBtn.TextAlign = HorizontalAlignment.Left;
             // 
             // InProgress
             // 
@@ -124,5 +158,6 @@
         private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Panel rowPanel;
+        private Guna.UI2.WinForms.Guna2Button RefreshBtn;
     }
 }

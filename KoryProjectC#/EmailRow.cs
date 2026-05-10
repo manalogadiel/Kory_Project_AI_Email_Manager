@@ -110,20 +110,20 @@ namespace KoryProjectC_
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
 
-            // Mark as read on click — update UI immediately, then sync to Gmail
-            if (!Email.IsRead)
-            {
-                Email.IsRead = true;
-                guna2CirclePictureBox2.Visible = false;
-                guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
-                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y);
-                _ = MarkAsReadAsync();
-                home.RefreshBadges();
-            }
-
             if (IsAnsweredRow)
             {
-                home.ShowAnsweredContent(Email, _gmailService);
+                // Check if this is a single composed email (thread ID == message ID)
+                // or a reply (part of a longer thread)
+                if (Email.ThreadId == Email.Id)
+                {
+                    // Single composed email — show SingleAsweredContent overlay
+                    home.ShowSingleAnsweredContent(Email, _gmailService);
+                }
+                else
+                {
+                    // Reply email — show full AnsweredContent split view
+                    home.ShowAnsweredContent(Email, _gmailService);
+                }
                 return;
             }
 

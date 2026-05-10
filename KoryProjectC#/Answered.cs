@@ -1,6 +1,7 @@
 ﻿using Google.Apis.Gmail.v1;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KoryProjectC_
@@ -12,6 +13,24 @@ namespace KoryProjectC_
         public Answered()
         {
             InitializeComponent();
+            RefreshBtn.Click += RefreshBtn_Click;
+        }
+
+        private async void RefreshBtn_Click(object? sender, EventArgs e)
+        {
+            var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
+            if (home == null) return;
+
+            RefreshBtn.Enabled = false;
+
+            try
+            {
+                await home.RefreshAllAsync();
+            }
+            finally
+            {
+                RefreshBtn.Enabled = true;
+            }
         }
 
         private void Answered_Load(object sender, EventArgs e)
