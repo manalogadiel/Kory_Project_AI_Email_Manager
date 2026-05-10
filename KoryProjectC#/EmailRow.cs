@@ -52,18 +52,17 @@ namespace KoryProjectC_
 
             if (!email.IsRead)
             {
-                // Bold sender name when unread
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Bold);
+                guna2HtmlLabel3.Location = new Point(990, guna2HtmlLabel3.Location.Y); // unread position
             }
             else
             {
-                // Already read — move time to the right just like when clicked
-                guna2HtmlLabel3.Location = new Point(guna2HtmlLabel3.Location.X + 20, guna2HtmlLabel3.Location.Y);
+                guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
+                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y); // read position (original)
             }
 
             SetSenderAvatar(email.FromName, email.FromEmail);
         }
-
         private void AttachEvents(Control control)
         {
             control.MouseEnter += OnHoverEnter;
@@ -117,7 +116,7 @@ namespace KoryProjectC_
                 Email.IsRead = true;
                 guna2CirclePictureBox2.Visible = false;
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
-                guna2HtmlLabel3.Location = new Point(guna2HtmlLabel3.Location.X + 20, guna2HtmlLabel3.Location.Y);
+                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y);
                 _ = MarkAsReadAsync();
                 home.RefreshBadges();
             }
@@ -150,6 +149,14 @@ namespace KoryProjectC_
             {
                 System.Diagnostics.Debug.WriteLine($"Mark as read failed: {ex.Message}");
             }
+        }
+
+        public void SetCompactWidth(int width)
+        {
+            this.Width = width;
+            rowPanel.Width = width;
+            // Keep date label anchored to right
+            guna2HtmlLabel3.Location = new Point(width - 140, guna2HtmlLabel3.Location.Y);
         }
 
         // ── Avatar helpers ────────────────────────────────────────────────────

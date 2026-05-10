@@ -20,26 +20,74 @@ namespace KoryProjectC_
             {
                 if (draft.Original == null) continue;
 
+                // Wrapper panel to hold card + delete button
+                var wrapper = new Guna.UI2.WinForms.Guna2Panel
+                {
+                    Size = new Size(flowLayoutPanel1.Width - 25, 90),
+                    BackColor = Color.Transparent,
+                    BorderThickness = 0,
+                    FillColor = Color.Transparent
+                };
+
+                // Delete button
+                var deleteBtn = new Guna.UI2.WinForms.Guna2Button
+                {
+                    Text = "✕",
+                    Size = new Size(30, 30),
+                    FillColor = Color.FromArgb(180, 50, 70),
+                    ForeColor = Color.White,
+                    BorderRadius = 8,
+                    Font = new Font("Segoe UI", 9f, FontStyle.Bold),
+                    Location = new Point(wrapper.Width - 35, 25)
+                };
+
+                var capturedDraft = draft;
+                var capturedWrapper = wrapper;
+
+                deleteBtn.Click += (s, e) =>
+                {
+                    var confirm = MessageBox.Show(
+                        "Delete this draft?", "Confirm",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (confirm == DialogResult.Yes)
+                    {
+                        DraftHelper.DeleteDraft(capturedDraft.EmailId);
+                        flowLayoutPanel1.Controls.Remove(capturedWrapper);
+                        capturedWrapper.Dispose();
+                    }
+                };
+
                 if (draft.IsSingleCompose)
                 {
                     var card = new SentEmailRow();
-                    card.Width = flowLayoutPanel1.Width - 25;
+                    card.Width = wrapper.Width - 50;
+                    card.Location = new Point(0, 5);
                     card.SetDraft(draft);
-                    card.OnDraftClicked = () => OpenSingleDraft(draft);
-                    flowLayoutPanel1.Controls.Add(card);
+                    card.OnDraftClicked = () => OpenSingleDraft(capturedDraft);
+
+                    deleteBtn.Location = new Point(wrapper.Width - 42, 28);
+
+                    wrapper.Controls.Add(card);
+                    wrapper.Controls.Add(deleteBtn);
                 }
                 else
                 {
                     var card = new EmailRow();
-                    card.Width = flowLayoutPanel1.Width - 25;
+                    card.Location = new Point(0, 5);
                     card.SetEmail(draft.Original, AppState.GmailService!);
-                    card.ForceReadAppearance = true;
-                    card.OnDraftClicked = () => OpenDraft(draft);
-                    flowLayoutPanel1.Controls.Add(card);
+                    card.SetCompactWidth(wrapper.Width - 50); // call this instead
+                    card.OnDraftClicked = () => OpenDraft(capturedDraft);
+
+                    deleteBtn.Location = new Point(wrapper.Width - 35, 25);
+
+                    wrapper.Controls.Add(card);
+                    wrapper.Controls.Add(deleteBtn);
                 }
+
+                flowLayoutPanel1.Controls.Add(wrapper);
             }
         }
-
         private void OpenDraft(DraftModel draft)
         {
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
