@@ -445,13 +445,12 @@
             Guna2TextBox2.Location = new Point(27, 186);
             Guna2TextBox2.Margin = new Padding(3, 5, 3, 5);
             Guna2TextBox2.Name = "Guna2TextBox2";
-            Guna2TextBox2.PlaceholderText = "";
+            Guna2TextBox2.PlaceholderForeColor = Color.Gray;
+            Guna2TextBox2.PlaceholderText = "Dear Name,";
             Guna2TextBox2.SelectedText = "";
             Guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges27;
             Guna2TextBox2.Size = new Size(201, 41);
             Guna2TextBox2.TabIndex = 18;
-            Guna2TextBox2.PlaceholderText = "Dear Name,";
-            Guna2TextBox2.PlaceholderForeColor = Color.Gray;
             // 
             // Guna2TextBox1
             // 
@@ -619,7 +618,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 16, 32);
-            ClientSize = new Size(780, 809);
+            ClientSize = new Size(986, 809);
             Controls.Add(subjectLabel);
             Controls.Add(guna2TextBox7);
             Controls.Add(toLabel);
