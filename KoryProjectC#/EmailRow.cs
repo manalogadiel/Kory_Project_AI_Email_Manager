@@ -110,6 +110,16 @@ namespace KoryProjectC_
             var home = Application.OpenForms.OfType<Home>().FirstOrDefault();
             if (home == null) return;
 
+            if (!Email.IsRead)
+            {
+                Email.IsRead = true;
+                guna2CirclePictureBox2.Visible = false;
+                guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
+                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y);
+                _ = MarkAsReadAsync();
+                home.RefreshBadges();
+            }
+
             if (IsAnsweredRow)
             {
                 // Check if this is a single composed email (thread ID == message ID)
