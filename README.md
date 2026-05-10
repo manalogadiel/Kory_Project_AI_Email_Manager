@@ -13,9 +13,9 @@
 
 ## What is Kory?
 
-Kory is a desktop email management tool built specifically for academic professionals — professors, instructors, and department staff — who deal with a high volume of student emails daily. Instead of drowning in an unorganized inbox, Kory automatically sorts incoming emails by academic category, surfaces what matters most, and gives you AI tools to draft replies faster and better.
+Kory is a desktop email management tool built specifically for academic professionals: professors, instructors, and students who deal with a high volume of emails daily. Instead of drowning in an unorganized inbox, Kory automatically sorts incoming emails by academic category, surfaces what matters most, and gives you AI tools to draft replies faster and better.
 
-The name **Kory** comes from the cat mascot you'll meet throughout the app — a little paw-print companion guiding you through your inbox.
+The name **Kory** is inspired by the Filipino word koreo, which means “mail". Kory is a playful cat you'll meet throughout the app — a little paw-print companion guiding you through your inbox.
 
 ---
 
