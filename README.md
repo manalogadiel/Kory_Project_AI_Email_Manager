@@ -115,14 +115,42 @@ KoryProjectC#/
 
 ## The Team — Wing Bytes
 
-| Name | Role |
-|---|---|
-| Gadiel Gospel L. Manalo | Developer, UI/UX Designer |
-| Sebastian Miguel Bueno | Developer, Debugger |
-| Kurt Andrei Villena | Developer, API Integration |
+<table>
+<tr>
+    <th> &nbsp; </th>
+    <th> Name </th>
+    <th> Role </th>
+</tr>
+<tr>
+    <td><img src="static/manalogadiel.jpg" width="100" height="100"> </td>
+    <td><strong>Gadiel Gospel L. Manalo</strong> <br/>
+    <a href="https://github.com/manalogadiel" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white" alt="mmanalogadiel's GitHub">
+        </a>
+    </td>
+    <td>Developer, UI/UX Designer</td>
+</tr>
+<tr>
+    <td><img src="static/basty.jpg" width="100" height="100"> </td>
+    <td><strong>Sebastian Miguel Bueno</strong> <br/>
+    <a href="https://github.com/yyytsaB" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=blue" alt="yyytsaB's GitHub">
+        </a>
+    </td>
+    <td>Developer, Debugger</td>
+</tr>
+<tr>
+    <td><img src="static/andrei.jpg" width="100" height="100"> </td>
+    <td><strong>Kurt Andrei Villena</strong> <br/>
+    <a href="https://github.com/andreiiiizz" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=green" alt="andreiiiizz's GitHub">
+        </a>
+    </td>
+    <td>Developer, API Integration/td>
+</tr>
+</table>
 
 ---
-
 ## Known Limitations
 
 - Sent email history in the Answered tab only shows emails sent **today** (resets at midnight).
