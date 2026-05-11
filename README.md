@@ -26,8 +26,8 @@ Emails are automatically sorted into six academic categories upon arrival — no
 
 | Category | Color |
 |---|---|
-| Grade Concerns | Red |
-| Absents / Excuses | Purple |
+| Grade Concerns | $\color{red}{Red}$ |
+| Absents / Excuses | $\color{purple}{Purple}$ |
 | Requests | Blue |
 | Academic Concerns | Green |
 | Requirements | Pink |
