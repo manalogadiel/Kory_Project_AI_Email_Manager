@@ -19,6 +19,9 @@ The name **Kory** is inspired by the Filipino word koreo, which means “mail". 
 
 ---
 
+## UML Diagram
+![UML_Diagram](static/UML_Diagram.png "UML_Diagram")
+
 ## Features
 
 **Smart Inbox Categorization**
