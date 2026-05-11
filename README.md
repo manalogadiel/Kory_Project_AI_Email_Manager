@@ -28,10 +28,10 @@ Emails are automatically sorted into six academic categories upon arrival — no
 |---|---|
 | Grade Concerns | $\color{red}{Red}$ |
 | Absents / Excuses | $\color{purple}{Purple}$ |
-| Requests | Blue |
-| Academic Concerns | Green |
-| Requirements | Pink |
-| Non-Academic | Gold |
+| Requests | $\color{blue}{Blue}$ |
+| Academic Concerns | $\color{green}{Green}$ |
+| Requirements | $\color{pink}{Pink}$ |
+| Non-Academic | $\color{gold}{Gold}$ |
 
 **AI Writing Tools (powered by Gemini)**
 - **Kory Reply** — generates a full reply draft based on the email context
