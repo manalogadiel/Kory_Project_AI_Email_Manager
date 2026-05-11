@@ -146,7 +146,7 @@ KoryProjectC#/
     <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=green" alt="andreiiiizz's GitHub">
         </a>
     </td>
-    <td>Developer, API Integration/td>
+    <td>Developer, API Integration</td>
 </tr>
 </table>
 
