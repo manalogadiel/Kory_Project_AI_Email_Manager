@@ -117,9 +117,9 @@ KoryProjectC#/
 
 | Name | Role |
 |---|---|
-| Gadiel Gospel L. Manalo | |
-| Sebastian Miguel Bueno | |
-| Kurt Andrei Villena | |
+| Gadiel Gospel L. Manalo | Developer, UI/UX Designer |
+| Sebastian Miguel Bueno | Developer, Debugger |
+| Kurt Andrei Villena | Developer, API Integration |
 
 ---
 
@@ -131,5 +131,7 @@ KoryProjectC#/
 - Categorization is keyword-based and works best with emails written in English or Filipino academic style.
 
 ---
-
+ ## Acknowedledgements
+ - Ma'am Fatima
+ - Pao na nagdala ng ulam
 <p align="center"><sub>Built with too much coffee and just the right amount of cat energy ☕🐾</sub></p>
