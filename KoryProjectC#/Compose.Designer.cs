@@ -446,7 +446,7 @@
             // 
             progressProf.FillColor = Color.FromArgb(200, 213, 218, 223);
             progressProf.FillThickness = 5;
-            progressProf.Font = new Font("Segoe UI", 12F);
+            progressProf.Font = new Font("Segoe UI", 10F);
             progressProf.ForeColor = Color.White;
             progressProf.Location = new Point(664, 129);
             progressProf.Margin = new Padding(3, 4, 3, 4);
@@ -467,7 +467,7 @@
             // 
             progressTone.FillColor = Color.FromArgb(200, 213, 218, 223);
             progressTone.FillThickness = 5;
-            progressTone.Font = new Font("Segoe UI", 12F);
+            progressTone.Font = new Font("Segoe UI", 10F);
             progressTone.ForeColor = Color.White;
             progressTone.Location = new Point(586, 129);
             progressTone.Margin = new Padding(3, 4, 3, 4);
@@ -488,7 +488,7 @@
             // 
             progressClarity.FillColor = Color.FromArgb(200, 213, 218, 223);
             progressClarity.FillThickness = 5;
-            progressClarity.Font = new Font("Segoe UI", 12F);
+            progressClarity.Font = new Font("Segoe UI", 10F);
             progressClarity.ForeColor = Color.White;
             progressClarity.InnerColor = Color.Transparent;
             progressClarity.Location = new Point(508, 129);

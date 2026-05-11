@@ -17,7 +17,6 @@ namespace KoryProjectC_
 
         private bool _forceRead = false;
 
-        
         public EmailRow()
         {
             InitializeComponent();
@@ -53,23 +52,26 @@ namespace KoryProjectC_
             if (!email.IsRead)
             {
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Bold);
-                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y); // unread position
+                guna2HtmlLabel3.Location = new Point(1051, guna2HtmlLabel3.Location.Y);
             }
             else
             {
                 guna2HtmlLabel1.Font = new Font(guna2HtmlLabel1.Font, FontStyle.Regular);
-                guna2HtmlLabel3.Location = new Point(1071, guna2HtmlLabel3.Location.Y); // read position (original)
+                guna2HtmlLabel3.Location = new Point(1071, guna2HtmlLabel3.Location.Y);
             }
 
             SetSenderAvatar(email.FromName, email.FromEmail);
         }
+
         private void AttachEvents(Control control)
         {
             control.MouseEnter += OnHoverEnter;
             control.MouseLeave += OnHoverLeave;
 
-            // Only attach click to the top-level UserControl and rowPanel, not every child
-            if (control == this || control == rowPanel)
+            // ── FIX: Only attach click to the top-level UserControl.
+            // Previously it was attached to both `this` AND `rowPanel`, causing
+            // OnRowClick to fire twice (rowPanel click bubbles up to `this`).
+            if (control == this)
                 control.MouseClick += OnRowClick;
 
             foreach (Control child in control.Controls)
@@ -126,7 +128,7 @@ namespace KoryProjectC_
                 // or a reply (part of a longer thread)
                 if (Email.ThreadId == Email.Id)
                 {
-                    // Single composed email — show SingleAsweredContent overlay
+                    // Single composed email — show SingleAnsweredContent overlay
                     home.ShowSingleAnsweredContent(Email, _gmailService);
                 }
                 else
