@@ -159,7 +159,7 @@ KoryProjectC#/
 - Categorization is keyword-based and works best with emails written in English or Filipino academic style.
 
 ---
- ## Acknowedledgements
+ ## Acknowledgements
  - Ma'am Fatima
  - Pao na nagdala ng ulam
 <p align="center"><sub>Built with too much coffee and just the right amount of cat energy ☕🐾</sub></p>
